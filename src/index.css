@@ -2,4 +2,53 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #eee;
+}
+
+.full-width {
+  width: 100%
+}
+
+.photoviewer {
+  text-align: center;
+}
+
+.progress-margin {
+  margin: 320px 1000px;
+}
+
+.button-margin {
+  margin: 10px 5px;
+}
+
+.inline-block {
+  display: inline;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.margin-top-120 {
+  margin-top: 120px;
+}
+
+.padding-top-20 {
+  padding-top: 20px;
+}
+
+.menu-button {
+  color: rgb(0, 188, 212);
+}
+
+.scroll-up-button {
+  height: 55px;
+  width: 55px;
+  border-radius: 25px;
+  background-color: rgba(200,200,200,.6);
+  padding: 5px;
+}
+
+.scroll-up-icon {
+  font-size: 40px;
 }
