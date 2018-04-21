@@ -1,14 +1,14 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Route, Redirect, withRouter} from "react-router-dom";
-import PhotoViewer from "./components/PhotoViewer"
+import Viewer from "./components/Viewer"
 
 class Routes extends React.Component {
 
     render() {
         return (
             <div>
-                <Route path="/" exact component={PhotoViewer}/>
+                <Route path="/" exact component={Viewer}/>
                 {/*<Route path="/explore/:view" render={() =>*/}
                     {/*this.props.authenticated.authenticated ?*/}
                         {/*<Explore /> :*/}

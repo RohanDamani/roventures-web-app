@@ -8,6 +8,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import reducers from './reducers/reducers';
 import thunkMiddleware from 'redux-thunk';
 import Routes from './Routes';
+import ServerlessViewer from './components/ServerlessViewer'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
@@ -23,7 +24,9 @@ const App = () => {
         <MuiThemeProvider>
             <HashRouter>
                 <Provider store={store}>
-                    <Routes />
+                    <ServerlessViewer>
+                        <Routes />
+                    </ServerlessViewer>
                 </Provider>
             </HashRouter>
         </MuiThemeProvider>

@@ -8,7 +8,7 @@ import PhotoSection from './PhotoSection';
 import OptionSection from './OptionSection';
 import Homepage from './Homepage';
 
-class PhotoViewer extends Component {
+class PhotoViewerOld extends Component {
   state = {
     albums: [],
     photos: [],
@@ -190,4 +190,4 @@ class PhotoViewer extends Component {
   }
 }
 
-export default PhotoViewer;
+export default PhotoViewerOld;
