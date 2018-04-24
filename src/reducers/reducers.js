@@ -6,7 +6,7 @@ import { VIEWER } from '../constants';
 const initialState = {
   type: VIEWER.PHOTOS,
   count: VIEWER.SINGLE,
-  album: '',
+  album: VIEWER.ALBUMS,
 };
 
 const showInViewer = (state = initialState, action) => {

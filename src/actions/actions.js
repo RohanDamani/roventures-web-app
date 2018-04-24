@@ -14,7 +14,7 @@ export const toggleShowCount = (count) => ({
     count
 });
 
-const toggleShowAlbum = (album) => ({
+export const toggleShowAlbum = (album) => ({
     type: 'TOGGLE_SHOW_ALBUM',
     album
 });

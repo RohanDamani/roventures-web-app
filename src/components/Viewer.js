@@ -4,27 +4,47 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Grid, Row, Col, Thumbnail } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
-import { fetchAlbum } from '../actions/actions';
+import { fetchAlbum, toggleShowAlbum } from '../actions/actions';
 import { VIEWER } from '../constants';
+import About from './About';
 
 class Viewer extends React.Component {
+  componentWillMount() {
+    const { fetchAlbum, match, bucket } = this.props;
 
-    componentWillMount() {
-        const { fetchAlbum, match, bucket } = this.props;
+    // use the URL parameter to fetch the initial album
+    if (!this.isAboutSection()) {
+      fetchAlbum(bucket, match.params.item);
+    }
+    if (this.isAboutSection()) {
+      toggleShowAlbum(VIEWER.ALBUMS);
+    }
+  }
 
-        // use the URL parameter to fetch the initial album
-        fetchAlbum(bucket, match.params.item)
+  componentWillUpdate(nextProps) {
+    const { fetchAlbum, toggleShowAlbum, match, bucket } = this.props;
+
+    // each time the URL parameter changes, fetch the album using the new parameter
+    if (
+      match.params.item !== nextProps.match.params.item &&
+      nextProps.match.params.item !== 'About'
+    ) {
+      fetchAlbum(bucket, nextProps.match.params.item);
     }
 
-    componentWillUpdate(nextProps) {
-        const { fetchAlbum, match, bucket } = this.props;
-
-        // each time the URL parameter changes, fetch the album using the new parameter
-        if (match.params.item !== nextProps.match.params.item) {
-            fetchAlbum(bucket, nextProps.match.params.item);
-        }
+    if (
+      match.params.item !== nextProps.match.params.item &&
+      nextProps.match.params.item === 'About'
+    ) {
+      toggleShowAlbum(VIEWER.ALBUMS);
     }
+  }
 
+  isAboutSection() {
+    const { match } = this.props;
+    const { params: { item } } = match;
+    return item === 'About';
+  }
 
   render() {
     const { showInViewer, media } = this.props;
@@ -43,8 +63,10 @@ class Viewer extends React.Component {
             {/*<h2>Click a photo to enlarge.</h2>*/}
             {/*</div>*/}
             {/*)}*/}
+            {this.isAboutSection() && <About />}
             {photos &&
-              type === VIEWER.PHOTOS && (
+              type === VIEWER.PHOTOS &&
+              !this.isAboutSection() && (
                 <div>
                   {photos.map((photo, index) => {
                     return (
@@ -82,6 +104,7 @@ class Viewer extends React.Component {
             {/*)}*/}
             {videos &&
               type === VIEWER.VIDEOS &&
+              !this.isAboutSection() && (
                 <div>
                   {videos.map((video, index) => {
                     return (
@@ -96,7 +119,7 @@ class Viewer extends React.Component {
                     );
                   })}
                 </div>
-              }
+              )}
             {/*{!props.showHomepage &&*/}
             {/*!props.isLoading &&*/}
             {/*props.showVideos &&*/}
@@ -130,7 +153,15 @@ Viewer.propTypes = {
 };
 
 export default withRouter(
-  connect(state => ({ bucket: state.bucket, media: state.media, showInViewer: state.showInViewer }), {
+  connect(
+    state => ({
+      bucket: state.bucket,
+      media: state.media,
+      showInViewer: state.showInViewer,
+    }),
+    {
       fetchAlbum,
-  })(Viewer),
+      toggleShowAlbum,
+    },
+  )(Viewer),
 );

@@ -23,6 +23,11 @@ class Navigation extends React.Component {
     });
   }
 
+  toggleAboutSection() {
+    const { history } = this.props
+    history.push('/About')
+  }
+
   render() {
     const { toggleShowType, toggleShowCount, showInViewer } = this.props;
     const { type, count, album } = showInViewer;
@@ -59,7 +64,7 @@ class Navigation extends React.Component {
             </NavDropdown>
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={1} href="#">
+            <NavItem eventKey={1} onClick={() => this.toggleAboutSection()}>
               About
             </NavItem>
           </Nav>
