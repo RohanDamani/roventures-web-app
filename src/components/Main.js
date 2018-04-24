@@ -10,7 +10,6 @@ import { storeBucket, fetchAlbumList } from '../actions/actions';
 const INITIAL_ALBUM = 'India';
 
 class Main extends React.Component {
-
   componentWillMount() {
     const { storeBucket, fetchAlbumList, history, location } = this.props;
 
