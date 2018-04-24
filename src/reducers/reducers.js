@@ -1,14 +1,68 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import Get from 'lodash/get';
+import { VIEWER } from '../constants';
+// import Get from 'lodash/get';
+
+const initialState = {
+  type: VIEWER.PHOTOS,
+  count: VIEWER.SINGLE,
+  album: '',
+};
+
+const showInViewer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'TOGGLE_SHOW_TYPE':
+      return { ...state, type: action.newType };
+    case 'TOGGLE_SHOW_COUNT':
+      return { ...state, count: action.count };
+      case 'TOGGLE_SHOW_ALBUM':
+          return { ...state, album: action.album };
+    default:
+      return state;
+  }
+};
+
+const bucket = (state = {}, action) => {
+  switch (action.type) {
+    case 'STORE_BUCKET':
+      return action.bucket;
+    default:
+      return state;
+  }
+};
+
+const media = (state = { photos: [], videos: [] }, action) => {
+  switch (action.type) {
+    case 'RECEIVE_ALBUM_DATA':
+      const bucketRegion = process.env.REACT_APP_BUCKET_REGION;
+      const bucketName = process.env.REACT_APP_BUCKET_NAME;
+
+      const bucketUrl = `https://s3-${bucketRegion}.amazonaws.com/${bucketName}/`;
+      const photoUrlArray = [];
+      const videoUrlArray = [];
+      action.payload.Contents.forEach(photo => {
+        if (photo.Size > 0) {
+          const photoKey = photo.Key;
+          if (photoKey.includes('MP4') || photoKey.includes('m4v')) {
+            videoUrlArray.push(bucketUrl + photoKey);
+          } else {
+            photoUrlArray.push(bucketUrl + photoKey);
+          }
+        }
+      });
+      return { ...state, photos: photoUrlArray, videos: videoUrlArray };
+    default:
+      return state;
+  }
+};
 
 const albumList = (state = [], action) => {
-    switch (action.type) {
-        case 'RECEIVE_ALBUM_LIST':
-            return action.albumList;
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case 'RECEIVE_ALBUM_LIST':
+      return action.albumList;
+    default:
+      return state;
+  }
 };
 
 // const isLoading = (state = {}, action) => {
@@ -28,8 +82,11 @@ const albumList = (state = [], action) => {
 //   }
 
 const reducers = combineReducers({
-    albumList,
-    form: formReducer
+  bucket,
+  showInViewer,
+  media,
+  albumList,
+  form: formReducer,
 });
 
 export default reducers;

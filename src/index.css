@@ -5,50 +5,54 @@ body {
   background-color: #eee;
 }
 
-.full-width {
-  width: 100%
+.margin-left-nav-section {
+  margin-left: 10%;
 }
 
-.photoviewer {
-  text-align: center;
-}
+/*.full-width {*/
+  /*width: 100%*/
+/*}*/
 
-.progress-margin {
-  margin: 320px 1000px;
-}
+/*.photoviewer {*/
+  /*text-align: center;*/
+/*}*/
 
-.button-margin {
-  margin: 10px 5px;
-}
+/*.progress-margin {*/
+  /*margin: 320px 1000px;*/
+/*}*/
 
-.inline-block {
-  display: inline;
-}
+/*.button-margin {*/
+  /*margin: 10px 5px;*/
+/*}*/
 
-.margin-top-20 {
-  margin-top: 20px;
-}
+/*.inline-block {*/
+  /*display: inline;*/
+/*}*/
 
-.margin-top-120 {
-  margin-top: 120px;
-}
+/*.margin-top-20 {*/
+  /*margin-top: 20px;*/
+/*}*/
 
-.padding-top-20 {
-  padding-top: 20px;
-}
+/*.margin-top-120 {*/
+  /*margin-top: 120px;*/
+/*}*/
 
-.menu-button {
-  color: rgb(0, 188, 212);
-}
+/*.padding-top-20 {*/
+  /*padding-top: 20px;*/
+/*}*/
 
-.scroll-up-button {
-  height: 55px;
-  width: 55px;
-  border-radius: 25px;
-  background-color: rgba(200,200,200,.6);
-  padding: 5px;
-}
+/*.menu-button {*/
+  /*color: rgb(0, 188, 212);*/
+/*}*/
 
-.scroll-up-icon {
-  font-size: 40px;
-}
+/*.scroll-up-button {*/
+  /*height: 55px;*/
+  /*width: 55px;*/
+  /*border-radius: 25px;*/
+  /*background-color: rgba(200,200,200,.6);*/
+  /*padding: 5px;*/
+/*}*/
+
+/*.scroll-up-icon {*/
+  /*font-size: 40px;*/
+/*}*/

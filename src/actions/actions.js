@@ -1,11 +1,50 @@
+export const storeBucket = (bucket) => ({
+    type: 'STORE_BUCKET',
+    bucket
+});
+
+
+export const toggleShowType = (type) => ({
+    type: 'TOGGLE_SHOW_TYPE',
+    newType: type
+});
+
+export const toggleShowCount = (count) => ({
+    type: 'TOGGLE_SHOW_COUNT',
+    count
+});
+
+const toggleShowAlbum = (album) => ({
+    type: 'TOGGLE_SHOW_ALBUM',
+    album
+});
 
 const receiveAlbumList = (albumList) => ({
     type: 'RECEIVE_ALBUM_LIST',
     albumList
-})
+});
+
+const receiveAlbumData = (data) => ({
+    type: 'RECEIVE_ALBUM_DATA',
+    payload: data
+});
+
+export const fetchAlbum = (bucket, album) => {
+    return dispatch => {
+        // AWS-sdk for s3 object
+        bucket.listObjects({ Prefix: album }, (err, data) => {
+            if (err) {
+                return alert('There was an error viewing your album: ' + err.message);
+            }
+            dispatch(receiveAlbumData(data))
+            dispatch(toggleShowAlbum(album))
+        });
+    }
+};
 
 export const fetchAlbumList = (bucket) => {
     return dispatch => {
+        // AWS-sdk for s3 object
         bucket.listObjects({ Delimiter: '/' }, (err, data) => {
             if (err) {
                 return alert('There was an error listing your albums: ' + err.message);
@@ -14,7 +53,7 @@ export const fetchAlbumList = (bucket) => {
                 const prefix = commonPrefix.Prefix;
                 return decodeURIComponent(prefix.replace('/', ''));
             })
-            dispatch(receiveAlbumList(albumList))
+            dispatch(receiveAlbumList(albumList));
         })
     }
 };

@@ -8,7 +8,7 @@ class Routes extends React.Component {
     render() {
         return (
             <div>
-                <Route path="/" exact component={Viewer}/>
+                <Route path="/:item" exact component={Viewer}/>
                 {/*<Route path="/explore/:view" render={() =>*/}
                     {/*this.props.authenticated.authenticated ?*/}
                         {/*<Explore /> :*/}

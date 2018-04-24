@@ -8,7 +8,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import reducers from './reducers/reducers';
 import thunkMiddleware from 'redux-thunk';
 import Routes from './Routes';
-import MainComponent from './components/MainComponent'
+import Main from './components/Main'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
@@ -24,9 +24,9 @@ const App = () => {
         <MuiThemeProvider>
             <HashRouter>
                 <Provider store={store}>
-                    <MainComponent>
+                    <Main>
                         <Routes />
-                    </MainComponent>
+                    </Main>
                 </Provider>
             </HashRouter>
         </MuiThemeProvider>
