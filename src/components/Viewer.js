@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Grid, Row, Col, Thumbnail } from 'react-bootstrap';
+import { Grid, Row, Col, Thumbnail, Glyphicon } from 'react-bootstrap';
+import ScrollToTop from 'react-scroll-up';
 import ReactPlayer from 'react-player';
 import { fetchAlbum, toggleShowAlbum } from '../actions/actions';
 import { VIEWER } from '../constants';
@@ -31,7 +32,7 @@ class Viewer extends React.Component {
     ) {
       fetchAlbum(bucket, nextProps.match.params.item);
     }
-
+    // if URL is About - toggle showInViewer.album to 'Albums'
     if (
       match.params.item !== nextProps.match.params.item &&
       nextProps.match.params.item === 'About'
@@ -47,13 +48,12 @@ class Viewer extends React.Component {
   }
 
   render() {
-    const { showInViewer, media } = this.props;
+    const { showInViewer, media, history } = this.props;
     const { type, count } = showInViewer;
     const { photos, videos } = media;
 
     return (
       <Grid fluid>
-        <div>
           <Row>
             {/*<Col>*/}
             {/*{props.showHomepage &&*/}
@@ -63,7 +63,7 @@ class Viewer extends React.Component {
             {/*<h2>Click a photo to enlarge.</h2>*/}
             {/*</div>*/}
             {/*)}*/}
-            {this.isAboutSection() && <About />}
+            {this.isAboutSection() && <About history={history} />}
             {photos &&
               type === VIEWER.PHOTOS &&
               !this.isAboutSection() && (
@@ -142,7 +142,11 @@ class Viewer extends React.Component {
             {/*)}*/}
             {/*</Col>*/}
           </Row>
-        </div>
+          <ScrollToTop showUnder={4000} duration={0}>
+              <div className="scroll-up-button">
+                  <Glyphicon glyph="arrow-up" className="scroll-up-icon" />
+              </div>
+          </ScrollToTop>
       </Grid>
     );
   }

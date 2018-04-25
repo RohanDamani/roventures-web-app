@@ -1,6 +1,9 @@
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
   font-family: sans-serif;
   background-color: #eee;
 }
@@ -9,50 +12,66 @@ body {
   margin-left: 10%;
 }
 
+.text-container {
+  min-height: 65vh;
+  padding: 45px;
+  font-size: 18px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.text-container p {
+  margin: 0 0 20px;
+}
+
+.navbar-inverse .navbar-nav>li.font-color-white>a {
+    color: #fff;
+}
+
+.scroll-up-button {
+  height: 55px;
+  width: 55px;
+  border-radius: 30px;
+  background-color: rgba(200, 200, 200, 0.6);
+  padding: 8px;
+}
+
+.scroll-up-icon {
+  font-size: 37px;
+}
+
 /*.full-width {*/
-  /*width: 100%*/
+/*width: 100%*/
 /*}*/
 
 /*.photoviewer {*/
-  /*text-align: center;*/
+/*text-align: center;*/
 /*}*/
 
 /*.progress-margin {*/
-  /*margin: 320px 1000px;*/
+/*margin: 320px 1000px;*/
 /*}*/
 
 /*.button-margin {*/
-  /*margin: 10px 5px;*/
+/*margin: 10px 5px;*/
 /*}*/
 
 /*.inline-block {*/
-  /*display: inline;*/
+/*display: inline;*/
 /*}*/
 
 /*.margin-top-20 {*/
-  /*margin-top: 20px;*/
+/*margin-top: 20px;*/
 /*}*/
 
 /*.margin-top-120 {*/
-  /*margin-top: 120px;*/
+/*margin-top: 120px;*/
 /*}*/
 
 /*.padding-top-20 {*/
-  /*padding-top: 20px;*/
+/*padding-top: 20px;*/
 /*}*/
 
 /*.menu-button {*/
-  /*color: rgb(0, 188, 212);*/
-/*}*/
-
-/*.scroll-up-button {*/
-  /*height: 55px;*/
-  /*width: 55px;*/
-  /*border-radius: 25px;*/
-  /*background-color: rgba(200,200,200,.6);*/
-  /*padding: 5px;*/
-/*}*/
-
-/*.scroll-up-icon {*/
-  /*font-size: 40px;*/
+/*color: rgb(0, 188, 212);*/
 /*}*/
