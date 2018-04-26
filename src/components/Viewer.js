@@ -34,7 +34,7 @@ class Viewer extends React.Component {
     // show backup refresh button to load full set of media after timeout
     window.setTimeout(() => {
       this.setState({ showRefreshButton: true });
-    }, 3001);
+    }, 3000);
   }
 
   componentWillReceiveProps(nextProps) {
