@@ -1,3 +1,7 @@
+export const MAIN = {
+    INDIA: 'India',
+};
+
 export const VIEWER = {
     PHOTOS: 'Photos',
     VIDEOS: 'Videos',
@@ -6,4 +10,4 @@ export const VIEWER = {
     MULTIPLE: 'Multiple',
     ALBUMS: 'Albums',
     SCROLL: 'scroll'
-}
+};

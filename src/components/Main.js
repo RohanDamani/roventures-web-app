@@ -5,9 +5,10 @@ import { withRouter } from 'react-router-dom';
 import Navigation from './Navigation';
 import authenticateBucket from '../bucketUtil';
 import { storeBucket, fetchAlbumList } from '../actions/actions';
+import { MAIN } from "../constants";
 
 // set the initial album to load
-const INITIAL_ALBUM = 'India';
+const INITIAL_ALBUM = MAIN.INDIA;
 
 class Main extends React.Component {
   componentWillMount() {
