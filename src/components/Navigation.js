@@ -75,7 +75,7 @@ class Navigation extends React.Component {
 
     if (!this.isAboutSection()) {
       return (
-        <NavDropdown eventKey={2} title={showInViewer.count} id="count">
+        <NavDropdown eventKey={2} title={showInViewer.count} id="count" className={showInViewer.type === VIEWER.VIDEOS ? 'hidden-xs' : ''}>
           {!this.isCountSingle() && (
             <MenuItem
               eventKey={2.1}

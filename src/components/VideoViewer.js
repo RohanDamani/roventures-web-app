@@ -12,23 +12,19 @@ class VideoViewer extends React.Component {
     //     }
     //     return videos.length !== media.videos.length;
     // }
-    //
-    // isViewerCountSingle() {
-    //     const { showInViewer } = this.props;
-    //     return showInViewer.count === VIEWER.SINGLE;
-    // }
-    //
-    // lgCol() {
-    //     return this.isViewerCountSingle() ? 12 : 3;
-    // }
-    //
-    // smCol() {
-    //     return this.isViewerCountSingle() ? 12 : 6;
-    // }
-    //
-    // xsCol() {
-    //     return this.isViewerCountSingle() ? 12 : 6;
-    // }
+
+    isViewerCountSingle() {
+        const { showInViewer } = this.props;
+        return showInViewer.count === VIEWER.SINGLE;
+    }
+
+    smCol() {
+        return this.isViewerCountSingle() ? 10 : 6;
+    }
+
+    smColOffset() {
+        return this.isViewerCountSingle() ? 1 : 0;
+    }
 
     // renderPhotos() {
     //     const { photos } = this.props;
@@ -62,7 +58,8 @@ class VideoViewer extends React.Component {
     // }
 
     render() {
-        const { type, videos, isShowingAboutSection } = this.props;
+        const { showInViewer, videos, isShowingAboutSection } = this.props;
+        const { type } = showInViewer
         return (
             <div>
                 {videos &&
@@ -71,7 +68,7 @@ class VideoViewer extends React.Component {
                     <div>
                         {videos.map((video, index) => {
                             return (
-                                <Col key={index} xs={12} sm={10} smOffset={1}>
+                                <Col key={index} xs={12} sm={this.smCol()} smOffset={this.smColOffset()}>
                                     <ReactPlayer
                                         url={video}
                                         width='100%'
@@ -92,7 +89,7 @@ class VideoViewer extends React.Component {
 
 VideoViewer.propTypes = {
     photos: PropTypes.array.isRequired,
-    type: PropTypes.object.isRequired,
+    showInViewer: PropTypes.object.showInViewer,
     isShowingAboutSection: PropTypes.func.isRequired,
 };
 

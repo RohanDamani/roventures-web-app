@@ -113,7 +113,7 @@ class Viewer extends React.Component {
 
           <VideoViewer
             videos={videos}
-            type={type}
+            showInViewer={showInViewer}
             isShowingAboutSection={this.isShowingAboutSection.bind(this)}
           />
         </Row>
