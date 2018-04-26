@@ -12,50 +12,65 @@ class PhotoViewer extends React.Component {
     return photos.length !== media.photos.length;
   }
 
+  isViewerCountSingle() {
+    const { showInViewer } = this.props;
+    return showInViewer.count === VIEWER.SINGLE;
+  }
+
+  lgCol() {
+    return this.isViewerCountSingle() ? 12 : 3;
+  }
+
+  smCol() {
+    return this.isViewerCountSingle() ? 12 : 6;
+  }
+
+  xsCol() {
+    return this.isViewerCountSingle() ? 12 : 6;
+  }
+
+  renderPhotos() {
+    const { photos } = this.props;
+
+    return photos.map((photo, index) => {
+      return (
+        <Col key={index} lg={this.lgCol()} sm={this.smCol()} xs={this.xsCol()}>
+          <Thumbnail src={photo} alt={photo} />
+        </Col>
+      );
+    });
+  }
+
+  renderThrottledRefreshButton() {
+    const { showRefreshButton, onScroll } = this.props;
+
+    if (this.isShowingSubset() && showRefreshButton) {
+      return (
+        <Col lg={this.lgCol()} sm={this.smCol()} xs={this.xsCol()}>
+          <Button
+            bsStyle={'link'}
+            bsSize={'lg'}
+            onClick={() => onScroll()}
+            block
+          >
+            <Glyphicon glyph="refresh" />
+          </Button>
+        </Col>
+      );
+    }
+  }
+
   render() {
-    const {
-      showInViewer,
-      photos,
-      showRefreshButton,
-      onScroll,
-      isShowingAboutSection,
-    } = this.props;
-    const { type, count } = showInViewer;
+    const { showInViewer, photos, isShowingAboutSection } = this.props;
+    const { type } = showInViewer;
     return (
       <div>
         {photos &&
           type === VIEWER.PHOTOS &&
           !isShowingAboutSection() && (
             <div>
-              {photos.map((photo, index) => {
-                return (
-                  <Col
-                    key={index}
-                    lg={count === VIEWER.SINGLE ? 12 : 3}
-                    sm={count === VIEWER.SINGLE ? 12 : 4}
-                    xs={count === VIEWER.SINGLE ? 12 : 6}
-                  >
-                    <Thumbnail src={photo} alt={photo} />
-                  </Col>
-                );
-              })}
-              {this.isShowingSubset() &&
-                showRefreshButton && (
-                  <Col
-                    lg={count === VIEWER.SINGLE ? 12 : 3}
-                    sm={count === VIEWER.SINGLE ? 12 : 4}
-                    xs={count === VIEWER.SINGLE ? 12 : 6}
-                  >
-                    <Button
-                      bsStyle={'link'}
-                      bsSize={'lg'}
-                      onClick={() => onScroll()}
-                      block
-                    >
-                      <Glyphicon glyph="refresh" />
-                    </Button>
-                  </Col>
-                )}
+              {this.renderPhotos()}
+              {this.renderThrottledRefreshButton()}
             </div>
           )}
       </div>
@@ -64,7 +79,12 @@ class PhotoViewer extends React.Component {
 }
 
 PhotoViewer.propTypes = {
-  bucket: PropTypes.object,
+  photos: PropTypes.array.isRequired,
+  showRefreshButton: PropTypes.bool.isRequired,
+  showInViewer: PropTypes.object.isRequired,
+  media: PropTypes.object.isRequired,
+  isShowingAboutSection: PropTypes.func.isRequired,
+  onScroll: PropTypes.func.isRequired,
 };
 
 export default PhotoViewer;
