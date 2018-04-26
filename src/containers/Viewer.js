@@ -160,7 +160,7 @@ class Viewer extends React.Component {
           {/*)}*/}
           {/*</Col>*/}
         </Row>
-        <ScrollToTop showUnder={4000} duration={0}>
+        <ScrollToTop showUnder={2000} duration={0} style={{right:24, bottom: 20}}>
           <div className="scroll-up-button">
             <Glyphicon glyph="arrow-up" className="scroll-up-icon" />
           </div>

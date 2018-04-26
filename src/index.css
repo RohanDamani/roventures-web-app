@@ -14,7 +14,8 @@ body {
 
 .text-container {
   min-height: 65vh;
-  padding: 45px;
+  padding: 30px 45px;
+  margin-top: 10px;
   font-size: 18px;
   background-color: #fff;
   border-radius: 10px;
@@ -22,6 +23,11 @@ body {
 
 .text-container p {
   margin: 0 0 20px;
+}
+
+.text-container.small {
+  text-align: center;
+  padding: 30px 15px;
 }
 
 .navbar-inverse .navbar-nav>li.font-color-white>a {
@@ -32,10 +38,11 @@ body {
   height: 55px;
   width: 55px;
   border-radius: 30px;
-  background-color: rgba(200, 200, 200, 0.6);
-  padding: 8px;
+  background-color: rgba(200, 200, 200, 0.4);
+  padding: 10px;
 }
 
 .scroll-up-icon {
-  font-size: 37px;
+  font-size: 33px;
+  color: #555
 }

@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import { VIEWER } from '../utils/constants';
+import { getBucketUrl } from '../utils/bucketUtil';
 // import Get from 'lodash/get';
 
 const initialState = {
@@ -34,10 +35,7 @@ const bucket = (state = {}, action) => {
 const media = (state = { photos: [], videos: [], photoSubSet: [] }, action) => {
   switch (action.type) {
     case 'RECEIVE_ALBUM_DATA':
-      const bucketRegion = process.env.REACT_APP_BUCKET_REGION;
-      const bucketName = process.env.REACT_APP_BUCKET_NAME;
-
-      const bucketUrl = `https://s3-${bucketRegion}.amazonaws.com/${bucketName}/`;
+      const bucketUrl = getBucketUrl;
       const photoUrlArray = [];
       const videoUrlArray = [];
 

@@ -8,11 +8,20 @@ class About extends React.Component {
     const { history } = this.props;
     return (
       <div>
-        <Col xs={10} xsOffset={1} className={'text-container'}>
+        <Col xs={10} xsOffset={1} className="text-container hidden-xs">
           <p>{ABOUT.P_1}</p>
           <p>{ABOUT.P_2}</p>
           <p>{ABOUT.P_3}</p>
+          <p>{ABOUT.P_4}</p>
+          <p>{ABOUT.P_5}</p>
         </Col>
+          <Col xs={10} xsOffset={1} className="text-container small hidden-sm hidden-md hidden-lg">
+              <p>{ABOUT.P_1}</p>
+              <p>{ABOUT.P_2}</p>
+              <p>{ABOUT.P_3}</p>
+              <p>{ABOUT.P_4}</p>
+              <p>{ABOUT.P_5}</p>
+          </Col>
         <Col md={2} mdOffset={1} className="text-left hidden-xs hidden-sm">
           <Button
             bsStyle="link"

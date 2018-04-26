@@ -18,4 +18,6 @@ const authenticateBucket = new AWS.S3({
     params: { Bucket: bucketName },
 });
 
+export const getBucketUrl = `https://s3-${bucketRegion}.amazonaws.com/${bucketName}/`;
+
 export default authenticateBucket;
