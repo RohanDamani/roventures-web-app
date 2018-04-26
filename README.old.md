@@ -1,1 +1,0 @@
-# Serverless-Photo-Viewer
