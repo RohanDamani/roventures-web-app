@@ -5,4 +5,5 @@ export const VIEWER = {
     SINGLE: 'Single',
     MULTIPLE: 'Multiple',
     ALBUMS: 'Albums',
+    SCROLL: 'scroll'
 }

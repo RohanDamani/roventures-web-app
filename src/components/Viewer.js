@@ -18,58 +18,51 @@ class Viewer extends React.Component {
   };
 
   componentWillMount() {
+    this.loadAlbum();
+    this.initializeScrollListener();
+    this.initializeRefreshButtonThrottle();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.addSubSetsToState(nextProps);
+  }
+
+  componentWillUpdate(nextProps) {
+    this.watchForUrlChanges(nextProps);
+  }
+
+  watchForUrlChanges(nextProps) {
+    const { fetchAlbum, toggleShowAlbum, match, bucket } = this.props;
+    const urlParam = match.params.item;
+    const nextUrlParam = nextProps.match.params.item;
+
+    if (urlParam !== nextUrlParam && nextUrlParam !== VIEWER.ABOUT) {
+      fetchAlbum(bucket, nextUrlParam);
+    }
+    if (urlParam !== nextUrlParam && nextUrlParam === VIEWER.ABOUT) {
+      toggleShowAlbum(VIEWER.ALBUMS);
+    }
+  }
+
+  loadAlbum() {
     const { fetchAlbum, match, bucket } = this.props;
 
-    // use the URL parameter to fetch the initial album
     if (!this.isShowingAboutSection()) {
       fetchAlbum(bucket, match.params.item);
     }
     if (this.isShowingAboutSection()) {
       toggleShowAlbum(VIEWER.ALBUMS);
     }
+  }
 
-    // load full set of media on scroll
-    window.addEventListener('scroll', this.handleScroll);
-
-    // show backup refresh button to load full set of media after timeout
+  initializeRefreshButtonThrottle() {
     window.setTimeout(() => {
       this.setState({ showRefreshButton: true });
     }, 3000);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { media } = this.props;
-
-    // if the photos change, set the local array of media to show to the subset of media
-    if (media.photos !== nextProps.media.photos) {
-      this.setState({
-        photos: nextProps.media.photoSubSet,
-        didScroll: false,
-        showRefreshButton: false,
-      });
-    }
-  }
-
-  componentWillUpdate(nextProps) {
-    const { fetchAlbum, toggleShowAlbum, match, bucket } = this.props;
-
-    // each time the URL parameter changes, fetch the album using the new parameter
-    if (
-      match.params.item !== nextProps.match.params.item &&
-      nextProps.match.params.item !== 'About'
-    ) {
-      fetchAlbum(bucket, nextProps.match.params.item);
-      window.setTimeout(() => {
-        this.setState({ showRefreshButton: true });
-      }, 3000);
-    }
-    // if URL is About - toggle showInViewer.album to 'Albums'
-    if (
-      match.params.item !== nextProps.match.params.item &&
-      nextProps.match.params.item === 'About'
-    ) {
-      toggleShowAlbum(VIEWER.ALBUMS);
-    }
+  initializeScrollListener() {
+    window.addEventListener(VIEWER.SCROLL, this.handleScroll);
   }
 
   handleScroll = () => {
@@ -78,6 +71,19 @@ class Viewer extends React.Component {
 
   onScroll() {
     this.setState({ photos: this.props.media.photos, didScroll: true });
+  }
+
+  addSubSetsToState(nextProps) {
+    const { media } = this.props;
+
+    if (media.photos !== nextProps.media.photos) {
+      this.setState({
+        photos: nextProps.media.photoSubSet,
+        didScroll: false,
+        showRefreshButton: false,
+      });
+      this.initializeRefreshButtonThrottle();
+    }
   }
 
   isShowingSubset() {
@@ -103,7 +109,6 @@ class Viewer extends React.Component {
     return (
       <Grid fluid>
         <Row>
-
           {this.isShowingAboutSection() && <About history={history} />}
 
           <PhotoViewer
@@ -166,7 +171,13 @@ class Viewer extends React.Component {
 }
 
 Viewer.propTypes = {
-  bucket: PropTypes.object,
+  bucket: PropTypes.object.isRequired,
+  showInViewer: PropTypes.object.isRequired,
+  media: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  fetchAlbum: PropTypes.func.isRequired,
+  toggleShowAlbum: PropTypes.func.isRequired,
 };
 
 export default withRouter(
