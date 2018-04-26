@@ -5,7 +5,7 @@ import { VIEWER } from '../constants';
 
 const initialState = {
   type: VIEWER.PHOTOS,
-  count: VIEWER.SINGLE,
+  count: VIEWER.MULTIPLE,
   album: VIEWER.ALBUMS,
 };
 
@@ -31,7 +31,7 @@ const bucket = (state = {}, action) => {
   }
 };
 
-const media = (state = { photos: [], videos: [] }, action) => {
+const media = (state = { photos: [], videos: [], photoSubSet: [] }, action) => {
   switch (action.type) {
     case 'RECEIVE_ALBUM_DATA':
       const bucketRegion = process.env.REACT_APP_BUCKET_REGION;
@@ -40,6 +40,8 @@ const media = (state = { photos: [], videos: [] }, action) => {
       const bucketUrl = `https://s3-${bucketRegion}.amazonaws.com/${bucketName}/`;
       const photoUrlArray = [];
       const videoUrlArray = [];
+
+      // split up the photos and videos
       action.payload.Contents.forEach(photo => {
         if (photo.Size > 0) {
           const photoKey = photo.Key;
@@ -50,7 +52,10 @@ const media = (state = { photos: [], videos: [] }, action) => {
           }
         }
       });
-      return { ...state, photos: photoUrlArray, videos: videoUrlArray };
+
+      // for faster loading
+      const photoSubArray = photoUrlArray.slice(0, 20);
+      return { ...state, photos: photoUrlArray, videos: videoUrlArray, photoSubSet: photoSubArray };
     default:
       return state;
   }

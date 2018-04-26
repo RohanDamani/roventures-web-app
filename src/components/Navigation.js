@@ -35,7 +35,6 @@ class Navigation extends React.Component {
   isAboutSection() {
     const { showInViewer } = this.props;
     const { album } = showInViewer;
-    console.log(`Navigation:38 (isAboutSection) - album, (album === 'Albums'):`, album, (album === 'Albums'))
     return album === 'Albums';
   }
 
