@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Grid, Row, Col, Glyphicon } from 'react-bootstrap';
-import ScrollToTop from 'react-scroll-up';
-import ReactPlayer from 'react-player';
+import { Grid, Row } from 'react-bootstrap';
 import { fetchAlbum, toggleShowAlbum } from '../actions/actions';
 import { VIEWER } from '../utils/constants';
 import About from '../components/About';
 import PhotoViewer from '../components/PhotoViewer';
+import VideoViewer from '../components/VideoViewer';
+import ScrollTop from '../components/ScrollTop';
 
 class Viewer extends React.Component {
   state = {
@@ -86,15 +86,6 @@ class Viewer extends React.Component {
     }
   }
 
-  isShowingSubset() {
-    const { media } = this.props;
-    if (media.photos.length === media.photoSubSet.length) {
-      return false;
-    }
-    const { photos } = this.state;
-    return photos !== media.photos;
-  }
-
   isShowingAboutSection() {
     const { match } = this.props;
     const { params: { item } } = match;
@@ -109,7 +100,7 @@ class Viewer extends React.Component {
     return (
       <Grid fluid>
         <Row>
-          {this.isShowingAboutSection() && <About history={history} />}
+          <About history={history} isShowingAboutSection={this.isShowingAboutSection.bind(this)} />
 
           <PhotoViewer
             isShowingAboutSection={this.isShowingAboutSection.bind(this)}
@@ -120,51 +111,15 @@ class Viewer extends React.Component {
             showRefreshButton={showRefreshButton}
           />
 
-          {videos &&
-            type === VIEWER.VIDEOS &&
-            !this.isShowingAboutSection() && (
-              <div>
-                {videos.map((video, index) => {
-                  return (
-                    <Col key={index} xs={12}>
-                      <ReactPlayer
-                        url={video}
-                        width={460}
-                        height={300}
-                        controls
-                      />
-                    </Col>
-                  );
-                })}
-              </div>
-            )}
-          {/*{!props.showHomepage &&*/}
-          {/*!props.isLoading &&*/}
-          {/*props.showVideos &&*/}
-          {/*!props.videos.length && (*/}
-          {/*<Col md={3} sm={7} smOffset={5}>*/}
-          {/*<div*/}
-          {/*className={props.showOptions ? 'margin-top-120' : null}*/}
-          {/*>*/}
-          {/*<h2>*/}
-          {/*No videos here, check out the*/}
-          {/*<button*/}
-          {/*className="btn btn-link"*/}
-          {/*onClick={() => props.toggleVideos()}*/}
-          {/*>*/}
-          {/*photos!*/}
-          {/*</button>*/}
-          {/*</h2>*/}
-          {/*</div>*/}
-          {/*</Col>*/}
-          {/*)}*/}
-          {/*</Col>*/}
+          <VideoViewer
+            videos={videos}
+            type={type}
+            isShowingAboutSection={this.isShowingAboutSection.bind(this)}
+          />
         </Row>
-        <ScrollToTop showUnder={2000} duration={0} style={{right:24, bottom: 20}}>
-          <div className="scroll-up-button">
-            <Glyphicon glyph="arrow-up" className="scroll-up-icon" />
-          </div>
-        </ScrollToTop>
+
+        <ScrollTop />
+
       </Grid>
     );
   }
