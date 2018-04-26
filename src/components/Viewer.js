@@ -98,7 +98,7 @@ class Viewer extends React.Component {
   isShowingAboutSection() {
     const { match } = this.props;
     const { params: { item } } = match;
-    return item === 'About';
+    return item === VIEWER.ABOUT;
   }
 
   render() {
