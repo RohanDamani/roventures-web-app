@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Button, Glyphicon } from 'react-bootstrap';
-import { ABOUT } from '../constants';
+import { ABOUT } from '../utils/constants';
 
 class About extends React.Component {
   render() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Button, Thumbnail, Glyphicon } from 'react-bootstrap';
-import { VIEWER } from '../constants';
+import { VIEWER } from '../utils/constants';
 
 class PhotoViewer extends React.Component {
   isShowingSubset() {

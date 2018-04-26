@@ -5,8 +5,8 @@ import { HashRouter } from 'react-router-dom';
 import 'react-select/dist/react-select.css';
 import reducers from './reducers/reducers';
 import thunkMiddleware from 'redux-thunk';
-import Routes from './Routes';
-import Main from './components/Main';
+import Routes from './routes/Routes';
+import Main from './containers/Main';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(

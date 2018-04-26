@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import { VIEWER } from '../constants';
+import { VIEWER } from '../utils/constants';
 // import Get from 'lodash/get';
 
 const initialState = {

@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import Navigation from './Navigation';
-import authenticateBucket from '../bucketUtil';
+import Navigation from '../components/Navigation';
+import authenticateBucket from '../utils/bucketUtil';
 import { storeBucket, fetchAlbumList } from '../actions/actions';
-import { MAIN } from '../constants';
+import { MAIN } from '../utils/constants';
 
 // set the initial album to load
 const INITIAL_ALBUM = MAIN.INDIA;

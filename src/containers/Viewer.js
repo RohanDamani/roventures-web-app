@@ -6,9 +6,9 @@ import { Grid, Row, Col, Glyphicon } from 'react-bootstrap';
 import ScrollToTop from 'react-scroll-up';
 import ReactPlayer from 'react-player';
 import { fetchAlbum, toggleShowAlbum } from '../actions/actions';
-import { VIEWER } from '../constants';
-import About from './About';
-import PhotoViewer from './PhotoViewer';
+import { VIEWER } from '../utils/constants';
+import About from '../components/About';
+import PhotoViewer from '../components/PhotoViewer';
 
 class Viewer extends React.Component {
   state = {

@@ -8,7 +8,7 @@ import {
   toggleShowType,
   toggleShowCount,
 } from '../actions/actions';
-import { VIEWER, MAIN } from '../constants';
+import { VIEWER, MAIN } from '../utils/constants';
 
 class Navigation extends React.Component {
   toggleAboutSection() {
