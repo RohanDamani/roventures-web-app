@@ -6,7 +6,7 @@ class ScrollTop extends React.Component {
     render() {
         return (
             <ScrollToTop
-                showUnder={500}
+                showUnder={400}
                 duration={0}
                 style={{ right: 24, bottom: 20 }}
             >

@@ -53,7 +53,7 @@ const media = (state = { photos: [], videos: [], photoSubSet: [], videoSubSet: [
 
       // for faster loading
       const photoSubArray = photoUrlArray.slice(0, 20);
-      const videoSubArray = videoUrlArray.slice(0, 3);
+      const videoSubArray = videoUrlArray.slice(0, 4);
       return { ...state, photos: photoUrlArray, videos: videoUrlArray, photoSubSet: photoSubArray, videoSubSet: videoSubArray };
     default:
       return state;
