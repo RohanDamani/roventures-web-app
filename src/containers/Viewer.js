@@ -13,6 +13,7 @@ import ScrollTop from '../components/ScrollTop';
 class Viewer extends React.Component {
   state = {
     photos: [],
+    videos: [],
     didScroll: false,
     showRefreshButton: false,
   };
@@ -29,6 +30,7 @@ class Viewer extends React.Component {
 
   componentWillUpdate(nextProps) {
     this.watchForUrlChanges(nextProps);
+    this.watchForTypeChanges(nextProps);
   }
 
   watchForUrlChanges(nextProps) {
@@ -41,6 +43,23 @@ class Viewer extends React.Component {
     }
     if (urlParam !== nextUrlParam && nextUrlParam === VIEWER.ABOUT) {
       toggleShowAlbum(VIEWER.ALBUMS);
+    }
+  }
+
+  watchForTypeChanges(nextProps) {
+    const { showInViewer } = this.props;
+
+    if (showInViewer.type !== nextProps.showInViewer.type) {
+      this.initializeRefreshButtonThrottle();
+      this.initializeScrollListener();
+
+
+      this.setState({
+        photos: nextProps.media.photoSubSet,
+        videos: nextProps.media.videoSubSet,
+          showRefreshButton: false,
+        didScroll: false,
+      });
     }
   }
 
@@ -70,15 +89,21 @@ class Viewer extends React.Component {
   };
 
   onScroll() {
-    this.setState({ photos: this.props.media.photos, didScroll: true });
+    this.setState({
+      photos: this.props.media.photos,
+      videos: this.props.media.videos,
+        showRefreshButton: false,
+        didScroll: true,
+    });
   }
 
   addSubSetsToState(nextProps) {
     const { media } = this.props;
 
-    if (media.photos !== nextProps.media.photos) {
+    if (media !== nextProps.media) {
       this.setState({
         photos: nextProps.media.photoSubSet,
+        videos: nextProps.media.videoSubSet,
         didScroll: false,
         showRefreshButton: false,
       });
@@ -94,13 +119,15 @@ class Viewer extends React.Component {
 
   render() {
     const { showInViewer, media, history } = this.props;
-    const { photos, showRefreshButton } = this.state;
+    const { photos, videos, showRefreshButton } = this.state;
     const { type } = showInViewer;
-    const { videos } = media;
     return (
       <Grid fluid>
         <Row>
-          <About history={history} isShowingAboutSection={this.isShowingAboutSection.bind(this)} />
+          <About
+            history={history}
+            isShowingAboutSection={this.isShowingAboutSection.bind(this)}
+          />
 
           <PhotoViewer
             isShowingAboutSection={this.isShowingAboutSection.bind(this)}
@@ -111,15 +138,20 @@ class Viewer extends React.Component {
             showRefreshButton={showRefreshButton}
           />
 
-          <VideoViewer
-            videos={videos}
-            showInViewer={showInViewer}
-            isShowingAboutSection={this.isShowingAboutSection.bind(this)}
-          />
+          {videos &&
+            type === VIEWER.VIDEOS &&
+            !this.isShowingAboutSection() && (
+              <VideoViewer
+                videos={videos}
+                media={media}
+                showInViewer={showInViewer}
+                showRefreshButton={showRefreshButton}
+                onScroll={this.onScroll.bind(this)}
+              />
+            )}
         </Row>
 
         <ScrollTop />
-
       </Grid>
     );
   }

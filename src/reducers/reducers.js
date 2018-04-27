@@ -5,8 +5,8 @@ import { getBucketUrl } from '../utils/bucketUtil';
 // import Get from 'lodash/get';
 
 const initialState = {
-  type: VIEWER.PHOTOS,
-  count: VIEWER.MULTIPLE,
+  type: VIEWER.VIDEOS,
+  count: VIEWER.SINGLE,
   album: VIEWER.ALBUMS,
 };
 
@@ -32,7 +32,7 @@ const bucket = (state = {}, action) => {
   }
 };
 
-const media = (state = { photos: [], videos: [], photoSubSet: [] }, action) => {
+const media = (state = { photos: [], videos: [], photoSubSet: [], videoSubSet: [] }, action) => {
   switch (action.type) {
     case 'RECEIVE_ALBUM_DATA':
       const bucketUrl = getBucketUrl;
@@ -53,7 +53,8 @@ const media = (state = { photos: [], videos: [], photoSubSet: [] }, action) => {
 
       // for faster loading
       const photoSubArray = photoUrlArray.slice(0, 20);
-      return { ...state, photos: photoUrlArray, videos: videoUrlArray, photoSubSet: photoSubArray };
+      const videoSubArray = videoUrlArray.slice(0, 3);
+      return { ...state, photos: photoUrlArray, videos: videoUrlArray, photoSubSet: photoSubArray, videoSubSet: videoSubArray };
     default:
       return state;
   }
