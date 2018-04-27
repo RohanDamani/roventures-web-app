@@ -16,6 +16,7 @@ class Viewer extends React.Component {
     videos: [],
     didScroll: false,
     showRefreshButton: false,
+    loading: false,
   };
 
   componentWillMount() {
@@ -40,6 +41,7 @@ class Viewer extends React.Component {
 
     if (urlParam !== nextUrlParam && nextUrlParam !== VIEWER.ABOUT) {
       fetchAlbum(bucket, nextUrlParam);
+      this.setState({ loading: true });
     }
     if (urlParam !== nextUrlParam && nextUrlParam === VIEWER.ABOUT) {
       toggleShowAlbum(VIEWER.ALBUMS);
@@ -53,11 +55,10 @@ class Viewer extends React.Component {
       this.initializeRefreshButtonThrottle();
       this.initializeScrollListener();
 
-
       this.setState({
         photos: nextProps.media.photoSubSet,
         videos: nextProps.media.videoSubSet,
-          showRefreshButton: false,
+        showRefreshButton: false,
         didScroll: false,
       });
     }
@@ -68,6 +69,7 @@ class Viewer extends React.Component {
 
     if (!this.isShowingAboutSection()) {
       fetchAlbum(bucket, match.params.item);
+      this.setState({ loading: true });
     }
     if (this.isShowingAboutSection()) {
       toggleShowAlbum(VIEWER.ALBUMS);
@@ -92,8 +94,8 @@ class Viewer extends React.Component {
     this.setState({
       photos: this.props.media.photos,
       videos: this.props.media.videos,
-        showRefreshButton: false,
-        didScroll: true,
+      showRefreshButton: false,
+      didScroll: true,
     });
   }
 
@@ -106,6 +108,7 @@ class Viewer extends React.Component {
         videos: nextProps.media.videoSubSet,
         didScroll: false,
         showRefreshButton: false,
+        loading: false,
       });
       this.initializeRefreshButtonThrottle();
     }
@@ -119,7 +122,7 @@ class Viewer extends React.Component {
 
   render() {
     const { showInViewer, media, history } = this.props;
-    const { photos, videos, showRefreshButton } = this.state;
+    const { photos, videos, showRefreshButton, loading } = this.state;
     const { type } = showInViewer;
     return (
       <Grid fluid>
@@ -139,6 +142,7 @@ class Viewer extends React.Component {
           />
 
           {videos &&
+            !loading &&
             type === VIEWER.VIDEOS &&
             !this.isShowingAboutSection() && (
               <VideoViewer

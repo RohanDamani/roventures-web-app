@@ -1,5 +1,6 @@
 export const MAIN = {
     INDIA: 'India',
+    EMERALD_BAY: 'Emerald Bay - July 2017',
     ROVENTURES: 'RoVentures',
     ABOUT_ROUTE: '/About'
 };

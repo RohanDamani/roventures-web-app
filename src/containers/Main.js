@@ -8,7 +8,7 @@ import { storeBucket, fetchAlbumList } from '../actions/actions';
 import { MAIN } from '../utils/constants';
 
 // set the initial album to load
-const INITIAL_ALBUM = MAIN.INDIA;
+const INITIAL_ALBUM = MAIN.EMERALD_BAY;
 
 class Main extends React.Component {
   componentWillMount() {
