@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Button, Thumbnail, Glyphicon } from 'react-bootstrap';
 import { VIEWER } from '../utils/constants';
+import TextSection from './TextSection';
 
 class PhotoViewer extends React.Component {
   isShowingSubset() {
@@ -61,10 +62,19 @@ class PhotoViewer extends React.Component {
   }
 
   render() {
-    return (
+      const { showInViewer, toggleShowType, history, photos } = this.props;
+
+      return (
       <div>
-        {this.renderPhotos()}
-        {this.renderThrottledRefreshButton()}
+        {photos.length > 0 && this.renderPhotos()}
+        {photos.length > 0 && this.renderThrottledRefreshButton()}
+          {photos.length === 0 &&
+              <TextSection
+                  showInViewer={showInViewer}
+                  toggleShowType={toggleShowType}
+                  history={history}
+              />
+          }
       </div>
     );
   }
@@ -74,6 +84,8 @@ PhotoViewer.propTypes = {
   photos: PropTypes.array.isRequired,
   showRefreshButton: PropTypes.bool.isRequired,
   showInViewer: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+    toggleShowType: PropTypes.func.isRequired,
   media: PropTypes.object.isRequired,
   isShowingAboutSection: PropTypes.func.isRequired,
   onScroll: PropTypes.func.isRequired,

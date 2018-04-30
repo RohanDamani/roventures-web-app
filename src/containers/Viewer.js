@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Grid, Row } from 'react-bootstrap';
-import { fetchAlbum, toggleShowAlbum } from '../actions/actions';
+import { fetchAlbum, toggleShowAlbum, toggleShowType } from '../actions/actions';
 import { VIEWER } from '../utils/constants';
 import About from '../components/About';
 import PhotoViewer from '../components/PhotoViewer';
@@ -122,7 +122,7 @@ class Viewer extends React.Component {
   }
 
   render() {
-    const { showInViewer, media, history } = this.props;
+    const { showInViewer, toggleShowType, media, history } = this.props;
     const { photos, videos, showRefreshButton, loading } = this.state;
     const { type } = showInViewer;
     return (
@@ -142,7 +142,9 @@ class Viewer extends React.Component {
                 showInViewer={showInViewer}
                 photos={photos}
                 media={media}
+                history={history}
                 onScroll={this.onScroll.bind(this)}
+                toggleShowType={toggleShowType}
                 showRefreshButton={showRefreshButton}
               />
             )}
@@ -154,8 +156,10 @@ class Viewer extends React.Component {
               <VideoViewer
                 videos={videos}
                 media={media}
+                history={history}
                 showInViewer={showInViewer}
                 showRefreshButton={showRefreshButton}
+                toggleShowType={toggleShowType}
                 onScroll={this.onScroll.bind(this)}
               />
             )}
@@ -187,6 +191,7 @@ export default withRouter(
     {
       fetchAlbum,
       toggleShowAlbum,
+      toggleShowType,
     },
   )(Viewer),
 );

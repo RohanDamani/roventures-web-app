@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Col, Button, Glyphicon } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
 import { VIEWER } from '../utils/constants';
+import TextSection from './TextSection';
 
 class VideoViewer extends React.Component {
   isShowingSubset() {
@@ -58,28 +59,36 @@ class VideoViewer extends React.Component {
   }
 
   render() {
-    const { videos } = this.props;
+    const { videos, showInViewer, toggleShowType, history } = this.props;
     return (
       <div>
-        {videos.map((video, index) => {
-          return (
-            <Col
-              key={index}
-              xs={12}
-              sm={this.smCol()}
-              smOffset={this.smColOffset()}
-            >
-              <ReactPlayer
-                url={video}
-                width="100%"
-                height="100%"
-                playing={index === 0}
-                muted={index === 0}
-                controls
-              />
-            </Col>
-          );
-        })}
+        {videos.length > 0 &&
+          videos.map((video, index) => {
+            return (
+              <Col
+                key={index}
+                xs={12}
+                sm={this.smCol()}
+                smOffset={this.smColOffset()}
+              >
+                <ReactPlayer
+                  url={video}
+                  width="100%"
+                  height="100%"
+                  playing={index === 0}
+                  muted={index === 0}
+                  controls
+                />
+              </Col>
+            );
+          })}
+        {videos.length === 0 && (
+          <TextSection
+            showInViewer={showInViewer}
+            toggleShowType={toggleShowType}
+            history={history}
+          />
+        )}
         {this.renderThrottledRefreshButton()}
       </div>
     );
@@ -89,8 +98,10 @@ class VideoViewer extends React.Component {
 VideoViewer.propTypes = {
   videos: PropTypes.array.isRequired,
   media: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
   showInViewer: PropTypes.object.isRequired,
   onScroll: PropTypes.func.isRequired,
+  toggleShowType: PropTypes.func.isRequired,
   showRefreshButton: PropTypes.bool.isRequired,
 };
 

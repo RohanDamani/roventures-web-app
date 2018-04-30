@@ -13,7 +13,9 @@ export const VIEWER = {
     SINGLE: 'Single',
     MULTIPLE: 'Multiple',
     ALBUMS: 'Albums',
-    SCROLL: 'scroll'
+    SCROLL: 'scroll',
+    NO_PHOTOS: 'No photos here, check out the',
+    NO_VIDEOS: 'No videos here, check out the'
 };
 
 export const ABOUT = {
