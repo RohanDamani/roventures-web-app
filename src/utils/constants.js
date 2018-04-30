@@ -1,4 +1,5 @@
 export const MAIN = {
+    INITIAL_ALBUM: 'Emerald Bay - July 2017',
     INDIA: 'India',
     EMERALD_BAY: 'Emerald Bay - July 2017',
     ROVENTURES: 'RoVentures',

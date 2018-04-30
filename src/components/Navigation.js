@@ -15,7 +15,7 @@ class Navigation extends React.Component {
     const { history } = this.props;
 
     if (this.isAboutSection()) {
-      history.push(MAIN.EMERALD_BAY)
+      history.push(MAIN.INITIAL_ALBUM)
       return;
     }
     history.push(MAIN.ABOUT_ROUTE);

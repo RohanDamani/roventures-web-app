@@ -7,16 +7,13 @@ import authenticateBucket from '../utils/bucketUtil';
 import { storeBucket, fetchAlbumList } from '../actions/actions';
 import { MAIN } from '../utils/constants';
 
-// set the initial album to load
-const INITIAL_ALBUM = MAIN.EMERALD_BAY;
-
 class Main extends React.Component {
   componentWillMount() {
     const { storeBucket, fetchAlbumList, history, location } = this.props;
 
     // check to see if a route was provided otherwise add INITIAL_ALBUM
     if (location.pathname === '/') {
-      history.push(INITIAL_ALBUM);
+      history.push(MAIN.INITIAL_ALBUM );
     }
 
     // authenticate the AWS-SDK s3 bucket object using AWS Cognito user pool
