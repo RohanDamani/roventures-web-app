@@ -9,6 +9,7 @@ import About from '../components/About';
 import PhotoViewer from '../components/PhotoViewer';
 import VideoViewer from '../components/VideoViewer';
 import ScrollTop from '../components/ScrollTop';
+import Loader from '../components/Loader';
 
 class Viewer extends React.Component {
   state = {
@@ -132,7 +133,11 @@ class Viewer extends React.Component {
             isShowingAboutSection={this.isShowingAboutSection.bind(this)}
           />
 
+          {loading &&
+            !this.isShowingAboutSection() && <Loader loading={loading} />}
+
           {photos &&
+            !loading &&
             type === VIEWER.PHOTOS &&
             !this.isShowingAboutSection() && (
               <PhotoViewer
