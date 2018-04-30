@@ -5,10 +5,8 @@ import { ABOUT } from '../utils/constants';
 
 class About extends React.Component {
   render() {
-    const { history, isShowingAboutSection } = this.props;
+    const { history } = this.props;
     return (
-      <div>
-        {isShowingAboutSection() && (
           <div>
             <Col xs={10} xsOffset={1} className="text-container hidden-xs">
               <p>{ABOUT.P_1}</p>
@@ -75,8 +73,6 @@ class About extends React.Component {
               </Button>
             </Col>
           </div>
-        )}
-      </div>
     );
   }
 }

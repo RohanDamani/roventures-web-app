@@ -128,10 +128,7 @@ class Viewer extends React.Component {
     return (
       <Grid fluid>
         <Row>
-          <About
-            history={history}
-            isShowingAboutSection={this.isShowingAboutSection.bind(this)}
-          />
+          {this.isShowingAboutSection() && <About history={history} />}
 
           {loading &&
             !this.isShowingAboutSection() && <Loader loading={loading} />}
