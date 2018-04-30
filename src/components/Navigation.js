@@ -13,6 +13,11 @@ import { VIEWER, MAIN } from '../utils/constants';
 class Navigation extends React.Component {
   toggleAboutSection() {
     const { history } = this.props;
+
+    if (this.isAboutSection()) {
+      history.push(MAIN.EMERALD_BAY)
+      return;
+    }
     history.push(MAIN.ABOUT_ROUTE);
   }
 
@@ -25,8 +30,8 @@ class Navigation extends React.Component {
   renderLogo() {
     return (
       <Navbar.Header>
-        <Navbar.Brand>
-          <a href="#">{MAIN.ROVENTURES}</a>
+        <Navbar.Brand  onClick={() => this.toggleAboutSection()}>
+            {MAIN.ROVENTURES}
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
