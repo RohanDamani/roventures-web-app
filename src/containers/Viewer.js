@@ -132,14 +132,18 @@ class Viewer extends React.Component {
             isShowingAboutSection={this.isShowingAboutSection.bind(this)}
           />
 
-          <PhotoViewer
-            isShowingAboutSection={this.isShowingAboutSection.bind(this)}
-            showInViewer={showInViewer}
-            photos={photos}
-            media={media}
-            onScroll={this.onScroll.bind(this)}
-            showRefreshButton={showRefreshButton}
-          />
+          {photos &&
+            type === VIEWER.PHOTOS &&
+            !this.isShowingAboutSection() && (
+              <PhotoViewer
+                isShowingAboutSection={this.isShowingAboutSection.bind(this)}
+                showInViewer={showInViewer}
+                photos={photos}
+                media={media}
+                onScroll={this.onScroll.bind(this)}
+                showRefreshButton={showRefreshButton}
+              />
+            )}
 
           {videos &&
             !loading &&

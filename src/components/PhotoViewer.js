@@ -61,18 +61,10 @@ class PhotoViewer extends React.Component {
   }
 
   render() {
-    const { showInViewer, photos, isShowingAboutSection } = this.props;
-    const { type } = showInViewer;
     return (
       <div>
-        {photos &&
-          type === VIEWER.PHOTOS &&
-          !isShowingAboutSection() && (
-            <div>
-              {this.renderPhotos()}
-              {this.renderThrottledRefreshButton()}
-            </div>
-          )}
+        {this.renderPhotos()}
+        {this.renderThrottledRefreshButton()}
       </div>
     );
   }
