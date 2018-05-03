@@ -15,7 +15,7 @@ class Navigation extends React.Component {
     const { history } = this.props;
 
     if (this.isAboutSection()) {
-      history.push(MAIN.INITIAL_ALBUM)
+      history.push(MAIN.INITIAL_ALBUM);
       return;
     }
     history.push(MAIN.ABOUT_ROUTE);
@@ -30,8 +30,8 @@ class Navigation extends React.Component {
   renderLogo() {
     return (
       <Navbar.Header>
-        <Navbar.Brand  onClick={() => this.toggleAboutSection()}>
-            {MAIN.ROVENTURES}
+        <Navbar.Brand onClick={() => this.toggleAboutSection()}>
+          {MAIN.ROVENTURES}
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
@@ -80,51 +80,46 @@ class Navigation extends React.Component {
 
     if (!this.isAboutSection()) {
       return (
-        <NavDropdown eventKey={2} title={showInViewer.count} id="count" className={showInViewer.type === VIEWER.VIDEOS ? 'hidden-xs' : ''}>
+        <Nav
+          className={showInViewer.type === VIEWER.VIDEOS ? 'hidden-xs' : ''}
+        >
           {!this.isCountSingle() && (
-            <MenuItem
-              eventKey={2.1}
+            <NavItem
               onClick={() => toggleShowCount(VIEWER.SINGLE)}
             >
-                {VIEWER.SINGLE}
-            </MenuItem>
+              {VIEWER.SINGLE}
+            </NavItem>
           )}
           {this.isCountSingle() && (
             <MenuItem
-              eventKey={2.1}
               onClick={() => toggleShowCount(VIEWER.MULTIPLE)}
             >
-                {VIEWER.MULTIPLE}
+              {VIEWER.MULTIPLE}
             </MenuItem>
           )}
-        </NavDropdown>
+        </Nav>
       );
     }
   }
 
   renderTypeDropdown() {
     const { showInViewer, toggleShowType } = this.props;
+
     if (!this.isAboutSection()) {
       return (
-        <NavDropdown eventKey={3} title={showInViewer.type} id="type">
+        <Nav>
           {showInViewer.type === VIEWER.VIDEOS && (
-            <MenuItem
-              eventKey={3.1}
-              onClick={() => toggleShowType(VIEWER.PHOTOS)}
-            >
-                {VIEWER.PHOTOS}
-            </MenuItem>
+            <NavItem onClick={() => toggleShowType(VIEWER.PHOTOS)}>
+              {VIEWER.PHOTOS}
+            </NavItem>
           )}
 
           {showInViewer.type === VIEWER.PHOTOS && (
-            <MenuItem
-              eventKey={3.1}
-              onClick={() => toggleShowType(VIEWER.VIDEOS)}
-            >
-                {VIEWER.VIDEOS}
-            </MenuItem>
+            <NavItem onClick={() => toggleShowType(VIEWER.VIDEOS)}>
+              {VIEWER.VIDEOS}
+            </NavItem>
           )}
-        </NavDropdown>
+        </Nav>
       );
     }
   }
