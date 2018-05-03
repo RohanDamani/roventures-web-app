@@ -91,11 +91,11 @@ class Navigation extends React.Component {
             </NavItem>
           )}
           {this.isCountSingle() && (
-            <MenuItem
+            <NavItem
               onClick={() => toggleShowCount(VIEWER.MULTIPLE)}
             >
               {VIEWER.MULTIPLE}
-            </MenuItem>
+            </NavItem>
           )}
         </Nav>
       );
