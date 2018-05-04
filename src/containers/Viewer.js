@@ -3,13 +3,19 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Grid, Row } from 'react-bootstrap';
-import { fetchAlbum, toggleShowAlbum, toggleShowType } from '../actions/actions';
+import {
+  fetchAlbumList,
+  fetchAlbum,
+  toggleShowAlbum,
+  toggleShowType,
+} from '../actions/actions';
 import { VIEWER } from '../utils/constants';
 import About from '../components/About';
 import PhotoViewer from '../components/PhotoViewer';
 import VideoViewer from '../components/VideoViewer';
 import ScrollTop from '../components/ScrollTop';
 import Loader from '../components/Loader';
+import authenticateBucket from '../utils/bucketUtil';
 
 class Viewer extends React.Component {
   state = {
@@ -21,6 +27,13 @@ class Viewer extends React.Component {
   };
 
   componentWillMount() {
+    // authenticate the AWS-SDK s3 bucket object using AWS Cognito user pool
+    this.bucket = authenticateBucket;
+    // fetch the full list of albums from the bucket to populate the Navigation drop down
+    this.props.fetchAlbumList(this.bucket);
+  }
+
+  componentDidMount() {
     this.loadAlbum();
     this.initializeScrollListener();
     this.initializeRefreshButtonThrottle();
@@ -36,16 +49,16 @@ class Viewer extends React.Component {
   }
 
   watchForUrlChanges(nextProps) {
-    const { fetchAlbum, toggleShowAlbum, match, bucket } = this.props;
+    const { fetchAlbum, toggleShowAlbum, match } = this.props;
     const urlParam = match.params.item;
     const nextUrlParam = nextProps.match.params.item;
 
     if (urlParam !== nextUrlParam && nextUrlParam !== VIEWER.ABOUT) {
-      fetchAlbum(bucket, nextUrlParam);
+      fetchAlbum(this.bucket, nextUrlParam);
       this.setState({ loading: true });
     }
     if (urlParam !== nextUrlParam && nextUrlParam === VIEWER.ABOUT) {
-      toggleShowAlbum(VIEWER.ALBUMS);
+      toggleShowAlbum(VIEWER.ABOUT);
     }
   }
 
@@ -66,14 +79,14 @@ class Viewer extends React.Component {
   }
 
   loadAlbum() {
-    const { fetchAlbum, match, bucket } = this.props;
+    const { fetchAlbum, match } = this.props;
 
     if (!this.isShowingAboutSection()) {
-      fetchAlbum(bucket, match.params.item);
+      fetchAlbum(this.bucket, match.params.item);
       this.setState({ loading: true });
     }
     if (this.isShowingAboutSection()) {
-      toggleShowAlbum(VIEWER.ALBUMS);
+      toggleShowAlbum(VIEWER.ABOUT);
     }
   }
 
@@ -172,7 +185,6 @@ class Viewer extends React.Component {
 }
 
 Viewer.propTypes = {
-  bucket: PropTypes.object.isRequired,
   showInViewer: PropTypes.object.isRequired,
   media: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
@@ -184,11 +196,11 @@ Viewer.propTypes = {
 export default withRouter(
   connect(
     state => ({
-      bucket: state.bucket,
       media: state.media,
       showInViewer: state.showInViewer,
     }),
     {
+      fetchAlbumList,
       fetchAlbum,
       toggleShowAlbum,
       toggleShowType,

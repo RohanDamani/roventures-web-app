@@ -24,7 +24,7 @@ class Navigation extends React.Component {
   isAboutSection() {
     const { showInViewer } = this.props;
     const { album } = showInViewer;
-    return album === VIEWER.ALBUMS;
+    return album === VIEWER.ABOUT;
   }
 
   renderLogo() {
@@ -55,12 +55,10 @@ class Navigation extends React.Component {
   }
 
   renderAlbumDropdown() {
-    const { showInViewer } = this.props;
-
     return (
       <NavDropdown
         eventKey={1}
-        title={showInViewer.album}
+        title={VIEWER.ALBUMS}
         id="albums"
         className="font-color-white"
       >
@@ -152,7 +150,6 @@ class Navigation extends React.Component {
 }
 
 Navigation.propTypes = {
-  bucket: PropTypes.object.isRequired,
   albumList: PropTypes.array.isRequired,
   showInViewer: PropTypes.object.isRequired,
   fetchAlbumList: PropTypes.func.isRequired,
