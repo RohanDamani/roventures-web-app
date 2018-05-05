@@ -15,7 +15,7 @@ import PhotoViewer from '../components/PhotoViewer';
 import VideoViewer from '../components/VideoViewer';
 import ScrollTop from '../components/ScrollTop';
 import Loader from '../components/Loader';
-import authenticateBucket from '../utils/bucketUtil';
+import { authenticateBucket, dynamodb } from '../utils/awsUtil';
 
 class Viewer extends React.Component {
   state = {
@@ -31,6 +31,11 @@ class Viewer extends React.Component {
     this.bucket = authenticateBucket;
     // fetch the full list of albums from the bucket to populate the Navigation drop down
     this.props.fetchAlbumList(this.bucket);
+
+      // authenticate the AWS-SDK s3 bucket and dynamodb object using AWS Cognito user pool
+      this.bucket = authenticateBucket;
+      this.dynamodb = dynamodb;
+
   }
 
   componentDidMount() {
@@ -141,7 +146,7 @@ class Viewer extends React.Component {
     return (
       <Grid fluid>
         <Row>
-          {this.isShowingAboutSection() && <About history={history} />}
+          {this.isShowingAboutSection() && <About history={history} dynamodb={this.dynamodb} />}
 
           {loading &&
             !this.isShowingAboutSection() && <Loader loading={loading} />}

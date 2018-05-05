@@ -12,12 +12,12 @@ AWS.config.update({
     }),
 });
 
-const authenticateBucket = new AWS.S3({
+export const authenticateBucket = new AWS.S3({
     region: bucketRegion,
     apiVersion: '2006-03-01',
     params: { Bucket: bucketName },
 });
 
-export const getBucketUrl = `https://s3-${bucketRegion}.amazonaws.com/${bucketName}/`;
+export const dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
 
-export default authenticateBucket;
+export const getBucketUrl = `https://s3-${bucketRegion}.amazonaws.com/${bucketName}/`;

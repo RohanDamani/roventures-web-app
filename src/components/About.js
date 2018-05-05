@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Button, Glyphicon } from 'react-bootstrap';
+import {  Col, Button, Glyphicon } from 'react-bootstrap';
 import { ABOUT } from '../utils/constants';
+import EmailCapture from './EmailCapture'
 
 class About extends React.Component {
   render() {
-    const { history } = this.props;
+    const { history, dynamodb } = this.props;
     return (
           <div>
             <Col xs={10} xsOffset={1} className="text-container hidden-xs">
@@ -14,6 +15,7 @@ class About extends React.Component {
               <p>{ABOUT.P_3}</p>
               <p>{ABOUT.P_4}</p>
               <p>{ABOUT.P_5}</p>
+                <EmailCapture dynamodb={dynamodb}/>
             </Col>
             <Col
               xs={10}
@@ -21,6 +23,7 @@ class About extends React.Component {
               className="text-container small hidden-sm hidden-md hidden-lg"
             >
               <p>{ABOUT.P_1}</p>
+                <EmailCapture dynamodb={dynamodb} small/>
               <p>{ABOUT.P_2}</p>
               <p>{ABOUT.P_3}</p>
               <p>{ABOUT.P_4}</p>
@@ -78,7 +81,8 @@ class About extends React.Component {
 }
 
 About.propTypes = {
-  history: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+    dynamodb: PropTypes.object.isRequired,
 };
 
 export default About;

@@ -19,6 +19,21 @@ export const toggleShowAlbum = (album) => ({
     album
 });
 
+export const toggleEmailLoading = (loading) => ({
+    type: 'TOGGLE_EMAIL_LOADING',
+    loading
+});
+
+export const toggleEmailError = (error) => ({
+    type: 'TOGGLE_EMAIL_ERROR',
+    error
+});
+
+export const toggleEmailSuccess = (success) => ({
+    type: 'TOGGLE_EMAIL_SUCCESS',
+    success
+});
+
 const receiveAlbumList = (albumList) => ({
     type: 'RECEIVE_ALBUM_LIST',
     albumList

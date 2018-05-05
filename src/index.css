@@ -50,3 +50,19 @@ body {
 .column-padding-top {
   padding-top: 260px;
 }
+
+.margin-top-40 {
+  margin-top: 20px;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+
+.warn-input {
+  border-color: maroon;
+}
+
+.warn-text {
+  color: maroon !important;
+}

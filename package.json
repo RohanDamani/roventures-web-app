@@ -17,7 +17,8 @@
     "react-spinners": "^0.3.2",
     "redux": "^4.0.0",
     "redux-form": "^7.3.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "sane-email-validation": "^1.1.0"
   },
   "devDependencies": {
     "react-scripts": "1.1.4"
