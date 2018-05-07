@@ -30,6 +30,16 @@ class PhotoViewer extends React.Component {
     return this.isViewerCountSingle() ? 12 : 6;
   }
 
+    renderHeader() {
+        const { showInViewer } = this.props;
+
+            return (
+                <Col xs={12} className="text-center">
+                  <h1>{showInViewer.album} {showInViewer.type}</h1>
+                </Col>
+            );
+    }
+
   renderPhotos() {
     const { photos } = this.props;
 
@@ -66,6 +76,7 @@ class PhotoViewer extends React.Component {
 
       return (
       <div>
+          {this.renderHeader()}
         {photos.length > 0 && this.renderPhotos()}
         {photos.length > 0 && this.renderThrottledRefreshButton()}
           {photos.length === 0 &&

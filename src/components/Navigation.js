@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import {
+  Col,
+  Navbar,
+  Nav,
+  NavItem,
+  NavDropdown,
+  MenuItem,
+} from 'react-bootstrap';
 import {
   fetchAlbumList,
   toggleShowType,
@@ -31,7 +38,12 @@ class Navigation extends React.Component {
     return (
       <Navbar.Header>
         <Navbar.Brand onClick={() => this.toggleAboutSection()}>
-          {MAIN.ROVENTURES}
+          <Col xs={12} className="hidden-xs large">
+            {MAIN.ROVENTURES}
+          </Col>
+          <Col xs={12} className="hidden-sm hidden-md hidden-lg">
+            {MAIN.ROVENTURES}
+          </Col>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
@@ -54,13 +66,28 @@ class Navigation extends React.Component {
     });
   }
 
+  dropdownTitle() {
+    return (
+      <div>
+        <Col xs={12} className="hidden-xs margin-bottom-8">
+          <span className="glyphicon glyphicon-book" />
+          <span className="glyphicon-class">{VIEWER.ALBUMS}</span>
+        </Col>
+        <Col xs={12} className="hidden-sm hidden-md hidden-lg">
+          <span className="glyphicon glyphicon-book" />
+          <span className="glyphicon-class small">{VIEWER.ALBUMS}</span>
+        </Col>
+      </div>
+    );
+  }
+
   renderAlbumDropdown() {
     return (
       <NavDropdown
         eventKey={1}
-        title={VIEWER.ALBUMS}
+        title={this.dropdownTitle()}
         id="albums"
-        className="font-color-white"
+        noCaret
       >
         {this.renderAlbumList()}
         <MenuItem divider />
@@ -78,21 +105,29 @@ class Navigation extends React.Component {
 
     if (!this.isAboutSection()) {
       return (
-        <Nav
-          className={showInViewer.type === VIEWER.VIDEOS ? 'hidden-xs' : ''}
-        >
+        <Nav className={showInViewer.type === VIEWER.VIDEOS ? 'hidden-xs' : ''}>
           {!this.isCountSingle() && (
-            <NavItem
-              onClick={() => toggleShowCount(VIEWER.SINGLE)}
-            >
-              {VIEWER.SINGLE}
+            <NavItem onClick={() => toggleShowCount(VIEWER.SINGLE)}>
+              <Col xs={12} className="hidden-xs margin-bottom-8">
+                <span className="glyphicon glyphicon-stop" />
+                <span className="glyphicon-class">{VIEWER.SINGLE}</span>
+              </Col>
+              <Col xs={12} className="hidden-sm hidden-md hidden-lg">
+                <span className="glyphicon glyphicon-stop" />
+                <span className="glyphicon-class small">{VIEWER.SINGLE}</span>
+              </Col>
             </NavItem>
           )}
           {this.isCountSingle() && (
-            <NavItem
-              onClick={() => toggleShowCount(VIEWER.MULTIPLE)}
-            >
-              {VIEWER.MULTIPLE}
+            <NavItem onClick={() => toggleShowCount(VIEWER.MULTIPLE)}>
+              <Col xs={12} className="hidden-xs margin-bottom-8">
+                <span className="glyphicon glyphicon-th-large" />
+                <span className="glyphicon-class">{VIEWER.MULTIPLE}</span>
+              </Col>
+              <Col xs={12} className="hidden-sm hidden-md hidden-lg">
+                <span className="glyphicon glyphicon-th-large" />
+                <span className="glyphicon-class small">{VIEWER.MULTIPLE}</span>
+              </Col>
             </NavItem>
           )}
         </Nav>
@@ -108,13 +143,27 @@ class Navigation extends React.Component {
         <Nav>
           {showInViewer.type === VIEWER.VIDEOS && (
             <NavItem onClick={() => toggleShowType(VIEWER.PHOTOS)}>
-              {VIEWER.PHOTOS}
+              <Col xs={12} className="hidden-xs margin-bottom-8">
+                <span className="glyphicon glyphicon-camera" />
+                <span className="glyphicon-class">{VIEWER.PHOTOS}</span>
+              </Col>
+              <Col xs={12} className="hidden-sm hidden-md hidden-lg">
+                <span className="glyphicon glyphicon-camera" />
+                <span className="glyphicon-class small">{VIEWER.PHOTOS}</span>
+              </Col>
             </NavItem>
           )}
 
           {showInViewer.type === VIEWER.PHOTOS && (
             <NavItem onClick={() => toggleShowType(VIEWER.VIDEOS)}>
-              {VIEWER.VIDEOS}
+              <Col xs={12} className="hidden-xs margin-bottom-8">
+                <span className="glyphicon glyphicon-facetime-video" />
+                <span className="glyphicon-class">{VIEWER.VIDEOS}</span>
+              </Col>
+              <Col xs={12} className="hidden-sm hidden-md hidden-lg">
+                <span className="glyphicon glyphicon-facetime-video" />
+                <span className="glyphicon-class small">{VIEWER.VIDEOS}</span>
+              </Col>
             </NavItem>
           )}
         </Nav>
@@ -125,7 +174,14 @@ class Navigation extends React.Component {
   renderAboutButton() {
     return (
       <NavItem eventKey={1} onClick={() => this.toggleAboutSection()}>
-        {VIEWER.ABOUT}
+          <Col xs={12} className="hidden-xs margin-bottom-8">
+              <span className="glyphicon glyphicon-question-sign" />
+              <span className="glyphicon-class about"> {VIEWER.ABOUT}</span>
+          </Col>
+          <Col xs={12} className="hidden-sm hidden-md hidden-lg">
+              <span className="glyphicon glyphicon-question-sign" />
+              <span className="glyphicon-class small"> {VIEWER.ABOUT}</span>
+          </Col>
       </NavItem>
     );
   }
