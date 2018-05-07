@@ -16,7 +16,7 @@ class VideoViewer extends React.Component {
 
   isViewerCountSingle() {
     const { showInViewer } = this.props;
-    return showInViewer.count === VIEWER.SINGLE;
+    return showInViewer.count === VIEWER.SINGLES;
   }
 
   smCol() {
@@ -26,6 +26,16 @@ class VideoViewer extends React.Component {
   smColOffset() {
     return this.isViewerCountSingle() ? 1 : 0;
   }
+
+    renderHeader() {
+        const { showInViewer } = this.props;
+
+        return (
+            <Col xs={12} className="text-center">
+                <h1 className="viewer-header">{showInViewer.type} {VIEWER.FROM} {showInViewer.album}</h1>
+            </Col>
+        );
+    }
 
   // renderPhotos() {
   //     const { photos } = this.props;
@@ -62,6 +72,7 @@ class VideoViewer extends React.Component {
     const { videos, showInViewer, toggleShowType, history } = this.props;
     return (
       <div>
+        {this.renderHeader()}
         {videos.length > 0 &&
           videos.map((video, index) => {
             return (

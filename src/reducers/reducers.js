@@ -6,7 +6,7 @@ import { getBucketUrl } from '../utils/awsUtil';
 
 const initialStateShowInViewer = {
   type: VIEWER.VIDEOS,
-  count: VIEWER.SINGLE,
+  count: VIEWER.SINGLES,
   album: VIEWER.ABOUT,
 };
 

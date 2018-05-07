@@ -15,7 +15,7 @@ class PhotoViewer extends React.Component {
 
   isViewerCountSingle() {
     const { showInViewer } = this.props;
-    return showInViewer.count === VIEWER.SINGLE;
+    return showInViewer.count === VIEWER.SINGLES;
   }
 
   lgCol() {
@@ -35,7 +35,7 @@ class PhotoViewer extends React.Component {
 
             return (
                 <Col xs={12} className="text-center">
-                  <h1>{showInViewer.album} {showInViewer.type}</h1>
+                  <h1 className="viewer-header">{showInViewer.type} {VIEWER.FROM} {showInViewer.album}</h1>
                 </Col>
             );
     }

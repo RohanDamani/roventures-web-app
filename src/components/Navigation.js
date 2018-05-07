@@ -97,7 +97,7 @@ class Navigation extends React.Component {
 
   isCountSingle() {
     const { showInViewer } = this.props;
-    return showInViewer.count === VIEWER.SINGLE;
+    return showInViewer.count === VIEWER.SINGLES;
   }
 
   renderCountDropdown() {
@@ -107,14 +107,14 @@ class Navigation extends React.Component {
       return (
         <Nav className={showInViewer.type === VIEWER.VIDEOS ? 'hidden-xs' : ''}>
           {!this.isCountSingle() && (
-            <NavItem onClick={() => toggleShowCount(VIEWER.SINGLE)}>
+            <NavItem onClick={() => toggleShowCount(VIEWER.SINGLES)}>
               <Col xs={12} className="hidden-xs margin-bottom-8">
                 <span className="glyphicon glyphicon-stop" />
-                <span className="glyphicon-class">{VIEWER.SINGLE}</span>
+                <span className="glyphicon-class">{VIEWER.SINGLES}</span>
               </Col>
               <Col xs={12} className="hidden-sm hidden-md hidden-lg">
                 <span className="glyphicon glyphicon-stop" />
-                <span className="glyphicon-class small">{VIEWER.SINGLE}</span>
+                <span className="glyphicon-class small">{VIEWER.SINGLES}</span>
               </Col>
             </NavItem>
           )}

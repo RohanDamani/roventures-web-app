@@ -10,10 +10,11 @@ export const VIEWER = {
     PHOTOS: 'Photos',
     VIDEOS: 'Videos',
     ABOUT: 'About',
-    SINGLE: 'Single',
+    SINGLES: 'Singles',
     MULTIPLE: 'Multiple',
     ALBUMS: 'Albums',
     SCROLL: 'scroll',
+    FROM: 'From',
     NO_PHOTOS: 'No photos here, check out the',
     NO_VIDEOS: 'No videos here, check out the'
 };
