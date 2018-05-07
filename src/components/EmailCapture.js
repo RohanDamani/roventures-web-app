@@ -2,21 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {
-  Row,
-  Form,
-  ControlLabel,
-  Col,
-  Button,
-  Alert,
-  Glyphicon,
-} from 'react-bootstrap';
+import { Row, Form, ControlLabel, Col, Button, Alert } from 'react-bootstrap';
 import { reduxForm, Field } from 'redux-form';
 import { BeatLoader } from 'react-spinners';
 import { ABOUT } from '../utils/constants';
 import renderInput from '../forms/renderInput';
 import buildValidate from '../forms/validate';
-import About from './About';
 import {
   toggleEmailLoading,
   toggleEmailError,
@@ -60,23 +51,8 @@ class EmailCapture extends React.Component {
     reset('email');
   }
 
-  render() {
+  renderEmailForm() {
     const { small, handleSubmit, emailState } = this.props;
-
-    if (emailState.success) {
-      return (
-        <Alert bsStyle="success" className="text-center">
-          Welcome Aboard!
-        </Alert>
-      );
-    }
-    if (emailState.error) {
-      return (
-        <Alert bsStyle="danger" className="text-center">
-          Arrrrrg! Something went wrong, try again later.
-        </Alert>
-      );
-    }
 
     return (
       <Form
@@ -118,10 +94,40 @@ class EmailCapture extends React.Component {
       </Form>
     );
   }
+
+  render() {
+    const { emailState } = this.props;
+
+    if (emailState.success) {
+      return (
+        <Alert bsStyle="success" className="text-center">
+          Welcome Aboard!
+        </Alert>
+      );
+    }
+    if (emailState.error) {
+      return (
+        <div>
+          <Alert bsStyle="danger" className="text-center">
+            Arrrrrg! Something went wrong, try again later.
+          </Alert>
+          {this.renderEmailForm()}
+        </div>
+      );
+    }
+
+    return <div>{this.renderEmailForm()}</div>;
+  }
 }
 
 EmailCapture.propTypes = {
   dynamodb: PropTypes.object.isRequired,
+  emailState: PropTypes.object.isRequired,
+  toggleEmailLoading: PropTypes.func.isRequired,
+  toggleEmailError: PropTypes.func.isRequired,
+  toggleEmailSuccess: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  small: PropTypes.bool,
 };
 
 const required = ['email'];
