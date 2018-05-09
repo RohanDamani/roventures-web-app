@@ -1,5 +1,5 @@
 import React from 'react'
-import Glyphicon from "react-bootstrap/es/Glyphicon";
+import { Glyphicon } from "react-bootstrap";
 import ScrollToTop from 'react-scroll-up';
 
 class ScrollTop extends React.Component {
