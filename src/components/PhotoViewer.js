@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Col, Button, Thumbnail, Glyphicon } from 'react-bootstrap';
 import { VIEWER } from '../utils/constants';
 import TextSection from './TextSection';
+import ExifOrientationImg from 'react-exif-orientation-img'
 
 class PhotoViewer extends React.Component {
   isShowingSubset() {
@@ -46,7 +47,13 @@ class PhotoViewer extends React.Component {
     return photos.map((photo, index) => {
       return (
         <Col key={index} lg={this.lgCol()} sm={this.smCol()} xs={this.xsCol()}>
-          <Thumbnail src={photo} alt={photo} />
+          <div className="photo-thumbnail">
+            <ExifOrientationImg
+                src={photo}
+                alt={photo}
+                className="img-responsive"
+            />
+          </div>
         </Col>
       );
     });
