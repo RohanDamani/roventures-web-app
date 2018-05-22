@@ -20,4 +20,4 @@ export const authenticateBucket = new AWS.S3({
 
 export const dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
 
-export const getBucketUrl = `https://s3-${bucketRegion}.amazonaws.com/${bucketName}/`;
+export const getBucketUrl = `http://d1qnv9b0izl3m2.cloudfront.net/`;
