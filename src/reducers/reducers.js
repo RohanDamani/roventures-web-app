@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import { VIEWER } from '../utils/constants';
+import { VIEWER, MAIN } from '../utils/constants';
 import { getBucketUrl } from '../utils/awsUtil';
 // import Get from 'lodash/get';
 
 const initialStateShowInViewer = {
-  type: VIEWER.VIDEOS,
-  count: VIEWER.SINGLES,
-  album: VIEWER.ABOUT,
+  type: VIEWER.PHOTOS,
+  count: VIEWER.MULTIPLE,
+  album: MAIN.INITIAL_ALBUM,
 };
 
 const showInViewer = (state = initialStateShowInViewer, action) => {
