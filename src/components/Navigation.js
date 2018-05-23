@@ -50,7 +50,7 @@ class Navigation extends React.Component {
     );
   }
 
-  renderAlbumList() {
+  renderAlbumDropdownList() {
     const { albumList, showInViewer, history } = this.props;
 
     return albumList.map((album, i) => {
@@ -69,7 +69,7 @@ class Navigation extends React.Component {
     });
   }
 
-  dropdownTitle() {
+  renderDropdownTitle() {
     return (
       <div>
         <Col xs={12} className="hidden-xs margin-bottom-8">
@@ -88,11 +88,11 @@ class Navigation extends React.Component {
     return (
       <NavDropdown
         eventKey={1}
-        title={this.dropdownTitle()}
+        title={this.renderDropdownTitle()}
         id="albums"
         noCaret
       >
-        {this.renderAlbumList()}
+        {this.renderAlbumDropdownList()}
         <MenuItem divider />
       </NavDropdown>
     );
@@ -103,7 +103,7 @@ class Navigation extends React.Component {
     return showInViewer.count === VIEWER.SINGLES;
   }
 
-  renderCountDropdown() {
+  renderCountButton() {
     const { toggleShowCount, showInViewer } = this.props;
 
     if (!this.isAboutSection()) {
@@ -138,7 +138,7 @@ class Navigation extends React.Component {
     }
   }
 
-  renderTypeDropdown() {
+  renderTypeButton() {
     const { showInViewer, toggleShowType } = this.props;
 
     if (!this.isAboutSection()) {
@@ -197,9 +197,9 @@ class Navigation extends React.Component {
           <Nav className={'margin-dropdown-nav-section'}>
             {this.renderAlbumDropdown()}
 
-            {this.renderCountDropdown()}
+            {this.renderCountButton()}
 
-            {this.renderTypeDropdown()}
+            {this.renderTypeButton()}
           </Nav>
           <Nav pullRight>{this.renderAboutButton()}</Nav>
         </Navbar.Collapse>

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Col, Button, Thumbnail, Glyphicon } from 'react-bootstrap';
 import { VIEWER } from '../utils/constants';
 import TextSection from './TextSection';
-import ExifOrientationImg from 'react-exif-orientation-img'
 
 class PhotoViewer extends React.Component {
   isShowingSubset() {
