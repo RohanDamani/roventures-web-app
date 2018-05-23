@@ -51,9 +51,12 @@ class Navigation extends React.Component {
   }
 
   renderAlbumList() {
-    const { albumList, history } = this.props;
+    const { albumList, showInViewer, history } = this.props;
 
     return albumList.map((album, i) => {
+      if (album === showInViewer.album) {
+        return null
+      }
       return (
         <MenuItem
           key={i}
