@@ -117,6 +117,15 @@ a.dropdown-toggle {
   margin-top: 0;
 }
 
+.thumbnail {
+  margin-bottom: 0;
+}
+
 .thumbnail img {
   max-height: 100vh;
+}
+
+.no-padding {
+  padding-right: 0;
+  padding-left: 0;
 }

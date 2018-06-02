@@ -45,7 +45,7 @@ class PhotoViewer extends React.Component {
 
     return photos.map((photo, index) => {
       return (
-        <Col key={index} lg={this.lgCol()} sm={this.smCol()} xs={this.xsCol()}>
+        <Col key={index} className="no-padding" lg={this.lgCol()} sm={this.smCol()} xs={this.xsCol()}>
           <Thumbnail src={photo} alt={photo} />
         </Col>
       );
