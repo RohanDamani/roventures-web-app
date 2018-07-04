@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Button, Glyphicon } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
-import { VIEWER } from '../utils/constants';
 import TextSection from './TextSection';
 
 class VideoViewer extends React.Component {
@@ -14,28 +13,17 @@ class VideoViewer extends React.Component {
     return videos.length !== media.videos.length;
   }
 
-  isViewerCountSingle() {
+  renderHeader() {
     const { showInViewer } = this.props;
-    return showInViewer.count === VIEWER.SINGLES;
+
+    return (
+      <Col xs={12} className="text-center">
+        <h1 className="viewer-header">
+          {showInViewer.album} {showInViewer.type}
+        </h1>
+      </Col>
+    );
   }
-
-  smCol() {
-    return this.isViewerCountSingle() ? 10 : 6;
-  }
-
-  smColOffset() {
-    return this.isViewerCountSingle() ? 1 : 0;
-  }
-
-    renderHeader() {
-        const { showInViewer } = this.props;
-
-        return (
-            <Col xs={12} className="text-center">
-                <h1 className="viewer-header">{showInViewer.album} {showInViewer.type}</h1>
-            </Col>
-        );
-    }
 
   // renderPhotos() {
   //     const { photos } = this.props;
@@ -79,15 +67,12 @@ class VideoViewer extends React.Component {
               <Col
                 key={index}
                 xs={12}
-                sm={this.smCol()}
-                smOffset={this.smColOffset()}
               >
                 <ReactPlayer
                   url={video}
                   width="100%"
                   height="100%"
                   playing={index === 0}
-                  muted={index === 0}
                   controls
                 />
               </Col>

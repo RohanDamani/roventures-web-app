@@ -5,7 +5,7 @@ import { getBucketUrl } from '../utils/awsUtil';
 // import Get from 'lodash/get';
 
 const initialStateShowInViewer = {
-  type: VIEWER.PHOTOS,
+  type: VIEWER.VIDEOS,
   count: VIEWER.MULTIPLE,
   album: MAIN.INITIAL_ALBUM,
 };
