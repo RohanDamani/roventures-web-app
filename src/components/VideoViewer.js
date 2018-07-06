@@ -61,23 +61,37 @@ class VideoViewer extends React.Component {
     return (
       <div>
         {this.renderHeader()}
-        {videos.length > 0 &&
-          videos.map((video, index) => {
-            return (
-              <Col
-                key={index}
-                xs={12}
-              >
-                <ReactPlayer
-                  url={video}
+          <Col
+              xs={12}
+          >
+              <ReactPlayer
+                  className='react-player'
+                  url={'https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Seychelles/seychelles-hls-2M.m3u8'}
                   width="100%"
                   height="100%"
-                  playing={index === 0}
+                  playing={true}
+                  file={{ forceHLS: true }}
+                  fileConfig={{ attributes: { poster: 'https://s3-us-west-1.amazonaws.com/rohan-pictures/Seychelles/G0530431.jpg' } }}
                   controls
-                />
-              </Col>
-            );
-          })}
+              />
+          </Col>
+        {/*{videos.length > 0 &&*/}
+          {/*videos.map((video, index) => {*/}
+            {/*return (*/}
+              {/*<Col*/}
+                {/*key={index}*/}
+                {/*xs={12}*/}
+              {/*>*/}
+                {/*<ReactPlayer*/}
+                  {/*url={video}*/}
+                  {/*width="100%"*/}
+                  {/*height="100%"*/}
+                  {/*playing={index === 0}*/}
+                  {/*controls*/}
+                {/*/>*/}
+              {/*</Col>*/}
+            {/*);*/}
+          {/*})}*/}
         {videos.length === 0 && (
           <TextSection
             showInViewer={showInViewer}
