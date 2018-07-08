@@ -32,10 +32,9 @@ class Viewer extends React.Component {
     // fetch the full list of albums from the bucket to populate the Navigation drop down
     this.props.fetchAlbumList(this.bucket);
 
-      // authenticate the AWS-SDK s3 bucket and dynamodb object using AWS Cognito user pool
-      this.bucket = authenticateBucket;
-      this.dynamodb = dynamodb;
-
+    // authenticate the AWS-SDK s3 bucket and dynamodb object using AWS Cognito user pool
+    this.bucket = authenticateBucket;
+    this.dynamodb = dynamodb;
   }
 
   componentDidMount() {
@@ -141,12 +140,14 @@ class Viewer extends React.Component {
 
   render() {
     const { showInViewer, toggleShowType, media, history } = this.props;
-    const { photos, videos, showRefreshButton, loading } = this.state;
+    const { photos, showRefreshButton, loading } = this.state;
     const { type } = showInViewer;
     return (
       <Grid fluid>
         <Row>
-          {this.isShowingAboutSection() && <About history={history} dynamodb={this.dynamodb} />}
+          {this.isShowingAboutSection() && (
+            <About history={history} dynamodb={this.dynamodb} />
+          )}
 
           {loading &&
             !this.isShowingAboutSection() && <Loader loading={loading} />}
@@ -167,20 +168,9 @@ class Viewer extends React.Component {
               />
             )}
 
-          {videos &&
-            !loading &&
+          {!loading &&
             type === VIEWER.VIDEOS &&
-            !this.isShowingAboutSection() && (
-              <VideoViewer
-                videos={videos}
-                media={media}
-                history={history}
-                showInViewer={showInViewer}
-                showRefreshButton={showRefreshButton}
-                toggleShowType={toggleShowType}
-                onScroll={this.onScroll.bind(this)}
-              />
-            )}
+            !this.isShowingAboutSection() && <VideoViewer />}
         </Row>
 
         <ScrollTop />
