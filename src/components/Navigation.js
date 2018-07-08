@@ -50,18 +50,21 @@ class Navigation extends React.Component {
     );
   }
 
-  renderAlbumDropdownList() {
-    const { albumList, showInViewer, history } = this.props;
+  renderVideoDropdownList() {
+    const { albumList, showInViewer, history, toggleShowType } = this.props;
 
     return albumList.map((album, i) => {
       if (album === showInViewer.album) {
-        return null
+        return null;
       }
       return (
         <MenuItem
           key={i}
           eventKey={`1.${i}`}
-          onClick={() => history.push(`/${album}`)}
+          onClick={() => {
+            toggleShowType(VIEWER.VIDEOS);
+            history.push(`/${album}`);
+          }}
         >
           {album}
         </MenuItem>
@@ -69,122 +72,173 @@ class Navigation extends React.Component {
     });
   }
 
-  renderDropdownTitle() {
+  renderVideoDropdownTitle() {
     return (
       <div>
         <Col xs={12} className="hidden-xs margin-bottom-8">
-          <span className="glyphicon glyphicon-book" />
-          <span className="glyphicon-class">{VIEWER.ALBUMS}</span>
+          <span className="glyphicon glyphicon-facetime-video" />
+          <span className="glyphicon-class">{VIEWER.VIDEOS}</span>
         </Col>
         <Col xs={12} className="hidden-sm hidden-md hidden-lg">
-          <span className="glyphicon glyphicon-book" />
-          <span className="glyphicon-class small">{VIEWER.ALBUMS}</span>
+          <span className="glyphicon glyphicon-facetime-video" />
+          <span className="glyphicon-class small">{VIEWER.VIDEOS}</span>
         </Col>
       </div>
     );
   }
 
-  renderAlbumDropdown() {
+  renderVideoDropdown() {
     return (
       <NavDropdown
         eventKey={1}
-        title={this.renderDropdownTitle()}
+        title={this.renderVideoDropdownTitle()}
         id="albums"
         noCaret
       >
-        {this.renderAlbumDropdownList()}
+        {this.renderVideoDropdownList()}
         <MenuItem divider />
       </NavDropdown>
     );
   }
 
-  isCountSingle() {
-    const { showInViewer } = this.props;
-    return showInViewer.count === VIEWER.SINGLES;
-  }
+  renderPhotoDropdownList() {
+    const { albumList, showInViewer, history, toggleShowType } = this.props;
 
-  renderCountButton() {
-    const { toggleShowCount, showInViewer } = this.props;
-
-    if (!this.isAboutSection()) {
+    return albumList.map((album, i) => {
+      if (album === showInViewer.album) {
+        return null;
+      }
       return (
-        <Nav className={showInViewer.type === VIEWER.VIDEOS ? 'hidden-xs' : ''}>
-          {!this.isCountSingle() && (
-            <NavItem onClick={() => toggleShowCount(VIEWER.SINGLES)}>
-              <Col xs={12} className="hidden-xs margin-bottom-8">
-                <span className="glyphicon glyphicon-stop" />
-                <span className="glyphicon-class">{VIEWER.SINGLES}</span>
-              </Col>
-              <Col xs={12} className="hidden-sm hidden-md hidden-lg">
-                <span className="glyphicon glyphicon-stop" />
-                <span className="glyphicon-class small">{VIEWER.SINGLES}</span>
-              </Col>
-            </NavItem>
-          )}
-          {this.isCountSingle() && (
-            <NavItem onClick={() => toggleShowCount(VIEWER.MULTIPLE)}>
-              <Col xs={12} className="hidden-xs margin-bottom-8">
-                <span className="glyphicon glyphicon-th-large" />
-                <span className="glyphicon-class">{VIEWER.MULTIPLE}</span>
-              </Col>
-              <Col xs={12} className="hidden-sm hidden-md hidden-lg">
-                <span className="glyphicon glyphicon-th-large" />
-                <span className="glyphicon-class small">{VIEWER.MULTIPLE}</span>
-              </Col>
-            </NavItem>
-          )}
-        </Nav>
+        <MenuItem
+          key={i}
+          eventKey={`1.${i}`}
+          onClick={() => {
+            toggleShowType(VIEWER.PHOTOS);
+            history.push(`/${album}`);
+          }}
+        >
+          {album}
+        </MenuItem>
       );
-    }
+    });
   }
 
-  renderTypeButton() {
-    const { showInViewer, toggleShowType } = this.props;
-
-    if (!this.isAboutSection()) {
-      return (
-        <Nav>
-          {showInViewer.type === VIEWER.VIDEOS && (
-            <NavItem onClick={() => toggleShowType(VIEWER.PHOTOS)}>
-              <Col xs={12} className="hidden-xs margin-bottom-8">
-                <span className="glyphicon glyphicon-camera" />
-                <span className="glyphicon-class">{VIEWER.PHOTOS}</span>
-              </Col>
-              <Col xs={12} className="hidden-sm hidden-md hidden-lg">
-                <span className="glyphicon glyphicon-camera" />
-                <span className="glyphicon-class small">{VIEWER.PHOTOS}</span>
-              </Col>
-            </NavItem>
-          )}
-
-          {showInViewer.type === VIEWER.PHOTOS && (
-            <NavItem onClick={() => toggleShowType(VIEWER.VIDEOS)}>
-              <Col xs={12} className="hidden-xs margin-bottom-8">
-                <span className="glyphicon glyphicon-facetime-video" />
-                <span className="glyphicon-class">{VIEWER.VIDEOS}</span>
-              </Col>
-              <Col xs={12} className="hidden-sm hidden-md hidden-lg">
-                <span className="glyphicon glyphicon-facetime-video" />
-                <span className="glyphicon-class small">{VIEWER.VIDEOS}</span>
-              </Col>
-            </NavItem>
-          )}
-        </Nav>
-      );
-    }
+  renderPhotoDropdownTitle() {
+    return (
+      <div>
+        <Col xs={12} className="hidden-xs margin-bottom-8">
+          <span className="glyphicon glyphicon-camera" />
+          <span className="glyphicon-class">{VIEWER.PHOTOS}</span>
+        </Col>
+        <Col xs={12} className="hidden-sm hidden-md hidden-lg">
+          <span className="glyphicon glyphicon-camera" />
+          <span className="glyphicon-class small">{VIEWER.PHOTOS}</span>
+        </Col>
+      </div>
+    );
   }
+
+  renderPhotoDropdown() {
+    return (
+      <NavDropdown
+        eventKey={1}
+        title={this.renderPhotoDropdownTitle()}
+        id="albums"
+        noCaret
+      >
+        {this.renderPhotoDropdownList()}
+        <MenuItem divider />
+      </NavDropdown>
+    );
+  }
+
+  // isCountSingle() {
+  //   const { showInViewer } = this.props;
+  //   return showInViewer.count === VIEWER.SINGLES;
+  // }
+  //
+  // renderCountButton() {
+  //   const { toggleShowCount, showInViewer } = this.props;
+  //
+  //   if (!this.isAboutSection()) {
+  //     return (
+  //       <Nav className={showInViewer.type === VIEWER.VIDEOS ? 'hidden-xs' : ''}>
+  //         {!this.isCountSingle() && (
+  //           <NavItem onClick={() => toggleShowCount(VIEWER.SINGLES)}>
+  //             <Col xs={12} className="hidden-xs margin-bottom-8">
+  //               <span className="glyphicon glyphicon-stop" />
+  //               <span className="glyphicon-class">{VIEWER.SINGLES}</span>
+  //             </Col>
+  //             <Col xs={12} className="hidden-sm hidden-md hidden-lg">
+  //               <span className="glyphicon glyphicon-stop" />
+  //               <span className="glyphicon-class small">{VIEWER.SINGLES}</span>
+  //             </Col>
+  //           </NavItem>
+  //         )}
+  //         {this.isCountSingle() && (
+  //           <NavItem onClick={() => toggleShowCount(VIEWER.MULTIPLE)}>
+  //             <Col xs={12} className="hidden-xs margin-bottom-8">
+  //               <span className="glyphicon glyphicon-th-large" />
+  //               <span className="glyphicon-class">{VIEWER.MULTIPLE}</span>
+  //             </Col>
+  //             <Col xs={12} className="hidden-sm hidden-md hidden-lg">
+  //               <span className="glyphicon glyphicon-th-large" />
+  //               <span className="glyphicon-class small">{VIEWER.MULTIPLE}</span>
+  //             </Col>
+  //           </NavItem>
+  //         )}
+  //       </Nav>
+  //     );
+  //   }
+  // }
+  //
+  // renderTypeButton() {
+  //   const { showInViewer, toggleShowType } = this.props;
+  //
+  //   if (!this.isAboutSection()) {
+  //     return (
+  //       <Nav>
+  //         {showInViewer.type === VIEWER.VIDEOS && (
+  //           <NavItem onClick={() => toggleShowType(VIEWER.PHOTOS)}>
+  //             <Col xs={12} className="hidden-xs margin-bottom-8">
+  //               <span className="glyphicon glyphicon-camera" />
+  //               <span className="glyphicon-class">{VIEWER.PHOTOS}</span>
+  //             </Col>
+  //             <Col xs={12} className="hidden-sm hidden-md hidden-lg">
+  //               <span className="glyphicon glyphicon-camera" />
+  //               <span className="glyphicon-class small">{VIEWER.PHOTOS}</span>
+  //             </Col>
+  //           </NavItem>
+  //         )}
+  //
+  //         {showInViewer.type === VIEWER.PHOTOS && (
+  //           <NavItem onClick={() => toggleShowType(VIEWER.VIDEOS)}>
+  //             <Col xs={12} className="hidden-xs margin-bottom-8">
+  //               <span className="glyphicon glyphicon-facetime-video" />
+  //               <span className="glyphicon-class">{VIEWER.VIDEOS}</span>
+  //             </Col>
+  //             <Col xs={12} className="hidden-sm hidden-md hidden-lg">
+  //               <span className="glyphicon glyphicon-facetime-video" />
+  //               <span className="glyphicon-class small">{VIEWER.VIDEOS}</span>
+  //             </Col>
+  //           </NavItem>
+  //         )}
+  //       </Nav>
+  //     );
+  //   }
+  // }
 
   renderAboutButton() {
     return (
       <NavItem eventKey={1} onClick={() => this.toggleAboutSection()}>
-          <Col xs={12} className="hidden-xs margin-bottom-8">
-              <span className="glyphicon glyphicon-question-sign" />
-              <span className="glyphicon-class about"> {VIEWER.ABOUT}</span>
-          </Col>
-          <Col xs={12} className="hidden-sm hidden-md hidden-lg">
-              <span className="glyphicon glyphicon-question-sign" />
-              <span className="glyphicon-class small"> {VIEWER.ABOUT}</span>
-          </Col>
+        <Col xs={12} className="hidden-xs margin-bottom-8">
+          <span className="glyphicon glyphicon-question-sign" />
+          <span className="glyphicon-class about"> {VIEWER.ABOUT}</span>
+        </Col>
+        <Col xs={12} className="hidden-sm hidden-md hidden-lg">
+          <span className="glyphicon glyphicon-question-sign" />
+          <span className="glyphicon-class small"> {VIEWER.ABOUT}</span>
+        </Col>
       </NavItem>
     );
   }
@@ -195,11 +249,8 @@ class Navigation extends React.Component {
         {this.renderLogo()}
         <Navbar.Collapse>
           <Nav className={'margin-dropdown-nav-section'}>
-            {this.renderAlbumDropdown()}
-
-            {this.renderCountButton()}
-
-            {this.renderTypeButton()}
+            {this.renderVideoDropdown()}
+            {this.renderPhotoDropdown()}
           </Nav>
           <Nav pullRight>{this.renderAboutButton()}</Nav>
         </Navbar.Collapse>
