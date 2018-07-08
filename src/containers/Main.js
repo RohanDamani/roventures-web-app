@@ -8,22 +8,20 @@ import { MAIN } from '../utils/constants';
 
 class Main extends React.Component {
   componentWillMount() {
-    const { history, location } = this.props;
+    const { history, location, showInViewer } = this.props;
 
     // check to see if a route was provided otherwise add INITIAL_ALBUM
-    if (location.pathname === '/') {
-      history.push(MAIN.INITIAL_ALBUM );
+    if ((location.pathname === '/') || (location.pathname !== showInViewer.album)) {
+      history.push(MAIN.INITIAL_ALBUM);
     }
-
   }
-
 
   // if the album is updated in state, push it to react router
   // everything in the app should watch showInViewer.album for location
   componentWillUpdate(nextProps) {
     const { showInViewer, history } = this.props;
     if (showInViewer.album !== nextProps.showInViewer.album) {
-      history.push(`/${nextProps.showInViewer.album}`)
+      history.push(`/${nextProps.showInViewer.album}`);
     }
   }
 
