@@ -14,18 +14,20 @@ import {
   fetchAlbumList,
   toggleShowType,
   toggleShowCount,
+  toggleShowAlbum,
 } from '../actions/actions';
+import videos from '../videos';
 import { VIEWER, MAIN } from '../utils/constants';
 
 class Navigation extends React.Component {
   toggleAboutSection() {
-    const { history } = this.props;
+    const { toggleShowAlbum } = this.props;
 
     if (this.isAboutSection()) {
-      history.push(MAIN.INITIAL_ALBUM);
+      toggleShowAlbum(MAIN.INITIAL_ALBUM);
       return;
     }
-    history.push(MAIN.ABOUT_ROUTE);
+    toggleShowAlbum(VIEWER.ABOUT);
   }
 
   isAboutSection() {
@@ -51,10 +53,11 @@ class Navigation extends React.Component {
   }
 
   renderVideoDropdownList() {
-    const { albumList, showInViewer, history, toggleShowType } = this.props;
+    const { showInViewer, toggleShowType, toggleShowAlbum } = this.props;
 
-    return albumList.map((album, i) => {
-      if (album === showInViewer.album) {
+    return videos.map((video, i) => {
+
+      if (video.label === showInViewer.album) {
         return null;
       }
       return (
@@ -62,11 +65,11 @@ class Navigation extends React.Component {
           key={i}
           eventKey={`1.${i}`}
           onClick={() => {
+            toggleShowAlbum(video.label);
             toggleShowType(VIEWER.VIDEOS);
-            history.push(`/${album}`);
           }}
         >
-          {album}
+          {video.label}
         </MenuItem>
       );
     });
@@ -102,7 +105,12 @@ class Navigation extends React.Component {
   }
 
   renderPhotoDropdownList() {
-    const { albumList, showInViewer, history, toggleShowType } = this.props;
+    const {
+      albumList,
+      showInViewer,
+      toggleShowType,
+      toggleShowAlbum,
+    } = this.props;
 
     return albumList.map((album, i) => {
       if (album === showInViewer.album) {
@@ -113,8 +121,8 @@ class Navigation extends React.Component {
           key={i}
           eventKey={`1.${i}`}
           onClick={() => {
+            toggleShowAlbum(album);
             toggleShowType(VIEWER.PHOTOS);
-            history.push(`/${album}`);
           }}
         >
           {album}
@@ -274,6 +282,7 @@ export default withRouter(
       fetchAlbumList,
       toggleShowType,
       toggleShowCount,
+      toggleShowAlbum,
     },
   )(Navigation),
 );

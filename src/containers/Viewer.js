@@ -20,10 +20,8 @@ import { authenticateBucket, dynamodb } from '../utils/awsUtil';
 class Viewer extends React.Component {
   state = {
     photos: [],
-    videos: [],
     didScroll: false,
     showRefreshButton: false,
-    loading: false,
   };
 
   componentWillMount() {
@@ -59,7 +57,6 @@ class Viewer extends React.Component {
 
     if (urlParam !== nextUrlParam && nextUrlParam !== VIEWER.ABOUT) {
       fetchAlbum(this.bucket, nextUrlParam);
-      this.setState({ loading: true });
     }
     if (urlParam !== nextUrlParam && nextUrlParam === VIEWER.ABOUT) {
       toggleShowAlbum(VIEWER.ABOUT);
@@ -69,13 +66,15 @@ class Viewer extends React.Component {
   watchForTypeChanges(nextProps) {
     const { showInViewer } = this.props;
 
-    if (showInViewer.type !== nextProps.showInViewer.type) {
+    if (
+      showInViewer.type !== nextProps.showInViewer.type &&
+      nextProps.showInViewer.type === VIEWER.PHOTOS
+    ) {
       this.initializeRefreshButtonThrottle();
       this.initializeScrollListener();
 
       this.setState({
         photos: nextProps.media.photoSubSet,
-        videos: nextProps.media.videoSubSet,
         showRefreshButton: false,
         didScroll: false,
       });
@@ -87,7 +86,6 @@ class Viewer extends React.Component {
 
     if (!this.isShowingAboutSection()) {
       fetchAlbum(this.bucket, match.params.item);
-      this.setState({ loading: true });
     }
     if (this.isShowingAboutSection()) {
       toggleShowAlbum(VIEWER.ABOUT);
@@ -111,7 +109,6 @@ class Viewer extends React.Component {
   onScroll() {
     this.setState({
       photos: this.props.media.photos,
-      videos: this.props.media.videos,
       showRefreshButton: false,
       didScroll: true,
     });
@@ -123,10 +120,8 @@ class Viewer extends React.Component {
     if (media !== nextProps.media) {
       this.setState({
         photos: nextProps.media.photoSubSet,
-        videos: nextProps.media.videoSubSet,
         didScroll: false,
         showRefreshButton: false,
-        loading: false,
       });
       this.initializeRefreshButtonThrottle();
     }
@@ -140,7 +135,7 @@ class Viewer extends React.Component {
 
   render() {
     const { showInViewer, toggleShowType, media, history } = this.props;
-    const { photos, showRefreshButton, loading } = this.state;
+    const { photos, showRefreshButton } = this.state;
     const { type } = showInViewer;
     return (
       <Grid fluid>
@@ -149,11 +144,9 @@ class Viewer extends React.Component {
             <About history={history} dynamodb={this.dynamodb} />
           )}
 
-          {loading &&
-            !this.isShowingAboutSection() && <Loader loading={loading} />}
+          {/*{!this.isShowingAboutSection() && <Loader loading={loading} />}*/}
 
           {photos &&
-            !loading &&
             type === VIEWER.PHOTOS &&
             !this.isShowingAboutSection() && (
               <PhotoViewer
@@ -168,9 +161,10 @@ class Viewer extends React.Component {
               />
             )}
 
-          {!loading &&
-            type === VIEWER.VIDEOS &&
-            !this.isShowingAboutSection() && <VideoViewer />}
+          {type === VIEWER.VIDEOS &&
+            !this.isShowingAboutSection() && (
+              <VideoViewer showInViewer={showInViewer} />
+            )}
         </Row>
 
         <ScrollTop />

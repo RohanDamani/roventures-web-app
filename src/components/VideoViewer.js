@@ -2,8 +2,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Col } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
+import videos from '../videos';
 
 class VideoViewer extends React.Component {
+  componentWillMount() {
+    this.videos = videos.find(this.findVideo);
+  }
+
+  componentWillUpdate(nextProps) {
+    const findVideo = video => {
+      const { album } = nextProps.showInViewer;
+      if (video.label === album) {
+        return video;
+      }
+    };
+
+    if (this.props.showInViewer.album !== nextProps.showInViewer.album) {
+      this.videos = videos.find(findVideo);
+    }
+  }
+
+  findVideo = video => {
+    const { album } = this.props.showInViewer;
+    if (video.label === album) {
+      return video;
+    }
+  };
 
   render() {
     return (
@@ -11,18 +35,15 @@ class VideoViewer extends React.Component {
         <Col xs={12}>
           <ReactPlayer
             className="react-player"
-            url={
-              'https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Seychelles/seychelles-hls-2M.m3u8'
-            }
+            url={this.videos.url}
             width="100%"
             height="100%"
             playing={false}
             file={{ forceHLS: true }}
-            fileConfig={{
-              attributes: {
-                poster:
-                  'https://s3-us-west-1.amazonaws.com/rohan-pictures/Seychelles/G0530431.jpg',
-              },
+            config={{
+              file: {
+                  attributes: {poster: this.videos.image}
+              }
             }}
             controls
           />
@@ -33,7 +54,7 @@ class VideoViewer extends React.Component {
 }
 
 VideoViewer.propTypes = {
-  // videos: PropTypes.array.isRequired,
+  showInViewer: PropTypes.object.isRequired,
 };
 
 export default VideoViewer;

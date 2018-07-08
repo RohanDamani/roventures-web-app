@@ -52,7 +52,6 @@ export const fetchAlbum = (bucket, album) => {
                 return alert('There was an error viewing your album: ' + err.message);
             }
             dispatch(receiveAlbumData(data))
-            dispatch(toggleShowAlbum(album))
         });
     }
 };

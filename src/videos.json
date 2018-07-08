@@ -1,0 +1,27 @@
+[
+  {
+    "label": "Seychelles",
+    "url": "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Seychelles/seychelles-hls-2M.m3u8",
+    "image": "https://s3-us-west-1.amazonaws.com/rohan-pictures/Seychelles/G0530431.jpg"
+  },
+  {
+    "label": "MORE COMING SOON!!",
+    "url": "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Seychelles/seychelles-hls-2M.m3u8",
+    "image": "https://s3-us-west-1.amazonaws.com/rohan-pictures/Seychelles/G0530431.jpg"
+  },
+  {
+    "label": "BLANK (for testing)",
+    "url": "",
+    "image": "https://s3-us-west-1.amazonaws.com/rohan-pictures/Seychelles/G0530431.jpg"
+  },
+  {
+    "label": "ERROR (for testing)",
+    "url": "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Seychelles/seycelles-hls-2M.m3u8",
+    "image": "https://s3-us-west-1.amazonaws.com/rohan-pictures/Seychelles/G0530431.jpg"
+  },
+  {
+    "label": "NO IMAGE (for testing)",
+    "url": "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Seychelles/seychelles-hls-2M.m3u8",
+    "image": ""
+  }
+]

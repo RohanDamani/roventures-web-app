@@ -1,7 +1,6 @@
 export const MAIN = {
     INITIAL_ALBUM: 'Seychelles',
     ROVENTURES: 'RoVentures',
-    ABOUT_ROUTE: '/About'
 };
 
 export const VIEWER = {

@@ -17,6 +17,16 @@ class Main extends React.Component {
 
   }
 
+
+  // if the album is updated in state, push it to react router
+  // everything in the app should watch showInViewer.album for location
+  componentWillUpdate(nextProps) {
+    const { showInViewer, history } = this.props;
+    if (showInViewer.album !== nextProps.showInViewer.album) {
+      history.push(`/${nextProps.showInViewer.album}`)
+    }
+  }
+
   // children are passed from Routes.js to render a particular album in the Viewer component
   render() {
     const { children } = this.props;
