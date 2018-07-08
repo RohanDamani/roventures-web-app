@@ -30,22 +30,30 @@ class PhotoViewer extends React.Component {
     return this.isViewerCountSingle() ? 12 : 6;
   }
 
-    renderHeader() {
-        const { showInViewer } = this.props;
+  renderHeader() {
+    const { showInViewer } = this.props;
 
-            return (
-                <Col xs={12} className="text-center">
-                  <h1 className="viewer-header">{showInViewer.album} {showInViewer.type}</h1>
-                </Col>
-            );
-    }
+    return (
+      <Col xs={12} className="text-center">
+        <h1 className="viewer-header">
+          {showInViewer.album} {showInViewer.type}
+        </h1>
+      </Col>
+    );
+  }
 
   renderPhotos() {
     const { photos } = this.props;
 
     return photos.map((photo, index) => {
       return (
-        <Col key={index} className="no-padding" lg={this.lgCol()} sm={this.smCol()} xs={this.xsCol()}>
+        <Col
+          key={index}
+          className="no-padding"
+          lg={this.lgCol()}
+          sm={this.smCol()}
+          xs={this.xsCol()}
+        >
           <Thumbnail src={photo} alt={photo} />
         </Col>
       );
@@ -72,20 +80,20 @@ class PhotoViewer extends React.Component {
   }
 
   render() {
-      const { showInViewer, toggleShowType, history, photos } = this.props;
+    const { showInViewer, toggleShowType, history, photos } = this.props;
 
-      return (
+    return (
       <div>
-          {this.renderHeader()}
+        {this.renderHeader()}
         {photos.length > 0 && this.renderPhotos()}
         {photos.length > 0 && this.renderThrottledRefreshButton()}
-          {photos.length === 0 &&
-              <TextSection
-                  showInViewer={showInViewer}
-                  toggleShowType={toggleShowType}
-                  history={history}
-              />
-          }
+        {photos.length === 0 && (
+          <TextSection
+            showInViewer={showInViewer}
+            toggleShowType={toggleShowType}
+            history={history}
+          />
+        )}
       </div>
     );
   }
@@ -95,8 +103,8 @@ PhotoViewer.propTypes = {
   photos: PropTypes.array.isRequired,
   showRefreshButton: PropTypes.bool.isRequired,
   showInViewer: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-    toggleShowType: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+  toggleShowType: PropTypes.func.isRequired,
   media: PropTypes.object.isRequired,
   isShowingAboutSection: PropTypes.func.isRequired,
   onScroll: PropTypes.func.isRequired,

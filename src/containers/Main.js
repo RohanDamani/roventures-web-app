@@ -11,6 +11,7 @@ class Main extends React.Component {
     const { history, location, showInViewer } = this.props;
 
     // check to see if a route was provided otherwise add INITIAL_ALBUM
+    // We must reset the album because it may not have videos and be called on photos
     if ((location.pathname === '/') || (location.pathname !== showInViewer.album)) {
       history.push(MAIN.INITIAL_ALBUM);
     }

@@ -50,6 +50,7 @@ class Viewer extends React.Component {
     this.watchForTypeChanges(nextProps);
   }
 
+  // update to watch showInViewer.album
   watchForUrlChanges(nextProps) {
     const { fetchAlbum, toggleShowAlbum, match } = this.props;
     const urlParam = match.params.item;
@@ -128,9 +129,8 @@ class Viewer extends React.Component {
   }
 
   isShowingAboutSection() {
-    const { match } = this.props;
-    const { params: { item } } = match;
-    return item === VIEWER.ABOUT;
+    const { showInViewer } = this.props;
+    return showInViewer.album === VIEWER.ABOUT;
   }
 
   render() {

@@ -42,8 +42,8 @@ class VideoViewer extends React.Component {
             file={{ forceHLS: true }}
             config={{
               file: {
-                  attributes: {poster: this.videos.image}
-              }
+                attributes: { poster: this.videos.image },
+              },
             }}
             controls
           />
