@@ -12,6 +12,11 @@ body {
   margin-left: 10%;
 }
 
+.center-dropdown-nav-section {
+  position: absolute;
+  left: 45%;
+}
+
 .text-container {
   min-height: 65vh;
   padding: 30px 45px;

@@ -8,6 +8,7 @@ import thunkMiddleware from 'redux-thunk';
 import Main from './containers/Main';
 import VideoViewer from './components/VideoViewer';
 import PhotoViewer from './components/PhotoViewer';
+import About from './components/About';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
@@ -23,7 +24,7 @@ const App = () => {
           <Switch>
             <Route path="/videos/:video?" component={VideoViewer} />
             <Route path="/photos/:photo?" component={PhotoViewer} />
-            {/*<Route path="/about" component={Viewer}/>*/}
+            <Route path="/about" component={About}/>
             <Redirect from="/" to="/videos" />
           </Switch>{' '}
         </Main>

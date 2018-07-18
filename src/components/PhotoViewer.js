@@ -208,8 +208,7 @@ class PhotoViewer extends React.Component {
 }
 
 PhotoViewer.propTypes = {
-  photos: PropTypes.array.isRequired,
-  showRefreshButton: PropTypes.bool.isRequired,
+  photos: PropTypes.array,
   showInViewer: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   toggleShowType: PropTypes.func.isRequired,

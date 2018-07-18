@@ -7,6 +7,8 @@ import Navigation from '../components/Navigation';
 import ScrollTop from '../components/ScrollTop';
 import { authenticateBucket } from '../utils/awsUtil';
 import { fetchAlbumList } from '../actions/actions';
+import Loader from '../components/Loader';
+
 
 class Main extends React.Component {
   componentWillMount() {
@@ -23,6 +25,7 @@ class Main extends React.Component {
         <Navigation />
         <Grid fluid>
           <Row>{children}</Row>
+            {/*<Loader />*/}
         </Grid>
         <ScrollTop />
       </div>
@@ -31,7 +34,7 @@ class Main extends React.Component {
 }
 
 Main.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.array.isRequired,
 };
 
 export default withRouter(
