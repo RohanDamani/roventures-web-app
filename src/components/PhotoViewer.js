@@ -3,10 +3,117 @@ import PropTypes from 'prop-types';
 import { Col, Button, Thumbnail, Glyphicon } from 'react-bootstrap';
 import { VIEWER } from '../utils/constants';
 import TextSection from './TextSection';
+import { authenticateBucket } from '../utils/awsUtil';
+import {withRouter} from "react-router-dom";
+import {connect} from "react-redux";
+import {fetchAlbum, fetchAlbumList, toggleShowAlbum, toggleShowType} from "../actions/actions";
 
 class PhotoViewer extends React.Component {
+
+    state = {
+        photos: [],
+        didScroll: false,
+        showRefreshButton: false,
+    };
+
+
+  componentWillMount() {
+    // authenticate the AWS-SDK s3 bucket and dynamodb object using AWS Cognito user pool
+    this.bucket = authenticateBucket;
+  }
+
+    componentDidMount() {
+        this.loadAlbum();
+        this.initializeScrollListener();
+        this.initializeRefreshButtonThrottle();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.addSubSetsToState(nextProps);
+    }
+
+    componentWillUpdate(nextProps) {
+        this.watchForUrlChanges(nextProps);
+        this.watchForTypeChanges(nextProps);
+    }
+
+    // update to watch showInViewer.album
+    watchForUrlChanges(nextProps) {
+        const { fetchAlbum, match } = this.props;
+        const urlParam = match.params.photo;
+        const nextUrlParam = nextProps.match.params.photo;
+
+        if (urlParam !== nextUrlParam && nextUrlParam !== VIEWER.ABOUT) {
+            fetchAlbum(this.bucket, nextUrlParam);
+        }
+
+    }
+
+    watchForTypeChanges(nextProps) {
+        const { showInViewer } = this.props;
+
+        if (
+            showInViewer.type !== nextProps.showInViewer.type &&
+            nextProps.showInViewer.type === VIEWER.PHOTOS
+        ) {
+            this.initializeRefreshButtonThrottle();
+            this.initializeScrollListener();
+
+            this.setState({
+                photos: nextProps.media.photoSubSet,
+                showRefreshButton: false,
+                didScroll: false,
+            });
+        }
+    }
+
+    loadAlbum() {
+        const { fetchAlbum, match } = this.props;
+            fetchAlbum(this.bucket, match.params.photo);
+    }
+
+    initializeRefreshButtonThrottle() {
+        window.setTimeout(() => {
+            this.setState({ showRefreshButton: true });
+        }, 3000);
+    }
+
+    initializeScrollListener() {
+        window.addEventListener(VIEWER.SCROLL, this.handleScroll);
+    }
+
+    handleScroll = () => {
+        if (window.pageYOffset > 100 && !this.state.didScroll) this.onScroll();
+    };
+
+    onScroll() {
+        this.setState({
+            photos: this.props.media.photos,
+            showRefreshButton: false,
+            didScroll: true,
+        });
+    }
+
+    addSubSetsToState(nextProps) {
+        const { media } = this.props;
+
+        if (media !== nextProps.media) {
+            this.setState({
+                photos: nextProps.media.photoSubSet,
+                didScroll: false,
+                showRefreshButton: false,
+            });
+            this.initializeRefreshButtonThrottle();
+        }
+    }
+
+
+
+
+
   isShowingSubset() {
-    const { media, photos } = this.props;
+    const { media } = this.props;
+    const { photos } = this.state;
     if (media.photos.length === media.photoSubSet.length) {
       return false;
     }
@@ -43,7 +150,7 @@ class PhotoViewer extends React.Component {
   }
 
   renderPhotos() {
-    const { photos } = this.props;
+    const { photos } = this.state;
 
     return photos.map((photo, index) => {
       return (
@@ -80,7 +187,8 @@ class PhotoViewer extends React.Component {
   }
 
   render() {
-    const { showInViewer, toggleShowType, history, photos } = this.props;
+    const { showInViewer, toggleShowType, history } = this.props;
+    const { photos } = this.state;
 
     return (
       <div>
@@ -106,8 +214,21 @@ PhotoViewer.propTypes = {
   history: PropTypes.object.isRequired,
   toggleShowType: PropTypes.func.isRequired,
   media: PropTypes.object.isRequired,
-  isShowingAboutSection: PropTypes.func.isRequired,
   onScroll: PropTypes.func.isRequired,
 };
 
-export default PhotoViewer;
+export default withRouter(
+    connect(
+        state => ({
+            media: state.media,
+            showInViewer: state.showInViewer,
+        }),
+        {
+            fetchAlbumList,
+            fetchAlbum,
+            toggleShowAlbum,
+            toggleShowType,
+        },
+    )(PhotoViewer),
+);
+

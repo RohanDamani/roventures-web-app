@@ -58,7 +58,12 @@ class Navigation extends React.Component {
     });
 
     return videos.map((video, i) => {
-      if (video.label === match.params.video) {
+      if (
+        match &&
+        match.params &&
+        match.params.video &&
+        video.label === match.params.video
+      ) {
         return null;
       }
       return (
@@ -107,22 +112,18 @@ class Navigation extends React.Component {
   renderPhotoDropdownList() {
     const {
       albumList,
-      showInViewer,
-      toggleShowType,
-      toggleShowAlbum,
     } = this.props;
 
     return albumList.map((album, i) => {
-      if (album === showInViewer.album) {
-        return null;
-      }
+      // if (album === showInViewer.album) {
+      //   return null;
+      // }
       return (
         <MenuItem
           key={i}
           eventKey={`1.${i}`}
           onClick={() => {
-            toggleShowAlbum(album);
-            toggleShowType(VIEWER.PHOTOS);
+            this.props.history.push(`/photos/${album}`);
           }}
         >
           {album}
