@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, matchPath } from 'react-router-dom';
 import {
   Col,
   Navbar,
@@ -53,11 +53,12 @@ class Navigation extends React.Component {
   }
 
   renderVideoDropdownList() {
-    const { showInViewer, toggleShowType, toggleShowAlbum } = this.props;
+    const match = matchPath(this.props.history.location.pathname, {
+      path: '/videos/:video',
+    });
 
     return videos.map((video, i) => {
-
-      if (video.label === showInViewer.album) {
+      if (video.label === match.params.video) {
         return null;
       }
       return (
@@ -65,8 +66,7 @@ class Navigation extends React.Component {
           key={i}
           eventKey={`1.${i}`}
           onClick={() => {
-            toggleShowAlbum(video.label);
-            toggleShowType(VIEWER.VIDEOS);
+            this.props.history.push(`/videos/${video.label}`);
           }}
         >
           {video.label}

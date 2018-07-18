@@ -6,28 +6,37 @@ import videos from '../videos';
 
 class VideoViewer extends React.Component {
   componentWillMount() {
-    this.videos = videos.find(this.findVideo);
+    const { video } = this.props.match.params;
+    const videoObj = videos.find(item => {
+      if (item.label === video) {
+        return item;
+      }
+    });
+    if (videoObj) {
+      this.videos = videoObj;
+    } else {
+      this.videos = videos[0];
+    }
   }
 
   componentWillUpdate(nextProps) {
-    const findVideo = video => {
-      const { album } = nextProps.showInViewer;
-      if (video.label === album) {
-        return video;
-      }
-    };
+    const { video } = this.props.match.params;
+    const nextVideo = nextProps.match.params.video;
 
-    if (this.props.showInViewer.album !== nextProps.showInViewer.album) {
-      this.videos = videos.find(findVideo);
+    if (video !== nextVideo) {
+      const videoObj = videos.find(item => {
+        if (item.label === nextVideo) {
+          return item;
+        }
+      });
+
+      if (videoObj) {
+        this.videos = videoObj;
+      } else {
+        this.videos = videos[0];
+      }
     }
   }
-
-  findVideo = video => {
-    const { album } = this.props.showInViewer;
-    if (video.label === album) {
-      return video;
-    }
-  };
 
   render() {
     return (
@@ -54,7 +63,7 @@ class VideoViewer extends React.Component {
 }
 
 VideoViewer.propTypes = {
-  showInViewer: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
 };
 
 export default VideoViewer;
