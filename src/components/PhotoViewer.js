@@ -5,6 +5,7 @@ import { VIEWER } from '../utils/constants';
 import { authenticatePhotoBucket } from '../utils/awsUtil';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import window from 'window-or-global'
 import {
   fetchAlbum,
   updatePhotoSet,
