@@ -72,8 +72,8 @@ class Navigation extends React.Component {
   renderVideoDropdownTitle() {
     return (
       <div>
-        <Col xs={12} className="hidden-xs margin-bottom-8 nav-item">
-          <span className="glyphicon glyphicon-facetime-video" />
+        <Col xs={12} className="hidden-xs margin-bottom-10 nav-item">
+          <span className="glyphicon glyphicon-facetime-video font-size-25" />
           <span className="glyphicon-class">{VIEWER.VIDEOS}</span>
         </Col>
         <Col xs={12} className="hidden-sm hidden-md hidden-lg nav-item">
@@ -131,8 +131,8 @@ class Navigation extends React.Component {
   renderPhotoDropdownTitle() {
     return (
       <div>
-        <Col xs={12} className="hidden-xs margin-bottom-8 nav-item">
-          <span className="glyphicon glyphicon-camera" />
+        <Col xs={12} className="hidden-xs margin-bottom-10 nav-item">
+          <span className="glyphicon glyphicon-camera font-size-25" />
           <span className="glyphicon-class">{VIEWER.PHOTOS}</span>
         </Col>
         <Col xs={12} className="hidden-sm hidden-md hidden-lg nav-item">
@@ -160,8 +160,8 @@ class Navigation extends React.Component {
   renderInfoButton() {
     return (
       <NavItem eventKey={1} onClick={() => this.toggleInfoSection()}>
-        <Col xs={12} className="hidden-xs margin-bottom-8 nav-item">
-          <span className="glyphicon glyphicon-question-sign" />
+        <Col xs={12} className="hidden-xs margin-bottom-10 nav-item">
+          <span className="glyphicon glyphicon-question-sign font-size-25" />
           <span className="glyphicon-class info"> {VIEWER.INFO}</span>
         </Col>
         <Col xs={12} className="hidden-sm hidden-md hidden-lg nav-item">

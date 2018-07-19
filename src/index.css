@@ -71,7 +71,7 @@ a.dropdown-toggle {
 
 .scroll-up-icon {
   font-size: 33px;
-  color: #5DCEE0;
+  color: #27b3ca;
 }
 
 .column-padding-top {
@@ -86,8 +86,16 @@ a.dropdown-toggle {
   margin-bottom: 20px;
 }
 
-.margin-bottom-8 {
-  margin-bottom: 8px;
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
+.margin-all-8 {
+  margin: 8px;
+}
+
+.font-size-25 {
+  font-size: 25px;
 }
 
 .warn-input {
@@ -101,12 +109,12 @@ a.dropdown-toggle {
 .navbar .glyphicon {
   position: relative;
   top: 1px;
-  left: 10px;
+  left: 7px;
   display: inline-block;
   font-family: 'Glyphicons Halflings';
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 25px;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -151,3 +159,18 @@ a.dropdown-toggle {
   background-color: black;
 }
 
+.background-color-single-thumbnail {
+  background-color: #ddd;
+}
+
+.toggle-button-container {
+  background-color: #eee;
+  border: none;
+  /*margin: ;*/
+}
+
+.toggle-button-container:focus, .toggle-button-container:active, .toggle-button-container:hover {
+  outline: none !important;
+  box-shadow: none;
+  background-color: #eee !important;
+}

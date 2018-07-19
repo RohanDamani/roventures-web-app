@@ -1,11 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Button, Thumbnail, Glyphicon } from 'react-bootstrap';
+import {
+  Col,
+  ButtonGroup,
+  Button,
+  Thumbnail,
+  Glyphicon,
+  Row,
+} from 'react-bootstrap';
 import { VIEWER } from '../utils/constants';
 import { authenticatePhotoBucket } from '../utils/awsUtil';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import window from 'window-or-global'
+import window from 'window-or-global';
 import {
   fetchAlbum,
   updatePhotoSet,
@@ -16,6 +23,7 @@ import {
   removeLoading,
 } from '../actions/actions';
 import Loader from './Loader';
+import ToggleButton from 'react-toggle-button';
 
 class PhotoViewer extends React.Component {
   componentWillMount() {
@@ -110,12 +118,71 @@ class PhotoViewer extends React.Component {
   }
 
   renderHeader() {
-    const { match: { params: { photo } } } = this.props;
+    const {
+      match: { params: { photo } },
+      photoViewer: { isShowingSingle },
+      toggleIsShowingSingle,
+    } = this.props;
 
     return (
-      <Col xs={12} className="text-center">
-        <h1 className="viewer-header">{photo} Photos</h1>
-      </Col>
+      <Row>
+        <Col xs={12} sm={6} className="text-center">
+          <h1 className="viewer-header">{photo} Photos</h1>
+        </Col>
+        <Col xs={12} sm={6} className="text-center">
+          <ButtonGroup>
+            <Button
+              className="toggle-button-container"
+              onClick={() => {
+                toggleIsShowingSingle(!isShowingSingle);
+              }}
+            >
+              <span className="glyphicon glyphicon-th-large font-size-25" />
+              <span className="glyphicon-class">{VIEWER.MULTIPLE}</span>
+            </Button>
+            <Button className="toggle-button-container margin-all-8">
+              <ToggleButton
+                inactiveLabel={''}
+                activeLabel={''}
+                colors={{
+                  activeThumb: {
+                    base: 'rgb(250,250,250)',
+                  },
+                  inactiveThumb: {
+                    base: 'rgb(93, 206, 224)',
+                  },
+                  active: {
+                    base: 'rgb(39, 179, 202)',
+                    hover: 'rgb(39, 179, 202)',
+                  },
+                  inactive: {
+                    base: 'rgb(65,66,68)',
+                    hover: 'rgb(95,96,98)',
+                  },
+                }}
+                thumbStyle={{
+                  width: '25px',
+                  height: '25px',
+                }}
+                thumbAnimateRange={[-10, 36]}
+                value={isShowingSingle}
+                onToggle={value => {
+                  toggleIsShowingSingle(!value);
+                }}
+              />
+            </Button>
+            <Button
+              className="toggle-button-container"
+              onClick={() => {
+                toggleIsShowingSingle(!isShowingSingle);
+              }}
+            >
+              <span className="glyphicon glyphicon-stop font-size-25" />
+              <span className="glyphicon-class">{VIEWER.SINGLES}</span>
+            </Button>
+          </ButtonGroup>
+        </Col>
+      </Row>
     );
   }
 
@@ -142,7 +209,7 @@ class PhotoViewer extends React.Component {
   }
 
   renderPhotos() {
-    const { photoViewer: { photoSet } } = this.props;
+    const { photoViewer: { photoSet, isShowingSingle } } = this.props;
 
     return photoSet.map((photo, index) => {
       return (
@@ -153,14 +220,14 @@ class PhotoViewer extends React.Component {
           sm={this.smCol()}
           xs={this.xsCol()}
         >
-          <Thumbnail src={photo} alt={photo} />
+          <Thumbnail className={isShowingSingle ? 'background-color-single-thumbnail' : ''} src={photo} alt={photo} />
         </Col>
       );
     });
   }
 
   render() {
-    const { photoViewer: { photoSet, loading }, } = this.props;
+    const { photoViewer: { photoSet, loading } } = this.props;
 
     if (loading > 0) {
       return <Loader />;
