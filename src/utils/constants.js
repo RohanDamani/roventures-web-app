@@ -6,7 +6,7 @@ export const MAIN = {
 export const VIEWER = {
     PHOTOS: 'Photos',
     VIDEOS: 'Videos',
-    ABOUT: 'About',
+    INFO: 'Info',
     SINGLES: 'Singles',
     MULTIPLE: 'Multiple',
     ALBUMS: 'Albums',
@@ -16,13 +16,13 @@ export const VIEWER = {
 export const PATH = {
     PHOTOS: '/photos',
     VIDEOS: '/videos',
-    ABOUT: '/about',
+    INFO: '/info',
     PHOTO_PARAM: '/:photo',
     VIDEO_PARAM: '/:video',
-    ABOUT_PARAM: '/:about'
+    INFO_PARAM: '/:info'
 }
 
-export const ABOUT = {
+export const INFO = {
     WEBSITE: 'rohandamani.com',
     LINK: 'http://rohandamani.com',
     P_1: 'Welcome to the channel for RoVentures. I am planning to sail around the world - my photos, videos, location, and crew requests will be updated here.',

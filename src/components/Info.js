@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {  Col, Button, Glyphicon } from 'react-bootstrap';
-import { ABOUT } from '../utils/constants';
+import { INFO } from '../utils/constants';
 import EmailCapture from './EmailCapture'
 import {authenticateDynamoDB} from "../utils/awsUtil";
 
-class About extends React.Component {
+class Info extends React.Component {
     componentWillMount() {
         // authenticate the AWS-SDK s3 bucket using AWS Cognito user pool
         this.dynamodb = authenticateDynamoDB;
@@ -15,11 +15,11 @@ class About extends React.Component {
     return (
           <div>
             <Col xs={10} xsOffset={1} className="text-container hidden-xs">
-              <p>{ABOUT.P_1}</p>
-              <p>{ABOUT.P_2}</p>
-              <p>{ABOUT.P_3}</p>
-              <p>{ABOUT.P_4}</p>
-              <p>{ABOUT.P_5}</p>
+              <p>{INFO.P_1}</p>
+              <p>{INFO.P_2}</p>
+              <p>{INFO.P_3}</p>
+              <p>{INFO.P_4}</p>
+              <p>{INFO.P_5}</p>
                 <EmailCapture dynamodb={this.dynamodb}/>
             </Col>
             <Col
@@ -27,12 +27,12 @@ class About extends React.Component {
               xsOffset={1}
               className="text-container small hidden-sm hidden-md hidden-lg"
             >
-              <p>{ABOUT.P_1}</p>
+              <p>{INFO.P_1}</p>
                 <EmailCapture dynamodb={this.dynamodb} small/>
-              <p>{ABOUT.P_2}</p>
-              <p>{ABOUT.P_3}</p>
-              <p>{ABOUT.P_4}</p>
-              <p>{ABOUT.P_5}</p>
+              <p>{INFO.P_2}</p>
+              <p>{INFO.P_3}</p>
+              <p>{INFO.P_4}</p>
+              <p>{INFO.P_5}</p>
             </Col>
             <Col md={2} mdOffset={1} className="text-left hidden-xs hidden-sm">
               <Button
@@ -47,10 +47,10 @@ class About extends React.Component {
               <Button
                 bsStyle="link"
                 bsSize="large"
-                href={ABOUT.LINK}
+                href={INFO.LINK}
                 target="_blank"
               >
-                {ABOUT.WEBSITE}
+                {INFO.WEBSITE}
               </Button>
             </Col>
             <Col
@@ -61,10 +61,10 @@ class About extends React.Component {
               <Button
                 bsStyle="link"
                 bsSize="large"
-                href={ABOUT.LINK}
+                href={INFO.LINK}
                 target="_blank"
               >
-                {ABOUT.WEBSITE}
+                {INFO.WEBSITE}
               </Button>
             </Col>
             <Col
@@ -85,8 +85,8 @@ class About extends React.Component {
   }
 }
 
-About.propTypes = {
+Info.propTypes = {
     history: PropTypes.object.isRequired,
 };
 
-export default About;
+export default Info;

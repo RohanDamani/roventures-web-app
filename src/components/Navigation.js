@@ -15,19 +15,19 @@ import videos from '../videos';
 import { VIEWER, MAIN, PATH } from '../utils/constants';
 
 class Navigation extends React.Component {
-  toggleAboutSection() {
+  toggleInfoSection() {
     const { history, location } = this.props;
-    if (location.pathname === PATH.ABOUT) {
+    if (location.pathname === PATH.INFO) {
       history.push(PATH.VIDEOS);
       return;
     }
-    history.push(PATH.ABOUT);
+    history.push(PATH.INFO);
   }
 
   renderLogo() {
     return (
       <Navbar.Header>
-        <Navbar.Brand onClick={() => this.toggleAboutSection()}>
+        <Navbar.Brand onClick={() => this.toggleInfoSection()}>
           <Col xs={12} className="hidden-xs large main-logo">
             {MAIN.ROVENTURES}
           </Col>
@@ -157,16 +157,16 @@ class Navigation extends React.Component {
     );
   }
 
-  renderAboutButton() {
+  renderInfoButton() {
     return (
-      <NavItem eventKey={1} onClick={() => this.toggleAboutSection()}>
+      <NavItem eventKey={1} onClick={() => this.toggleInfoSection()}>
         <Col xs={12} className="hidden-xs margin-bottom-8 nav-item">
           <span className="glyphicon glyphicon-question-sign" />
-          <span className="glyphicon-class about"> {VIEWER.ABOUT}</span>
+          <span className="glyphicon-class info"> {VIEWER.INFO}</span>
         </Col>
         <Col xs={12} className="hidden-sm hidden-md hidden-lg nav-item">
           <span className="glyphicon glyphicon-question-sign" />
-          <span className="glyphicon-class small"> {VIEWER.ABOUT}</span>
+          <span className="glyphicon-class small"> {VIEWER.INFO}</span>
         </Col>
       </NavItem>
     );
@@ -189,7 +189,7 @@ class Navigation extends React.Component {
             {this.renderVideoDropdown()}
             {this.renderPhotoDropdown()}
           </Nav>
-          <Nav pullRight>{this.renderAboutButton()}</Nav>
+          <Nav pullRight>{this.renderInfoButton()}</Nav>
         </Navbar.Collapse>
       </Navbar>
     );
