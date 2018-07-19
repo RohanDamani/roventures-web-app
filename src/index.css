@@ -8,6 +8,18 @@ body {
   background-color: #eee;
 }
 
+.main-logo {
+  color: #5DCEE0;
+}
+
+.nav-item {
+    color: #fff;
+  }
+
+.nav-item:hover {
+  color: #5DCEE0;
+}
+
 .margin-dropdown-nav-section {
   margin-left: 10%;
 }

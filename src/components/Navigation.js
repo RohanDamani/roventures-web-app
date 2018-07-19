@@ -28,10 +28,10 @@ class Navigation extends React.Component {
     return (
       <Navbar.Header>
         <Navbar.Brand onClick={() => this.toggleAboutSection()}>
-          <Col xs={12} className="hidden-xs large">
+          <Col xs={12} className="hidden-xs large main-logo">
             {MAIN.ROVENTURES}
           </Col>
-          <Col xs={12} className="hidden-sm hidden-md hidden-lg">
+          <Col xs={12} className="hidden-sm hidden-md hidden-lg main-logo">
             {MAIN.ROVENTURES}
           </Col>
         </Navbar.Brand>
@@ -72,11 +72,11 @@ class Navigation extends React.Component {
   renderVideoDropdownTitle() {
     return (
       <div>
-        <Col xs={12} className="hidden-xs margin-bottom-8">
+        <Col xs={12} className="hidden-xs margin-bottom-8 nav-item">
           <span className="glyphicon glyphicon-facetime-video" />
           <span className="glyphicon-class">{VIEWER.VIDEOS}</span>
         </Col>
-        <Col xs={12} className="hidden-sm hidden-md hidden-lg">
+        <Col xs={12} className="hidden-sm hidden-md hidden-lg nav-item">
           <span className="glyphicon glyphicon-facetime-video" />
           <span className="glyphicon-class small">{VIEWER.VIDEOS}</span>
         </Col>
@@ -131,11 +131,11 @@ class Navigation extends React.Component {
   renderPhotoDropdownTitle() {
     return (
       <div>
-        <Col xs={12} className="hidden-xs margin-bottom-8">
+        <Col xs={12} className="hidden-xs margin-bottom-8 nav-item">
           <span className="glyphicon glyphicon-camera" />
           <span className="glyphicon-class">{VIEWER.PHOTOS}</span>
         </Col>
-        <Col xs={12} className="hidden-sm hidden-md hidden-lg">
+        <Col xs={12} className="hidden-sm hidden-md hidden-lg nav-item">
           <span className="glyphicon glyphicon-camera" />
           <span className="glyphicon-class small">{VIEWER.PHOTOS}</span>
         </Col>
@@ -160,11 +160,11 @@ class Navigation extends React.Component {
   renderAboutButton() {
     return (
       <NavItem eventKey={1} onClick={() => this.toggleAboutSection()}>
-        <Col xs={12} className="hidden-xs margin-bottom-8">
+        <Col xs={12} className="hidden-xs margin-bottom-8 nav-item">
           <span className="glyphicon glyphicon-question-sign" />
           <span className="glyphicon-class about"> {VIEWER.ABOUT}</span>
         </Col>
-        <Col xs={12} className="hidden-sm hidden-md hidden-lg">
+        <Col xs={12} className="hidden-sm hidden-md hidden-lg nav-item">
           <span className="glyphicon glyphicon-question-sign" />
           <span className="glyphicon-class small"> {VIEWER.ABOUT}</span>
         </Col>
