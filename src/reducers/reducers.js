@@ -7,6 +7,7 @@ const initialStatePhotoViewer = {
   isShowingSingle: false,
   didScroll: false,
   showRefreshButton: false,
+  loading: 0,
 };
 
 const photoViewer = (state = initialStatePhotoViewer, action) => {
@@ -19,6 +20,11 @@ const photoViewer = (state = initialStatePhotoViewer, action) => {
       return { ...state, didScroll: action.didScroll };
     case 'TOGGLE_SHOW_REFRESH_BUTTON':
       return { ...state, showRefreshButton: action.showRefreshButton };
+    case 'ADD_LOADING':
+      return { ...state, loading: state.loading + 1 };
+    case 'REMOVE_LOADING':
+      return { ...state, loading: state.loading - 1 };
+
     default:
       return state;
   }
@@ -81,23 +87,11 @@ const albumList = (state = [], action) => {
   }
 };
 
-const loading = (state = 0, action) => {
-  switch (action.type) {
-    case 'ADD_LOADING':
-      return state + 1;
-    case 'REMOVE_LOADING':
-      return state - 1;
-    default:
-      return state;
-  }
-};
-
 const reducers = combineReducers({
   photoViewer,
   emailState,
   media,
   albumList,
-  loading,
   form: formReducer,
 });
 

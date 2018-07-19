@@ -160,7 +160,7 @@ class PhotoViewer extends React.Component {
   }
 
   render() {
-    const { photoViewer: { photoSet }, loading } = this.props;
+    const { photoViewer: { photoSet, loading }, } = this.props;
 
     if (loading > 0) {
       return <Loader />;
@@ -194,7 +194,6 @@ export default withRouter(
     state => ({
       media: state.media,
       photoViewer: state.photoViewer,
-      loading: state.loading,
     }),
     {
       fetchAlbum,
