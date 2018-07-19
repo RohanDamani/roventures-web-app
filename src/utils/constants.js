@@ -11,9 +11,16 @@ export const VIEWER = {
     MULTIPLE: 'Multiple',
     ALBUMS: 'Albums',
     SCROLL: 'scroll',
-    NO_PHOTOS: 'No photos here, check out the',
-    NO_VIDEOS: 'No videos here, check out the'
 };
+
+export const PATH = {
+    PHOTOS: '/photos',
+    VIDEOS: '/videos',
+    ABOUT: '/about',
+    PHOTO_PARAM: '/:photo',
+    VIDEO_PARAM: '/:video',
+    ABOUT_PARAM: '/:about'
+}
 
 export const ABOUT = {
     WEBSITE: 'rohandamani.com',

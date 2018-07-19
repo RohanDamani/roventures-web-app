@@ -12,12 +12,12 @@ AWS.config.update({
     }),
 });
 
-export const authenticateBucket = new AWS.S3({
+export const authenticatePhotoBucket = new AWS.S3({
     region: bucketRegion,
     apiVersion: '2006-03-01',
     params: { Bucket: bucketName },
 });
 
-export const dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
+export const authenticateDynamoDB = new AWS.DynamoDB({apiVersion: '2012-08-10'});
 
 export const getBucketUrl = `http://d1qnv9b0izl3m2.cloudfront.net/`;

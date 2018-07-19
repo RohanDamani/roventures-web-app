@@ -2,12 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Button, Thumbnail, Glyphicon } from 'react-bootstrap';
 import { VIEWER } from '../utils/constants';
-import { authenticateBucket } from '../utils/awsUtil';
+import { authenticatePhotoBucket } from '../utils/awsUtil';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   fetchAlbum,
-  fetchAlbumList,
   updatePhotoSet,
   toggleIsShowingSingle,
   toggleDidScroll,
@@ -19,8 +18,8 @@ import Loader from './Loader';
 
 class PhotoViewer extends React.Component {
   componentWillMount() {
-    // authenticate the AWS-SDK s3 bucket and dynamodb object using AWS Cognito user pool
-    this.bucket = authenticateBucket;
+    // authenticate the AWS-SDK s3 bucket using AWS Cognito user pool
+    this.bucket = authenticatePhotoBucket;
   }
 
   componentDidMount() {
@@ -177,12 +176,16 @@ class PhotoViewer extends React.Component {
 }
 
 PhotoViewer.propTypes = {
-  photos: PropTypes.array,
   photoViewer: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
-  toggleShowType: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired,
   media: PropTypes.object.isRequired,
-  onScroll: PropTypes.func.isRequired,
+  fetchAlbum: PropTypes.func.isRequired,
+  updatePhotoSet: PropTypes.func.isRequired,
+  toggleIsShowingSingle: PropTypes.func.isRequired,
+  toggleDidScroll: PropTypes.func.isRequired,
+  toggleShowRefreshButton: PropTypes.func.isRequired,
+  addLoading: PropTypes.func.isRequired,
+  removeLoading: PropTypes.func.isRequired,
 };
 
 export default withRouter(
@@ -193,7 +196,6 @@ export default withRouter(
       loading: state.loading,
     }),
     {
-      fetchAlbumList,
       fetchAlbum,
       updatePhotoSet,
       toggleIsShowingSingle,

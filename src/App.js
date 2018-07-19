@@ -9,6 +9,7 @@ import Main from './containers/Main';
 import VideoViewer from './components/VideoViewer';
 import PhotoViewer from './components/PhotoViewer';
 import About from './components/About';
+import { PATH } from './utils/constants'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
@@ -22,10 +23,10 @@ const App = () => {
       <Provider store={store}>
         <Main>
           <Switch>
-            <Route path="/videos/:video?" component={VideoViewer} />
-            <Route path="/photos/:photo?" component={PhotoViewer} />
-            <Route path="/about" component={About}/>
-            <Redirect from="/" to="/videos" />
+            <Route path={`${PATH.VIDEOS}${PATH.VIDEO_PARAM}?`} component={VideoViewer} />
+            <Route path={`${PATH.PHOTOS}${PATH.PHOTO_PARAM}?`} component={PhotoViewer} />
+            <Route path={PATH.ABOUT} component={About}/>
+            <Redirect from="/" to={PATH.VIDEOS} />
           </Switch>{' '}
         </Main>
       </Provider>

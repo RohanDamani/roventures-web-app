@@ -10,19 +10,18 @@ import {
   NavDropdown,
   MenuItem,
 } from 'react-bootstrap';
-import {
-  fetchAlbumList,
-} from '../actions/actions';
+import { fetchAlbumList } from '../actions/actions';
 import videos from '../videos';
-import { VIEWER, MAIN } from '../utils/constants';
+import { VIEWER, MAIN, PATH } from '../utils/constants';
 
 class Navigation extends React.Component {
   toggleAboutSection() {
-    if (this.props.location.pathname === '/about') {
-      this.props.history.push('/videos');
+    const { history, location } = this.props;
+    if (location.pathname === PATH.ABOUT) {
+      history.push(PATH.VIDEOS);
       return;
     }
-    this.props.history.push('/about');
+    history.push(PATH.ABOUT);
   }
 
   renderLogo() {
@@ -42,8 +41,9 @@ class Navigation extends React.Component {
   }
 
   renderVideoDropdownList() {
-    const match = matchPath(this.props.history.location.pathname, {
-      path: '/videos/:video',
+    const { history } = this.props;
+    const match = matchPath(history.location.pathname, {
+      path: `${PATH.VIDEOS}${PATH.VIDEO_PARAM}`,
     });
 
     return videos.map((video, i) => {
@@ -60,7 +60,7 @@ class Navigation extends React.Component {
           key={i}
           eventKey={`1.${i}`}
           onClick={() => {
-            this.props.history.push(`/videos/${video.label}`);
+            history.push(`${PATH.VIDEOS}/${video.label}`);
           }}
         >
           {video.label}
@@ -100,16 +100,26 @@ class Navigation extends React.Component {
   renderPhotoDropdownList() {
     const { albumList, history } = this.props;
 
+    const match = matchPath(history.location.pathname, {
+      path: `${PATH.PHOTOS}${PATH.PHOTO_PARAM}`,
+    });
+
     return albumList.map((album, i) => {
-      // if (album === showInViewer.album) {
-      //   return null;
-      // }
+      if (
+        match &&
+        match.params &&
+        match.params.photo &&
+        album === match.params.photo
+      ) {
+        return null;
+      }
+
       return (
         <MenuItem
           key={i}
           eventKey={`1.${i}`}
           onClick={() => {
-            history.push(`/photos/${album}`);
+            history.push(`${PATH.PHOTOS}/${album}`);
           }}
         >
           {album}
@@ -167,7 +177,11 @@ class Navigation extends React.Component {
       <Navbar inverse collapseOnSelect staticTop>
         {this.renderLogo()}
         <Navbar.Collapse>
-          <Nav className={'hidden-sm hidden-md hidden-lg margin-dropdown-nav-section'}>
+          <Nav
+            className={
+              'hidden-sm hidden-md hidden-lg margin-dropdown-nav-section'
+            }
+          >
             {this.renderVideoDropdown()}
             {this.renderPhotoDropdown()}
           </Nav>
@@ -184,10 +198,9 @@ class Navigation extends React.Component {
 
 Navigation.propTypes = {
   albumList: PropTypes.array.isRequired,
-  showInViewer: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
   fetchAlbumList: PropTypes.func.isRequired,
-  toggleShowType: PropTypes.func.isRequired,
-  toggleShowCount: PropTypes.func.isRequired,
 };
 
 export default withRouter(
