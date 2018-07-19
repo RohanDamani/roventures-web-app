@@ -1,23 +1,25 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import { VIEWER, MAIN } from '../utils/constants';
 import { getBucketUrl } from '../utils/awsUtil';
 // import Get from 'lodash/get';
 
-const initialStateShowInViewer = {
-  type: VIEWER.VIDEOS,
-  count: VIEWER.MULTIPLE,
-  album: MAIN.INITIAL_ALBUM,
+const initialStatePhotoViewer = {
+    photoSet: [],
+    isShowingSingle: false,
+    didScroll: false,
+    showRefreshButton: false,
 };
 
-const showInViewer = (state = initialStateShowInViewer, action) => {
+const photoViewer = (state = initialStatePhotoViewer, action) => {
   switch (action.type) {
-    case 'TOGGLE_SHOW_TYPE':
-      return { ...state, type: action.newType };
-    case 'TOGGLE_SHOW_COUNT':
-      return { ...state, count: action.count };
-    case 'TOGGLE_SHOW_ALBUM':
-      return { ...state, album: action.album };
+    case 'UPDATE_PHOTO_SET':
+        return { ...state, photoSet: action.photoSet };
+    case 'TOGGLE_IS_SHOWING_SINGLE':
+      return { ...state, isShowingSingle: action.isShowingSingle };
+    case 'TOGGLE_DID_SCROLL':
+      return { ...state, didScroll: action.didScroll };
+    case 'TOGGLE_SHOW_REFRESH_BUTTON':
+      return { ...state, showRefreshButton: action.showRefreshButton };
     default:
       return state;
   }
@@ -105,7 +107,7 @@ const albumList = (state = [], action) => {
 //   }
 
 const reducers = combineReducers({
-  showInViewer,
+  photoViewer,
   emailState,
   media,
   albumList,

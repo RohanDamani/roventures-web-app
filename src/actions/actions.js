@@ -1,22 +1,21 @@
-export const storeBucket = (bucket) => ({
-    type: 'STORE_BUCKET',
-    bucket
+export const updatePhotoSet = (photoSet) => ({
+    type: 'UPDATE_PHOTO_SET',
+    photoSet
 });
 
-
-export const toggleShowType = (type) => ({
-    type: 'TOGGLE_SHOW_TYPE',
-    newType: type
+export const toggleIsShowingSingle = (isShowingSingle) => ({
+    type: 'TOGGLE_IS_SHOWING_SINGLE',
+    isShowingSingle
 });
 
-export const toggleShowCount = (count) => ({
-    type: 'TOGGLE_SHOW_COUNT',
-    count
+export const toggleDidScroll = (didScroll) => ({
+    type: 'TOGGLE_DID_SCROLL',
+    didScroll
 });
 
-export const toggleShowAlbum = (album) => ({
-    type: 'TOGGLE_SHOW_ALBUM',
-    album
+export const toggleShowRefreshButton = (showRefreshButton) => ({
+    type: 'TOGGLE_SHOW_REFRESH_BUTTON',
+    showRefreshButton
 });
 
 export const toggleEmailLoading = (loading) => ({

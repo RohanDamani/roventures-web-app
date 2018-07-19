@@ -21,14 +21,14 @@ class Main extends React.Component {
   render() {
     const { children } = this.props;
     return (
-      <div>
+      <React.Fragment>
         <Navigation />
         <Grid fluid>
           <Row>{children}</Row>
             {/*<Loader />*/}
         </Grid>
         <ScrollTop />
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -12,9 +12,6 @@ import {
 } from 'react-bootstrap';
 import {
   fetchAlbumList,
-  toggleShowType,
-  toggleShowCount,
-  toggleShowAlbum,
 } from '../actions/actions';
 import videos from '../videos';
 import { VIEWER, MAIN } from '../utils/constants';
@@ -198,9 +195,6 @@ export default withRouter(
     state => ({ albumList: state.albumList, showInViewer: state.showInViewer }),
     {
       fetchAlbumList,
-      toggleShowType,
-      toggleShowCount,
-      toggleShowAlbum,
     },
   )(Navigation),
 );

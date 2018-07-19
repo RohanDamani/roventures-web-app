@@ -40,7 +40,6 @@ class VideoViewer extends React.Component {
 
   render() {
     return (
-      <div>
         <Col xs={12}>
           <ReactPlayer
             className="react-player"
@@ -57,7 +56,6 @@ class VideoViewer extends React.Component {
             controls
           />
         </Col>
-      </div>
     );
   }
 }

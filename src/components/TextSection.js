@@ -4,12 +4,6 @@ import { Col, Button, Glyphicon } from 'react-bootstrap';
 import { ABOUT, VIEWER } from '../utils/constants';
 
 class TextSection extends React.Component {
-  isShowingPhotos() {
-    const { showInViewer } = this.props;
-
-    return showInViewer.type === VIEWER.PHOTOS;
-  }
-
   oppositeOfShowingType() {
     if (this.isShowingPhotos()) {
       return VIEWER.VIDEOS;
