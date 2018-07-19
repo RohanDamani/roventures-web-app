@@ -27,7 +27,7 @@ const App = () => {
             <Route path={`${PATH.PHOTOS}${PATH.PHOTO_PARAM}?`} component={PhotoViewer} />
             <Route path={PATH.ABOUT} component={About}/>
             <Redirect from="/" to={PATH.VIDEOS} />
-          </Switch>{' '}
+          </Switch>
         </Main>
       </Provider>
     </BrowserRouter>
