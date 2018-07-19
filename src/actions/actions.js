@@ -1,93 +1,80 @@
-export const updatePhotoSet = (photoSet) => ({
-    type: 'UPDATE_PHOTO_SET',
-    photoSet
+export const updatePhotoSet = photoSet => ({
+  type: 'UPDATE_PHOTO_SET',
+  photoSet,
 });
 
-export const toggleIsShowingSingle = (isShowingSingle) => ({
-    type: 'TOGGLE_IS_SHOWING_SINGLE',
-    isShowingSingle
+export const toggleIsShowingSingle = isShowingSingle => ({
+  type: 'TOGGLE_IS_SHOWING_SINGLE',
+  isShowingSingle,
 });
 
-export const toggleDidScroll = (didScroll) => ({
-    type: 'TOGGLE_DID_SCROLL',
-    didScroll
+export const toggleDidScroll = didScroll => ({
+  type: 'TOGGLE_DID_SCROLL',
+  didScroll,
 });
 
-export const toggleShowRefreshButton = (showRefreshButton) => ({
-    type: 'TOGGLE_SHOW_REFRESH_BUTTON',
-    showRefreshButton
+export const toggleShowRefreshButton = showRefreshButton => ({
+  type: 'TOGGLE_SHOW_REFRESH_BUTTON',
+  showRefreshButton,
 });
 
-export const toggleEmailLoading = (loading) => ({
-    type: 'TOGGLE_EMAIL_LOADING',
-    loading
+export const toggleEmailLoading = loading => ({
+  type: 'TOGGLE_EMAIL_LOADING',
+  loading,
 });
 
-export const toggleEmailError = (error) => ({
-    type: 'TOGGLE_EMAIL_ERROR',
-    error
+export const toggleEmailError = error => ({
+  type: 'TOGGLE_EMAIL_ERROR',
+  error,
 });
 
-export const toggleEmailSuccess = (success) => ({
-    type: 'TOGGLE_EMAIL_SUCCESS',
-    success
+export const toggleEmailSuccess = success => ({
+  type: 'TOGGLE_EMAIL_SUCCESS',
+  success,
 });
 
-const receiveAlbumList = (albumList) => ({
-    type: 'RECEIVE_ALBUM_LIST',
-    albumList
+export const addLoading = () => ({
+  type: 'ADD_LOADING',
 });
 
-const receiveAlbumData = (data) => ({
-    type: 'RECEIVE_ALBUM_DATA',
-    payload: data
+export const removeLoading = () => ({
+  type: 'REMOVE_LOADING',
+});
+
+const receiveAlbumList = albumList => ({
+  type: 'RECEIVE_ALBUM_LIST',
+  albumList,
+});
+
+const receiveAlbumData = data => ({
+  type: 'RECEIVE_ALBUM_DATA',
+  payload: data,
 });
 
 export const fetchAlbum = (bucket, album) => {
-    return dispatch => {
-        // AWS-sdk for s3 object
-        bucket.listObjects({ Prefix: album }, (err, data) => {
-            if (err) {
-                return alert('There was an error viewing your album: ' + err.message);
-            }
-            dispatch(receiveAlbumData(data))
-        });
-    }
+  return dispatch => {
+    // AWS-sdk for s3 object
+    bucket.listObjects({ Prefix: album }, (err, data) => {
+      if (err) {
+        return alert('There was an error viewing your album: ' + err.message);
+      }
+      dispatch(receiveAlbumData(data));
+    });
+  };
 };
 
-export const fetchAlbumList = (bucket) => {
-    return dispatch => {
-        // AWS-sdk for s3 object
-        bucket.listObjects({ Delimiter: '/' }, (err, data) => {
-            if (err) {
-                return alert('There was an error listing your albums: ' + err.message);
-            }
-            const albumList = data.CommonPrefixes.map(commonPrefix => {
-                const prefix = commonPrefix.Prefix;
-                return decodeURIComponent(prefix.replace('/', ''));
-            })
-            dispatch(receiveAlbumList(albumList));
-        })
-    }
+export const fetchAlbumList = bucket => {
+  return dispatch => {
+    // AWS-sdk for s3 object
+    bucket.listObjects({ Delimiter: '/' }, (err, data) => {
+      if (err) {
+        return alert('There was an error listing your albums: ' + err.message);
+      }
+      const albumList = data.CommonPrefixes.map(commonPrefix => {
+        const prefix = commonPrefix.Prefix;
+        return decodeURIComponent(prefix.replace('/', ''));
+      });
+      dispatch(receiveAlbumList(albumList));
+    });
+  };
 };
-
-
-// const receiveAttorneyLookup = (json) => ({
-//     type: 'RECEIVE_ATTORNEY_LOOKUP',
-//     json
-// })
-//
-// export const attorneyLookup = (barNum) => {
-//     const url = envChecker(buildURL({route: "efsp",  params: {q: `efsp/attorneylist&bar_number=${barNum}`}}), `http://localhost/public-portal/?q=efsp/attorneylist&bar_number=${barNum}`)
-//     return dispatch => {
-//         fetch(url, {
-//             method: 'GET',
-//             credentials: envChecker("same-origin", "include"),
-//         })
-//             .then((response) => response.json())
-//             .then((json) => {dispatch(receiveAttorneyLookup(json.success.data))})
-//     }
-// }
-
-
-

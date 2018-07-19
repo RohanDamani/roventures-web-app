@@ -1,19 +1,18 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import { getBucketUrl } from '../utils/awsUtil';
-// import Get from 'lodash/get';
 
 const initialStatePhotoViewer = {
-    photoSet: [],
-    isShowingSingle: false,
-    didScroll: false,
-    showRefreshButton: false,
+  photoSet: [],
+  isShowingSingle: false,
+  didScroll: false,
+  showRefreshButton: false,
 };
 
 const photoViewer = (state = initialStatePhotoViewer, action) => {
   switch (action.type) {
     case 'UPDATE_PHOTO_SET':
-        return { ...state, photoSet: action.photoSet };
+      return { ...state, photoSet: action.photoSet };
     case 'TOGGLE_IS_SHOWING_SINGLE':
       return { ...state, isShowingSingle: action.isShowingSingle };
     case 'TOGGLE_DID_SCROLL':
@@ -52,29 +51,21 @@ const media = (
     case 'RECEIVE_ALBUM_DATA':
       const bucketUrl = getBucketUrl;
       const photoUrlArray = [];
-      const videoUrlArray = [];
 
       // split up the photos and videos
       action.payload.Contents.forEach(photo => {
         if (photo.Size > 0) {
           const photoKey = photo.Key;
-          if (photoKey.includes('MP4') || photoKey.includes('m4v')) {
-            videoUrlArray.push(bucketUrl + photoKey);
-          } else {
-            photoUrlArray.push(bucketUrl + photoKey);
-          }
+          photoUrlArray.push(bucketUrl + photoKey);
         }
       });
 
       // for faster loading
       const photoSubArray = photoUrlArray.slice(0, 20);
-      const videoSubArray = videoUrlArray.slice(0, 4);
       return {
         ...state,
         photos: photoUrlArray,
-        videos: videoUrlArray,
         photoSubSet: photoSubArray,
-        videoSubSet: videoSubArray,
       };
     default:
       return state;
@@ -90,27 +81,23 @@ const albumList = (state = [], action) => {
   }
 };
 
-// const isLoading = (state = {}, action) => {
-//     const oldValue = state[action.propertyName] || 0;
-//     switch (action.type) {
-//       case 'ADD_LOADING':
-//         return {...state, [action.propertyName]: oldValue + 1}
-//       case 'REMOVE_LOADING':
-//         return {...state, [action.propertyName]: oldValue - 1}
-//       default:
-//         return state
-//     }
-//   }
-
-//   export const isLoadingSelector = (state, propertyName) => {
-//     return Get(state, ['isLoading', propertyName], 0);
-//   }
+const loading = (state = 0, action) => {
+  switch (action.type) {
+    case 'ADD_LOADING':
+      return state + 1;
+    case 'REMOVE_LOADING':
+      return state - 1;
+    default:
+      return state;
+  }
+};
 
 const reducers = combineReducers({
   photoViewer,
   emailState,
   media,
   albumList,
+  loading,
   form: formReducer,
 });
 

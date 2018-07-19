@@ -7,7 +7,6 @@ import Navigation from '../components/Navigation';
 import ScrollTop from '../components/ScrollTop';
 import { authenticateBucket } from '../utils/awsUtil';
 import { fetchAlbumList } from '../actions/actions';
-import Loader from '../components/Loader';
 
 
 class Main extends React.Component {
@@ -25,7 +24,6 @@ class Main extends React.Component {
         <Navigation />
         <Grid fluid>
           <Row>{children}</Row>
-            {/*<Loader />*/}
         </Grid>
         <ScrollTop />
       </React.Fragment>

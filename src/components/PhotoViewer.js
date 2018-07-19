@@ -12,7 +12,10 @@ import {
   toggleIsShowingSingle,
   toggleDidScroll,
   toggleShowRefreshButton,
+  addLoading,
+  removeLoading,
 } from '../actions/actions';
+import Loader from './Loader';
 
 class PhotoViewer extends React.Component {
   componentWillMount() {
@@ -23,7 +26,6 @@ class PhotoViewer extends React.Component {
   componentDidMount() {
     this.loadAlbum();
     this.initializeScrollListener();
-    this.initializeRefreshButtonThrottle();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -35,17 +37,19 @@ class PhotoViewer extends React.Component {
   }
 
   watchForUrlChanges(nextProps) {
-    const { fetchAlbum, match: { params: { photo }} } = this.props;
+    const { fetchAlbum, match: { params: { photo } }, addLoading } = this.props;
     const urlParam = photo;
     const nextUrlParam = nextProps.match.params.photo;
 
     if (urlParam !== nextUrlParam && nextUrlParam !== VIEWER.ABOUT) {
+      addLoading();
       fetchAlbum(this.bucket, nextUrlParam);
     }
   }
 
   loadAlbum() {
-    const { fetchAlbum, match } = this.props;
+    const { fetchAlbum, match, addLoading } = this.props;
+    addLoading();
     fetchAlbum(this.bucket, match.params.photo);
   }
 
@@ -64,7 +68,7 @@ class PhotoViewer extends React.Component {
     if (window.pageYOffset > 100 && !didScroll) this.onScroll();
   };
 
-  onScroll() {
+  onScroll = () => {
     const {
       media,
       updatePhotoSet,
@@ -74,7 +78,7 @@ class PhotoViewer extends React.Component {
     updatePhotoSet(media.photos);
     toggleShowRefreshButton(false);
     toggleDidScroll(true);
-  }
+  };
 
   addSubSetsToState(nextProps) {
     const {
@@ -82,9 +86,11 @@ class PhotoViewer extends React.Component {
       updatePhotoSet,
       toggleShowRefreshButton,
       toggleDidScroll,
+      removeLoading,
     } = this.props;
     if (media !== nextProps.media) {
       updatePhotoSet(nextProps.media.photoSubSet);
+      removeLoading();
       toggleShowRefreshButton(false);
       toggleDidScroll(false);
       this.initializeRefreshButtonThrottle();
@@ -104,11 +110,11 @@ class PhotoViewer extends React.Component {
   }
 
   renderHeader() {
-    const { match: { params: { photo }} } = this.props;
+    const { match: { params: { photo } } } = this.props;
 
     return (
       <Col xs={12} className="text-center">
-        {/*<h1 className="viewer-header">{photo} Photos</h1>*/}
+        <h1 className="viewer-header">{photo} Photos</h1>
       </Col>
     );
   }
@@ -122,17 +128,12 @@ class PhotoViewer extends React.Component {
   }
 
   renderThrottledRefreshButton() {
-    const { photoViewer: { isShowingRefreshButton} } = this.props;
+    const { photoViewer: { showRefreshButton } } = this.props;
 
-    if (this.isShowingSubset() && isShowingRefreshButton) {
+    if (this.isShowingSubset() && showRefreshButton) {
       return (
         <Col lg={this.lgCol()} sm={this.smCol()} xs={this.xsCol()}>
-          <Button
-            bsStyle={'link'}
-            bsSize={'lg'}
-            onClick={this.onScroll}
-            block
-          >
+          <Button bsStyle={'link'} bsSize={'lg'} onClick={this.onScroll} block>
             <Glyphicon glyph="refresh" />
           </Button>
         </Col>
@@ -159,7 +160,11 @@ class PhotoViewer extends React.Component {
   }
 
   render() {
-    const { photoViewer: { photoSet } } = this.props;
+    const { photoViewer: { photoSet }, loading } = this.props;
+
+    if (loading > 0) {
+      return <Loader />;
+    }
 
     return (
       <React.Fragment>
@@ -185,6 +190,7 @@ export default withRouter(
     state => ({
       media: state.media,
       photoViewer: state.photoViewer,
+      loading: state.loading,
     }),
     {
       fetchAlbumList,
@@ -193,6 +199,8 @@ export default withRouter(
       toggleIsShowingSingle,
       toggleDidScroll,
       toggleShowRefreshButton,
+      addLoading,
+      removeLoading,
     },
   )(PhotoViewer),
 );
