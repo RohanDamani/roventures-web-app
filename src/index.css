@@ -103,6 +103,10 @@ a.dropdown-toggle {
   margin: 8px;
 }
 
+.padding-top-0 {
+  padding-top: 0 !important;
+}
+
 .font-size-25 {
   font-size: 25px;
 }
@@ -187,3 +191,8 @@ a.dropdown-toggle {
   box-shadow: none;
   background-color: #eee !important;
 }
+
+.submit-button-color {
+  border: #5DCEE0 solid;
+}
+

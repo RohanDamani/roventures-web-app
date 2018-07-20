@@ -88,7 +88,6 @@ class PhotoViewer extends React.Component {
       toggleShowRefreshButton,
       toggleDidScroll,
     } = this.props;
-    window.removeEventListener(VIEWER.SCROLL, this.handleScroll);
     updatePhotoSet(media.photos);
     toggleShowRefreshButton(false);
     toggleDidScroll(true);
@@ -115,6 +114,10 @@ class PhotoViewer extends React.Component {
     return this.props.photoViewer.isShowingSingle ? 12 : 3;
   }
 
+  mdCol() {
+      return this.props.photoViewer.isShowingSingle ? 12 : 4;
+  }
+
   smCol() {
     return this.props.photoViewer.isShowingSingle ? 12 : 6;
   }
@@ -132,10 +135,10 @@ class PhotoViewer extends React.Component {
 
     return (
       <Row>
-        <Col xs={12} sm={6} className="text-center">
+        <Col xs={12} sm={6}  md={5} mdOffset={1}  lg={4} lgOffset={2} className="text-center">
           <h1 className="viewer-header">{photo} Photos</h1>
         </Col>
-        <Col xs={12} sm={6} className="text-center">
+        <Col xs={12} sm={6} md={5} lg={4} className="text-center">
           <ButtonGroup>
             <Button
               className="toggle-button-container"
@@ -223,6 +226,7 @@ class PhotoViewer extends React.Component {
           key={index}
           className="no-padding"
           lg={this.lgCol()}
+          md={this.mdCol()}
           sm={this.smCol()}
           xs={this.xsCol()}
         >

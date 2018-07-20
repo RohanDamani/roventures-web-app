@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Row, Form, ControlLabel, Col, Button, Alert } from 'react-bootstrap';
 import { reduxForm, Field } from 'redux-form';
 import { BeatLoader } from 'react-spinners';
-import { ABOUT } from '../utils/constants';
+import { authenticateDynamoDB } from '../utils/awsUtil';
 import renderInput from '../forms/renderInput';
 import buildValidate from '../forms/validate';
 import {
@@ -15,10 +15,14 @@ import {
 } from '../actions/actions';
 
 class EmailCapture extends React.Component {
+    componentWillMount() {
+        // authenticate the AWS-SDK s3 bucket using AWS Cognito user pool
+        this.dynamodb = authenticateDynamoDB;
+    }
+
   formSubmit(email) {
     const {
       reset,
-      dynamodb,
       toggleEmailLoading,
       toggleEmailError,
       toggleEmailSuccess,
@@ -38,7 +42,7 @@ class EmailCapture extends React.Component {
       TableName: 'mailing_list',
     };
 
-    dynamodb.putItem(params, function(err) {
+    this.dynamodb.putItem(params, function(err) {
       if (err) {
         toggleEmailError(true);
         toggleEmailLoading(false);
@@ -66,11 +70,11 @@ class EmailCapture extends React.Component {
             xs={12}
             sm={4}
             componentClass={ControlLabel}
-            className={small ? '' : 'text-right'}
+            className={small ? 'padding-top-0' : 'text-right padding-top-0'}
           >
             Join the crew!
           </Col>
-          <Col xs={12} sm={4}>
+          <Col xs={12} sm={4} className='margin-bottom-10'>
             <Field
               name={'email'}
               placeholder="email@example.com"
@@ -80,12 +84,12 @@ class EmailCapture extends React.Component {
           </Col>
           <Col xs={12} sm={4}>
             {!emailState.loading && (
-              <Button type="submit" block={small}>
-                Submit
+              <Button type="submit" className={small ? 'submit-button-color' : 'pull-left submit-button-color'} block={small}>
+                Embark!
               </Button>
             )}
             {emailState.loading && (
-              <Button type="submit" block={small}>
+              <Button type="submit" className={small ? '' : 'pull-left'} block={small}>
                 <BeatLoader loading={true} disabled={true} color={'#5DCEE0'} />
               </Button>
             )}
@@ -121,7 +125,6 @@ class EmailCapture extends React.Component {
 }
 
 EmailCapture.propTypes = {
-  dynamodb: PropTypes.object.isRequired,
   emailState: PropTypes.object.isRequired,
   toggleEmailLoading: PropTypes.func.isRequired,
   toggleEmailError: PropTypes.func.isRequired,
