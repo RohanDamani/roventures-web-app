@@ -44,6 +44,11 @@ class PhotoViewer extends React.Component {
     this.watchForUrlChanges(nextProps);
   }
 
+  componentWillUnmount() {
+    window.removeEventListener(VIEWER.SCROLL, this.handleScroll);
+  };
+
+
   watchForUrlChanges(nextProps) {
     const { fetchAlbum, match: { params: { photo } }, addLoading } = this.props;
     const urlParam = photo;
@@ -68,7 +73,7 @@ class PhotoViewer extends React.Component {
   }
 
   initializeScrollListener() {
-    window.addEventListener(VIEWER.SCROLL, this.handleScroll);
+      window.addEventListener(VIEWER.SCROLL, this.handleScroll);
   }
 
   handleScroll = () => {
@@ -83,6 +88,7 @@ class PhotoViewer extends React.Component {
       toggleShowRefreshButton,
       toggleDidScroll,
     } = this.props;
+    window.removeEventListener(VIEWER.SCROLL, this.handleScroll);
     updatePhotoSet(media.photos);
     toggleShowRefreshButton(false);
     toggleDidScroll(true);

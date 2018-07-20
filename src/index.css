@@ -29,13 +29,22 @@ body {
   left: 45%;
 }
 
+#info-tabs {
+  background-color: white;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
 .text-container {
   min-height: 65vh;
   padding: 30px 45px;
   margin-top: 10px;
   font-size: 18px;
+  line-height: 2;
+  text-align: center;
   background-color: #fff;
-  border-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .text-container p {
@@ -96,6 +105,10 @@ a.dropdown-toggle {
 
 .font-size-25 {
   font-size: 25px;
+}
+
+.font-size-20 {
+  font-size: 20px;
 }
 
 .warn-input {
