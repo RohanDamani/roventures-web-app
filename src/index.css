@@ -37,7 +37,7 @@ body {
 
 .text-container {
   min-height: 65vh;
-  padding: 30px 45px;
+  padding: 30px 15px;
   margin-top: 10px;
   font-size: 18px;
   line-height: 2;
@@ -52,7 +52,6 @@ body {
 }
 
 .text-container.small {
-  text-align: center;
   padding: 30px 15px;
 }
 

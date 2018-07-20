@@ -10,11 +10,11 @@ class TabSection extends React.Component {
     return (
       <div>
         <Tabs id="info-tabs" className="font-size-20" defaultActiveKey={2}>
-          <Tab eventKey={1} className="text-container" title="About">
+          <Tab eventKey={1} className={small ? "text-container small" : "text-container"} title="About">
             <p>{INFO.P_4}</p>
             <p>{INFO.P_4_1}</p>
           </Tab>
-          <Tab eventKey={2} className="text-container" title="Join">
+          <Tab eventKey={2} className={small ? "text-container small" : "text-container"} title="Join">
             {!small && (
               <Fragment>
                 <p>{INFO.P_1}</p>
@@ -30,7 +30,7 @@ class TabSection extends React.Component {
               </Fragment>
             )}
           </Tab>
-          <Tab eventKey={3} className="text-container" title="Technology">
+          <Tab eventKey={3} className={small ? "text-container small" : "text-container"} title="Technology">
             <p>{INFO.P_2}</p>
             <p>{INFO.P_3}</p>
           </Tab>
