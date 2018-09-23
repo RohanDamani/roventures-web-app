@@ -160,11 +160,11 @@ class Navigation extends React.Component {
   renderInfoButton() {
     return (
       <NavItem eventKey={1} onClick={() => this.toggleInfoSection()}>
-        <Col xs={12} className="hidden-xs margin-bottom-10 nav-item">
+        <Col xs={12} className="hidden-xs margin-bottom-10 nav-item padding-left-0">
           <span className="glyphicon glyphicon-question-sign font-size-25" />
           <span className="glyphicon-class info"> {VIEWER.INFO}</span>
         </Col>
-        <Col xs={12} className="hidden-sm hidden-md hidden-lg nav-item">
+        <Col xs={12} className="hidden-sm hidden-md hidden-lg nav-item padding-left-0">
           <span className="glyphicon glyphicon-question-sign" />
           <span className="glyphicon-class small"> {VIEWER.INFO}</span>
         </Col>
@@ -175,18 +175,14 @@ class Navigation extends React.Component {
   render() {
     return (
       <Navbar inverse collapseOnSelect staticTop>
-        <Navbar.Collapse>
-          <Nav className="hidden-sm hidden-md hidden-lg margin-dropdown-nav-section">
-            {this.renderVideoDropdown()}
-            {this.renderPhotoDropdown()}
-          </Nav>
-          <Nav className="hidden-xs center-dropdown-nav-section">
-            {this.renderVideoDropdown()}
-            {this.renderPhotoDropdown()}
-          </Nav>
-          <Nav pullRight>{this.renderInfoButton()}</Nav>
-        </Navbar.Collapse>
         {this.renderLogo()}
+        <Navbar.Collapse>
+          <Nav pullRight>
+              {this.renderVideoDropdown()}
+              {this.renderPhotoDropdown()}
+              {this.renderInfoButton()}
+              </Nav>
+        </Navbar.Collapse>
       </Navbar>
     );
   }

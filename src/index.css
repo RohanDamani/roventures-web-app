@@ -20,15 +20,6 @@ body {
   color: #5DCEE0;
 }
 
-.margin-dropdown-nav-section {
-  margin-left: 10%;
-}
-
-.center-dropdown-nav-section {
-  position: absolute;
-  left: 45%;
-}
-
 #info-tabs {
   background-color: white;
   border-top-right-radius: 10px;
@@ -69,6 +60,12 @@ a.dropdown-toggle {
   margin: 0 0 18px -15px;
 }
 
+@media screen and (min-width: 768px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+
 .scroll-up-button {
   height: 55px;
   width: 55px;
@@ -104,6 +101,10 @@ a.dropdown-toggle {
 
 .padding-top-0 {
   padding-top: 0 !important;
+}
+
+.padding-left-0 {
+  padding-left: 0 !important;
 }
 
 .font-size-25 {
