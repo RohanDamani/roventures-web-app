@@ -46,7 +46,7 @@ class VideoViewer extends React.Component {
             url={this.videos.url}
             width="100%"
             height="100%"
-            playing={false}
+            playing={true}
             file={{ forceHLS: true }}
             config={{
               file: {

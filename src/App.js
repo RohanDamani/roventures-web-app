@@ -26,7 +26,7 @@ const App = () => {
             <Route path={`${PATH.VIDEOS}${PATH.VIDEO_PARAM}?`} component={VideoViewer} />
             <Route path={`${PATH.PHOTOS}${PATH.PHOTO_PARAM}?`} component={PhotoViewer} />
             <Route path={PATH.INFO} component={Info}/>
-            <Redirect from="/" to={PATH.VIDEOS} />
+            <Redirect from="/" exact to={PATH.VIDEOS} />
           </Switch>
         </Main>
       </Provider>

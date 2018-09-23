@@ -175,22 +175,18 @@ class Navigation extends React.Component {
   render() {
     return (
       <Navbar inverse collapseOnSelect staticTop>
-        {this.renderLogo()}
         <Navbar.Collapse>
-          <Nav
-            className={
-              'hidden-sm hidden-md hidden-lg margin-dropdown-nav-section'
-            }
-          >
+          <Nav className="hidden-sm hidden-md hidden-lg margin-dropdown-nav-section">
             {this.renderVideoDropdown()}
             {this.renderPhotoDropdown()}
           </Nav>
-          <Nav className={'hidden-xs center-dropdown-nav-section'}>
+          <Nav className="hidden-xs center-dropdown-nav-section">
             {this.renderVideoDropdown()}
             {this.renderPhotoDropdown()}
           </Nav>
           <Nav pullRight>{this.renderInfoButton()}</Nav>
         </Navbar.Collapse>
+        {this.renderLogo()}
       </Navbar>
     );
   }

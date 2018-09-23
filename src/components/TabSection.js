@@ -12,6 +12,7 @@ class TabSection extends React.Component {
         <Tabs id="info-tabs" className="font-size-20" defaultActiveKey={2}>
           <Tab eventKey={1} className={small ? "text-container small" : "text-container"} title="About">
             <p>{INFO.P_4}</p>
+            <p>{INFO.P_6}</p>
             <p>{INFO.P_4_1}</p>
           </Tab>
           <Tab eventKey={2} className={small ? "text-container small" : "text-container"} title="Join">
