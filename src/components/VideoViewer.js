@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
 import videos from '../videos';
 
@@ -40,22 +40,26 @@ class VideoViewer extends React.Component {
 
   render() {
     return (
-        <Col xs={12}>
-          <ReactPlayer
-            className="react-player"
-            url={this.videos.url}
-            width="100%"
-            height="100%"
-            playing={true}
-            file={{ forceHLS: true }}
-            config={{
-              file: {
-                attributes: { poster: this.videos.image },
-              },
-            }}
-            controls
-          />
-        </Col>
+      <React.Fragment>
+        <Row>
+          <Col xs={12}>
+            <ReactPlayer
+              className="react-player"
+              url={this.videos.url}
+              width="100%"
+              height="100%"
+              playing={true}
+              file={{ forceHLS: true }}
+              config={{
+                file: {
+                  attributes: { poster: this.videos.image },
+                },
+              }}
+              controls
+            />
+          </Col>
+        </Row>
+      </React.Fragment>
     );
   }
 }

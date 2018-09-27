@@ -23,7 +23,7 @@ class Main extends React.Component {
       <React.Fragment>
         <Navigation />
         <Grid fluid>
-          <Row>{children}</Row>
+          {children}
         </Grid>
         <ScrollTop />
       </React.Fragment>

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Button, Glyphicon } from 'react-bootstrap';
+import { Row, Col, Button, Glyphicon } from 'react-bootstrap';
 import { INFO } from '../utils/constants';
 import TabSection from './TabSection';
 
@@ -8,7 +8,7 @@ class Info extends React.Component {
   render() {
     const { history } = this.props;
     return (
-      <div>
+      <Row>
         <Col xs={10} xsOffset={1} className="hidden-xs">
           <TabSection />
         </Col>
@@ -54,7 +54,7 @@ class Info extends React.Component {
             <Glyphicon glyph="arrow-left" /> Back
           </Button>
         </Col>
-      </div>
+      </Row>
     );
   }
 }
