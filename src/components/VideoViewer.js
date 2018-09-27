@@ -3,15 +3,19 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
 import videos from '../videos';
+import window from 'window-or-global';
 
 class VideoViewer extends React.Component {
   componentWillMount() {
+    // set this.videos equal to to video matching the url parameter
     const { video } = this.props.match.params;
     const videoObj = videos.find(item => {
       if (item.label === video) {
         return item;
       }
+      return null
     });
+    window.scrollTo(0, 0);
     if (videoObj) {
       this.videos = videoObj;
     } else {
@@ -20,6 +24,7 @@ class VideoViewer extends React.Component {
   }
 
   componentWillUpdate(nextProps) {
+    // set this.videos equal to to video matching the url parameter
     const { video } = this.props.match.params;
     const nextVideo = nextProps.match.params.video;
 
@@ -28,8 +33,9 @@ class VideoViewer extends React.Component {
         if (item.label === nextVideo) {
           return item;
         }
+        return null
       });
-
+      window.scrollTo(0, 0);
       if (videoObj) {
         this.videos = videoObj;
       } else {
@@ -44,7 +50,6 @@ class VideoViewer extends React.Component {
         <Row>
           <Col xs={12}>
             <ReactPlayer
-              className="react-player"
               url={this.videos.url}
               width="100%"
               height="100%"

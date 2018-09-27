@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withRouter from 'react-router-dom/es/withRouter';
 import connect from 'react-redux/es/connect/connect';
-import { Grid, Row } from 'react-bootstrap';
+import { Grid } from 'react-bootstrap';
+import { PATH } from '../utils/constants';
 import Navigation from '../components/Navigation';
 import ScrollTop from '../components/ScrollTop';
 import { authenticatePhotoBucket } from '../utils/awsUtil';
 import { fetchAlbumList } from '../actions/actions';
-
+import ViewMore from '../components/ViewMore';
 
 class Main extends React.Component {
   componentWillMount() {
@@ -17,14 +18,20 @@ class Main extends React.Component {
     this.props.fetchAlbumList(this.bucket);
   }
 
+  isInfoSection() {
+    if (this.props.location.pathname === PATH.INFO) {
+      return true;
+    }
+    return false;
+  }
+
   render() {
-    const { children } = this.props;
+    const { children, history } = this.props;
     return (
       <React.Fragment>
         <Navigation />
-        <Grid fluid>
-          {children}
-        </Grid>
+        <Grid fluid>{children}</Grid>
+        {!this.isInfoSection() && <ViewMore history={history} />}
         <ScrollTop />
       </React.Fragment>
     );

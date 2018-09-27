@@ -1,0 +1,18 @@
+[
+  {
+    "label": "Agra",
+    "image": "https://s3-us-west-1.amazonaws.com/rohan-pictures/Agra/IMG_4383.jpg"
+  },
+  {
+    "label": "Amritsar",
+    "image": "https://s3-us-west-1.amazonaws.com/rohan-pictures/Amritsar/IMG_4814.jpg"
+  },
+  {
+    "label": "Bhutan",
+    "image": "https://s3-us-west-1.amazonaws.com/rohan-pictures/Bhutan/IMG_5797.jpg"
+  },
+  {
+    "label": "Jaipur",
+    "image": "https://s3-us-west-1.amazonaws.com/rohan-pictures/Jaipur/IMG_3151.jpg"
+  }
+]

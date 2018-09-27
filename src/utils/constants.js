@@ -20,7 +20,13 @@ export const PATH = {
     PHOTO_PARAM: '/:photo',
     VIDEO_PARAM: '/:video',
     INFO_PARAM: '/:info'
-}
+};
+
+export const VIEW_MORE = {
+    VIDEO_TITLE: 'Check Out These Videos',
+    PHOTO_TITLE: 'Or These Photos',
+};
+
 
 export const INFO = {
     WEBSITE: 'rohandamani.com',

@@ -34,6 +34,7 @@ class PhotoViewer extends React.Component {
   componentDidMount() {
     this.loadAlbum();
     this.initializeScrollListener();
+    window.scrollTo(0, 0);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,8 +47,7 @@ class PhotoViewer extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener(VIEWER.SCROLL, this.handleScroll);
-  };
-
+  }
 
   watchForUrlChanges(nextProps) {
     const { fetchAlbum, match: { params: { photo } }, addLoading } = this.props;
@@ -57,6 +57,7 @@ class PhotoViewer extends React.Component {
     if (urlParam !== nextUrlParam && nextUrlParam !== VIEWER.ABOUT) {
       addLoading();
       fetchAlbum(this.bucket, nextUrlParam);
+      window.scrollTo(0, 0);
     }
   }
 
@@ -73,7 +74,7 @@ class PhotoViewer extends React.Component {
   }
 
   initializeScrollListener() {
-      window.addEventListener(VIEWER.SCROLL, this.handleScroll);
+    window.addEventListener(VIEWER.SCROLL, this.handleScroll);
   }
 
   handleScroll = () => {
@@ -115,7 +116,7 @@ class PhotoViewer extends React.Component {
   }
 
   mdCol() {
-      return this.props.photoViewer.isShowingSingle ? 12 : 4;
+    return this.props.photoViewer.isShowingSingle ? 12 : 4;
   }
 
   smCol() {
@@ -135,7 +136,15 @@ class PhotoViewer extends React.Component {
 
     return (
       <Row>
-        <Col xs={12} sm={6}  md={5} mdOffset={1}  lg={4} lgOffset={2} className="text-center">
+        <Col
+          xs={12}
+          sm={6}
+          md={5}
+          mdOffset={1}
+          lg={4}
+          lgOffset={2}
+          className="text-center"
+        >
           <h1 className="viewer-header">{photo} Photos</h1>
         </Col>
         <Col xs={12} sm={6} md={5} lg={4} className="text-center">
@@ -230,7 +239,13 @@ class PhotoViewer extends React.Component {
           sm={this.smCol()}
           xs={this.xsCol()}
         >
-          <Thumbnail className={isShowingSingle ? 'background-color-single-thumbnail' : ''} src={photo} alt={photo} />
+          <Thumbnail
+            className={
+              isShowingSingle ? 'background-color-single-thumbnail' : ''
+            }
+            src={photo}
+            alt={photo}
+          />
         </Col>
       );
     });
