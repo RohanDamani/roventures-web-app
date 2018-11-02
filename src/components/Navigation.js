@@ -9,6 +9,7 @@ import {
   NavItem,
   NavDropdown,
   MenuItem,
+  Image,
 } from 'react-bootstrap';
 import { fetchAlbumList } from '../actions/actions';
 import videos from '../videos';
@@ -29,10 +30,20 @@ class Navigation extends React.Component {
       <Navbar.Header>
         <Navbar.Brand onClick={() => this.toggleInfoSection()}>
           <Col xs={12} className="hidden-xs large main-logo">
-            {MAIN.ROVENTURES}
+            <Image
+              src={require('../roventures_logo.svg')}
+              alt="openfit"
+              width="300px"
+              height="50px"
+            />
           </Col>
           <Col xs={12} className="hidden-sm hidden-md hidden-lg main-logo">
-            {MAIN.ROVENTURES}
+            <Image
+              src={require('../roventures_logo.svg')}
+              alt="openfit"
+              width="200px"
+              height="25px"
+            />
           </Col>
         </Navbar.Brand>
         <Navbar.Toggle />
@@ -160,11 +171,17 @@ class Navigation extends React.Component {
   renderInfoButton() {
     return (
       <NavItem eventKey={1} onClick={() => this.toggleInfoSection()}>
-        <Col xs={12} className="hidden-xs margin-bottom-10 nav-item padding-left-0">
+        <Col
+          xs={12}
+          className="hidden-xs margin-bottom-10 nav-item padding-left-0"
+        >
           <span className="glyphicon glyphicon-question-sign font-size-25" />
           <span className="glyphicon-class info"> {VIEWER.INFO}</span>
         </Col>
-        <Col xs={12} className="hidden-sm hidden-md hidden-lg nav-item padding-left-0">
+        <Col
+          xs={12}
+          className="hidden-sm hidden-md hidden-lg nav-item padding-left-0"
+        >
           <span className="glyphicon glyphicon-question-sign" />
           <span className="glyphicon-class small"> {VIEWER.INFO}</span>
         </Col>
@@ -178,10 +195,10 @@ class Navigation extends React.Component {
         {this.renderLogo()}
         <Navbar.Collapse>
           <Nav pullRight>
-              {this.renderVideoDropdown()}
-              {this.renderPhotoDropdown()}
-              {this.renderInfoButton()}
-              </Nav>
+            {this.renderVideoDropdown()}
+            {this.renderPhotoDropdown()}
+            {this.renderInfoButton()}
+          </Nav>
         </Navbar.Collapse>
       </Navbar>
     );

@@ -7,6 +7,7 @@ import window from 'window-or-global';
 
 class VideoViewer extends React.Component {
   componentWillMount() {
+    window.scrollTo(0, 0);
     // set this.videos equal to to video matching the url parameter
     const { video } = this.props.match.params;
     const videoObj = videos.find(item => {
@@ -15,7 +16,6 @@ class VideoViewer extends React.Component {
       }
       return null
     });
-    window.scrollTo(0, 0);
     if (videoObj) {
       this.videos = videoObj;
     } else {
@@ -54,6 +54,7 @@ class VideoViewer extends React.Component {
               width="100%"
               height="100%"
               playing={true}
+              loop={!this.videos.image}
               file={{ forceHLS: true }}
               config={{
                 file: {
