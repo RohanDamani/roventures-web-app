@@ -3,19 +3,20 @@
     "label": "Welcome",
     "url": "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Welcome/welcome.m3u8",
     "image": ""
-  },  {
+  },
+  {
     "label": "Seychelles",
     "url": "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Seychelles/seychelles-hls-2M.m3u8",
-    "image": "https://s3-us-west-1.amazonaws.com/rohan-pictures/Seychelles/G0530431.jpg"
+    "image": "http://d1qnv9b0izl3m2.cloudfront.net/Seychelles/G0530431.jpg"
   },
   {
     "label": "Dubai",
     "url": "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Dubai/Dubai.m3u8",
-    "image": "https://s3-us-west-1.amazonaws.com/rohan-pictures/Dubai/IMG_2018.jpg"
+    "image": "http://d1qnv9b0izl3m2.cloudfront.net/Dubai/IMG_2009.jpg"
   },
   {
     "label": "BVI Boat Tour",
     "url": "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/BVIBoatTour/BVIBoatTour.m3u8",
-    "image": "https://s3-us-west-1.amazonaws.com/rohan-pictures/Thumbnails/BVIThumb.jpg"
+    "image": "https://s3.amazonaws.com/roventures-thumbnails/Thumbnails/BVIThumb.jpg"
   }
 ]

@@ -24,7 +24,7 @@ export const PATH = {
 
 export const VIEW_MORE = {
     VIDEO_TITLE: 'More Videos:',
-    PHOTO_TITLE: 'Photos:',
+    PHOTO_TITLE: 'More Photos:',
 };
 
 
