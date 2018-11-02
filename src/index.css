@@ -210,7 +210,7 @@ a.dropdown-toggle {
   margin: 0 auto 5px auto;
 }
 
-.video-player {
+.video-player video {
   background-color: #000;
 }
 .video-info-panel {

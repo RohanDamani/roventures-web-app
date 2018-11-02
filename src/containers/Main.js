@@ -18,20 +18,13 @@ class Main extends React.Component {
     this.props.fetchAlbumList(this.bucket);
   }
 
-  isInfoSection() {
-    if (this.props.location.pathname === PATH.INFO) {
-      return true;
-    }
-    return false;
-  }
-
   render() {
     const { children, history } = this.props;
     return (
       <React.Fragment>
         <Navigation />
         <Grid fluid>{children}</Grid>
-        {!this.isInfoSection() && <ViewMore history={history} />}
+        {this.props.location.pathname !== PATH.INFO && <ViewMore history={history} />}
         <ScrollTop />
       </React.Fragment>
     );
