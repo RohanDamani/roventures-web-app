@@ -15,18 +15,18 @@ class ViewMore extends React.Component {
           </Col>
         </Row>
         <Row className="text-center view-more-media-row">
-          <Col md={2}> </Col>
+          <Col md={1}> </Col>
           {videos.map((video, i) => {
             if (video.image) {
               return (
-                <Col key={i} md={3} mdOffset={1} xs={12}>
+                <Col key={i} md={3} xs={12}>
                   <Thumbnail
                     onClick={() =>
                       history.push(PATH.VIDEOS + '/' + video.label)
                     }
                   >
                     <Button className="view-more-button" block>
-                      Watch {video.label}
+                      Watch {video.label.toUpperCase()}
                     </Button>
                     <Image
                       key={i}

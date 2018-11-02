@@ -12,5 +12,10 @@
     "label": "Dubai",
     "url": "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Dubai/Dubai.m3u8",
     "image": "https://s3-us-west-1.amazonaws.com/rohan-pictures/Dubai/IMG_2018.jpg"
+  },
+  {
+    "label": "BVI Boat Tour",
+    "url": "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/BVIBoatTour/BVIBoatTour.m3u8",
+    "image": "https://s3-us-west-1.amazonaws.com/rohan-pictures/Thumbnails/BVIThumb.jpg"
   }
 ]
