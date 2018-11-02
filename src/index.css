@@ -9,15 +9,15 @@ body {
 }
 
 .main-logo {
-  color: #5DCEE0;
+  color: #5dcee0;
 }
 
 .nav-item {
-    color: #fff;
-  }
+  color: #fff;
+}
 
 .nav-item:hover {
-  color: #5DCEE0;
+  color: #5dcee0;
 }
 
 #info-tabs {
@@ -51,7 +51,9 @@ body {
   line-height: 40px;
 }
 
-.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:focus,
+.navbar-inverse .navbar-nav > .open > a:hover {
   color: #fff;
   background-color: #222;
 }
@@ -144,7 +146,7 @@ a.dropdown-toggle {
   display: block;
   text-align: center;
   word-wrap: break-word;
-  font-size: 12px
+  font-size: 12px;
 }
 
 .glyphicon-class.small {
@@ -186,14 +188,22 @@ a.dropdown-toggle {
   /*margin: ;*/
 }
 
-.toggle-button-container:focus, .toggle-button-container:active, .toggle-button-container:hover {
+.toggle-button-container:focus,
+.toggle-button-container:active,
+.toggle-button-container:hover {
   outline: none !important;
   box-shadow: none;
   background-color: #eee !important;
 }
 
 .submit-button-color {
-  border: #5DCEE0 solid;
+  border: #5dcee0 solid;
+}
+
+.view-more-button {
+  border: #5dcee0 solid;
+  background-color: #eee;
+  margin: 0 auto 5px auto;
 }
 
 .view-more-container {
@@ -203,7 +213,7 @@ a.dropdown-toggle {
 }
 
 .view-more-title-row {
-  min-height: 150px;
+  min-height: 100px;
   padding-top: 30px;
   font-size: 40px;
 }
@@ -220,4 +230,3 @@ a.dropdown-toggle {
     min-height: 80px;
   }
 }
-

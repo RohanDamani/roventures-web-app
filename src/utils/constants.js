@@ -23,8 +23,8 @@ export const PATH = {
 };
 
 export const VIEW_MORE = {
-    VIDEO_TITLE: 'Check Out These Videos',
-    PHOTO_TITLE: 'Or These Photos',
+    VIDEO_TITLE: 'More Videos:',
+    PHOTO_TITLE: 'Photos:',
 };
 
 

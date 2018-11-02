@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Button, Thumbnail } from 'react-bootstrap';
+import { Row, Col, Button, Thumbnail, Image } from 'react-bootstrap';
 import videos from '../videos';
 import thumbnails from '../thumbnails';
 import { PATH, VIEW_MORE } from '../utils/constants';
@@ -17,26 +17,29 @@ class ViewMore extends React.Component {
         <Row className="text-center view-more-media-row">
           <Col md={2}> </Col>
           {videos.map((video, i) => {
-            return (
-              <Col key={i} md={3} mdOffset={1} xs={12}>
-                <Thumbnail
-                  key={i}
-                  src={video.image}
-                  className="margin-all-5"
-                  onClick={() => history.push(PATH.VIDEOS + '/' + video.label)}
-                >
-                  <Button
-                    className="submit-button-color"
+            if (video.image) {
+              return (
+                <Col key={i} md={3} mdOffset={1} xs={12}>
+                  <Thumbnail
                     onClick={() =>
                       history.push(PATH.VIDEOS + '/' + video.label)
                     }
-                    block
                   >
-                    {video.label}
-                  </Button>
-                </Thumbnail>
-              </Col>
-            );
+                    <Button className="view-more-button" block>
+                      Watch {video.label}
+                    </Button>
+                    <Image
+                      key={i}
+                      responsive
+                      src={video.image}
+                      onClick={() =>
+                        history.push(PATH.VIDEOS + '/' + video.label)
+                      }
+                    />
+                  </Thumbnail>
+                </Col>
+              );
+            }
           })}
         </Row>
         <Row className="text-center view-more-title-row">
@@ -50,22 +53,21 @@ class ViewMore extends React.Component {
               return (
                 <Col key={i} md={3} xs={12}>
                   <Thumbnail
-                    key={i}
-                    src={thumb.image}
-                    className="margin-all-5"
                     onClick={() =>
                       history.push(PATH.PHOTOS + '/' + thumb.label)
                     }
                   >
-                    <Button
-                      className="submit-button-color"
+                    <Button className="view-more-button" block>
+                      View {thumb.label.toUpperCase()}
+                    </Button>
+                    <Image
+                      key={i}
+                      responsive
+                      src={thumb.image}
                       onClick={() =>
                         history.push(PATH.PHOTOS + '/' + thumb.label)
                       }
-                      block
-                    >
-                      {thumb.label}
-                    </Button>
+                    />
                   </Thumbnail>
                 </Col>
               );
