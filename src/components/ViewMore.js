@@ -31,6 +31,7 @@ class ViewMore extends React.Component {
                     <Image
                       key={i}
                       responsive
+                      className="margin-auto"
                       src={video.image}
                       onClick={() =>
                         history.push(PATH.VIDEOS + '/' + video.label)
@@ -63,6 +64,7 @@ class ViewMore extends React.Component {
                     <Image
                       key={i}
                       responsive
+                      className="margin-auto"
                       src={thumb.image}
                       onClick={() =>
                         history.push(PATH.PHOTOS + '/' + thumb.label)
