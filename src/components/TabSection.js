@@ -18,7 +18,6 @@ class TabSection extends React.Component {
           <Tab eventKey={2} className={small ? "text-container small" : "text-container"} title="Join">
             {!small && (
               <Fragment>
-                <p>{INFO.P_1}</p>
                 <p>{INFO.P_5}</p>
                 <EmailCapture />
               </Fragment>
