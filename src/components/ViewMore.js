@@ -18,7 +18,7 @@ class ViewMore extends React.Component {
           <Row className="text-center view-more-media-row">
             <Col md={1}> </Col>
             {videos.map((video, i) => {
-              if (video.image) {
+              if (!history.location.pathname.includes(video.label)) {
                 return (
                   <Col key={i} md={3} xs={12}>
                     <Thumbnail

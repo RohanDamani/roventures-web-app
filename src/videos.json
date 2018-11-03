@@ -2,7 +2,8 @@
   {
     "label": "Welcome",
     "url": "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Welcome/welcome.m3u8",
-    "image": ""
+    "image": "https://s3.amazonaws.com/roventures-thumbnails/Thumbnails/roventures_logo.jpg",
+    "welcome": true
   },
   {
     "label": "Seychelles",

@@ -19,7 +19,8 @@ export const PATH = {
     INFO: '/info',
     PHOTO_PARAM: '/:photo',
     VIDEO_PARAM: '/:video',
-    INFO_PARAM: '/:info'
+    INFO_PARAM: '/:info',
+    WELCOME_PARAM: '/welcome'
 };
 
 export const VIEW_MORE = {
