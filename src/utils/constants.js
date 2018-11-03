@@ -20,7 +20,7 @@ export const PATH = {
     PHOTO_PARAM: '/:photo',
     VIDEO_PARAM: '/:video',
     INFO_PARAM: '/:info',
-    WELCOME_PARAM: '/welcome'
+    WELCOME_PARAM: '/Welcome'
 };
 
 export const VIEW_MORE = {
