@@ -8,6 +8,7 @@ import thunkMiddleware from 'redux-thunk';
 import Main from './containers/Main';
 import VideoViewer from './components/VideoViewer';
 import PhotoViewer from './components/PhotoViewer';
+import PrivacyPolicy from './components/PrivacyPolicy';
 import Info from './components/Info';
 import { PATH } from './utils/constants';
 
@@ -38,6 +39,7 @@ const App = () => {
               component={PhotoViewer}
             />
             <Route path={PATH.INFO} component={Info} />
+            <Route path={PATH.PRIVACY_POLICY} component={PrivacyPolicy} />
             <Redirect from="/*" to={PATH.VIDEOS + PATH.WELCOME_PARAM} />
           </Switch>
         </Main>

@@ -24,7 +24,10 @@ class Main extends React.Component {
       <React.Fragment>
         <Navigation />
         <Grid fluid>{children}</Grid>
-        {this.props.location.pathname !== PATH.INFO && <ViewMore history={history} />}
+        {this.props.location.pathname !== PATH.INFO &&
+          this.props.location.pathname !== PATH.PRIVACY_POLICY && (
+            <ViewMore history={history} />
+          )}
         <ScrollTop />
       </React.Fragment>
     );

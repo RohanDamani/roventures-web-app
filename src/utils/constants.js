@@ -20,7 +20,8 @@ export const PATH = {
     PHOTO_PARAM: '/:photo',
     VIDEO_PARAM: '/:video',
     INFO_PARAM: '/:info',
-    WELCOME_PARAM: '/Welcome'
+    WELCOME_PARAM: '/Welcome',
+    PRIVACY_POLICY: '/privacy-policy'
 };
 
 export const VIEW_MORE = {
