@@ -23,7 +23,7 @@ class Main extends React.Component {
     return (
       <React.Fragment>
         <Navigation />
-        <Grid fluid>{children}</Grid>
+        <Grid className="padding-right-0 padding-left-0" fluid>{children}</Grid>
         {this.props.location.pathname !== PATH.INFO &&
           this.props.location.pathname !== PATH.PRIVACY_POLICY && (
             <ViewMore history={history} />

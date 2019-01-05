@@ -13,7 +13,7 @@ import {
 } from 'react-bootstrap';
 import { fetchAlbumList } from '../actions/actions';
 import videos from '../videos';
-import { VIEWER, MAIN, PATH } from '../utils/constants';
+import { VIEWER, PATH } from '../utils/constants';
 
 class Navigation extends React.Component {
   toggleInfoSection() {
@@ -27,7 +27,7 @@ class Navigation extends React.Component {
 
   renderLogo() {
     return (
-      <Navbar.Header>
+      <Navbar.Header className-="margin-bottom-0">
         <Navbar.Brand onClick={() => this.toggleInfoSection()}>
           <Col xs={12} className="hidden-xs large main-logo">
             <Image

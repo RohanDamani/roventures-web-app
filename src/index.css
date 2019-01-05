@@ -12,6 +12,10 @@ body {
   color: #5dcee0;
 }
 
+.navbar {
+  margin-bottom: 0;
+}
+
 .nav-item {
   color: #fff;
 }
@@ -117,6 +121,10 @@ a.dropdown-toggle {
   padding-left: 0 !important;
 }
 
+.padding-right-0 {
+  padding-right: 0 !important;
+}
+
 .font-size-25 {
   font-size: 25px;
 }
@@ -213,18 +221,13 @@ a.dropdown-toggle {
 .video-player video {
   background-color: #000;
 }
-.video-info-panel {
-  background-color: white;
-  margin: 20px;
-  border-radius: 5px;
-  padding: 10px;
-  font-size: 30px;
-}
 
-.view-more-container {
+.video-info-panel {
+  height: 120px;
   background-color: white;
-  margin: 20px;
-  border-radius: 5px;
+  font-size: 30px;
+  margin-top: -5px;
+  padding-top: 30px;
 }
 
 .view-more-title-row {

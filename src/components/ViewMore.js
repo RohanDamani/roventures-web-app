@@ -9,7 +9,6 @@ class ViewMore extends React.Component {
     const { history } = this.props;
     return (
       <React.Fragment>
-        <div className="view-more-container">
           <Row className="text-center view-more-title-row">
             <Col md={8} mdOffset={2} xs={12}>
               {VIEW_MORE.VIDEO_TITLE}
@@ -44,8 +43,6 @@ class ViewMore extends React.Component {
               }
             })}
           </Row>
-        </div>
-        <div className="view-more-container">
           <Row className="text-center view-more-title-row">
             <Col md={8} mdOffset={2} xs={12}>
               {VIEW_MORE.PHOTO_TITLE}
@@ -77,7 +74,6 @@ class ViewMore extends React.Component {
               );
             })}
           </Row>
-        </div>
       </React.Fragment>
     );
   }
