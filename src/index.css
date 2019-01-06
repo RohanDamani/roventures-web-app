@@ -80,6 +80,9 @@ a.dropdown-toggle {
   border-radius: 30px;
   background-color: rgba(150, 150, 150, 0.4);
   padding: 10px;
+  position: fixed;
+  right: 10%;
+  bottom: 5%;
 }
 
 .scroll-up-icon {

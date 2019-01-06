@@ -87,11 +87,21 @@ const albumList = (state = [], action) => {
   }
 };
 
+const showScrollTop = (state = false, action) => {
+  switch (action.type) {
+    case 'UPDATE_SHOW_SCROLL_TOP':
+      return action.showScrollTop;
+    default:
+      return state;
+  }
+};
+
 const reducers = combineReducers({
   photoViewer,
   emailState,
   media,
   albumList,
+  showScrollTop,
   form: formReducer,
 });
 

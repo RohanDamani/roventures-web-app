@@ -37,6 +37,11 @@ export const addLoading = () => ({
   type: 'ADD_LOADING',
 });
 
+export const updateShowScrollTop = (showScrollTop) => ({
+    type: 'UPDATE_SHOW_SCROLL_TOP',
+    showScrollTop
+});
+
 export const removeLoading = () => ({
   type: 'REMOVE_LOADING',
 });
