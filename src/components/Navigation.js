@@ -27,7 +27,7 @@ class Navigation extends React.Component {
 
   renderLogo() {
     return (
-      <Navbar.Header className-="margin-bottom-0">
+      <Navbar.Header className="margin-bottom-0">
         <Navbar.Brand onClick={() => this.toggleInfoSection()}>
           <Col xs={12} className="hidden-xs large main-logo">
             <Image

@@ -9,71 +9,51 @@ class ViewMore extends React.Component {
     const { history } = this.props;
     return (
       <React.Fragment>
-          <Row className="text-center view-more-title-row">
-            <Col md={8} mdOffset={2} xs={12}>
-              {VIEW_MORE.VIDEO_TITLE}
-            </Col>
-          </Row>
-          <Row className="text-center view-more-media-row">
-              {!history.location.pathname.includes('photo') && <Col md={1}> </Col>}
-            {videos.map((video, i) => {
-              if (!history.location.pathname.includes(video.label)) {
-                return (
-                  <Col key={i} md={3} xs={12}>
-                    <Thumbnail
-                      onClick={() =>
-                        history.push(PATH.VIDEOS + '/' + video.label)
-                      }
-                    >
-                      <Button className="view-more-button" block>
-                        Watch {video.label.toUpperCase()}
-                      </Button>
-                      <Image
-                        key={i}
-                        responsive
-                        className="margin-auto"
-                        src={video.image}
-                        onClick={() =>
-                          history.push(PATH.VIDEOS + '/' + video.label)
-                        }
-                      />
-                    </Thumbnail>
-                  </Col>
-                );
-              }
-            })}
-          </Row>
-          <Row className="text-center view-more-title-row">
-            <Col md={8} mdOffset={2} xs={12}>
-              {VIEW_MORE.PHOTO_TITLE}
-            </Col>
-          </Row>
-          <Row className="text-center view-more-media-row">
-            {thumbnails.map((thumb, i) => {
+        <Row className="text-center view-more-title-row">
+          <Col md={8} mdOffset={2} xs={12}>
+            {VIEW_MORE.VIDEO_TITLE}
+          </Col>
+        </Row>
+        <Row className="text-center view-more-media-row">
+          {!history.location.pathname.includes('photo') && <Col md={1}> </Col>}
+          {videos.map((video, i) => {
+            if (!history.location.pathname.includes(video.label)) {
               return (
                 <Col key={i} md={3} xs={12}>
                   <Thumbnail
+                    src={video.image}
+                    className="view-more-thumbnail"
                     onClick={() =>
-                      history.push(PATH.PHOTOS + '/' + thumb.label)
+                      history.push(PATH.VIDEOS + '/' + video.label)
                     }
                   >
-                    <Button className="view-more-button" block>
-                      View {thumb.label.toUpperCase()}
-                    </Button>
-                    <Image
-                      key={i}
-                      responsive
-                      className="margin-auto"
-                      src={thumb.image}
-                      onClick={() =>
-                        history.push(PATH.PHOTOS + '/' + thumb.label)
-                      }
-                    />
+                    {video.label.toUpperCase()}
                   </Thumbnail>
                 </Col>
               );
-            })}
-          </Row>
+            }
+          })}
+        </Row>
+        <Row className="text-center view-more-title-row photos">
+          <Col md={8} mdOffset={2} xs={12}>
+            {VIEW_MORE.PHOTO_TITLE}
+          </Col>
+        </Row>
+        <Row className="text-center view-more-media-row photos">
+          {thumbnails.map((thumb, i) => {
+            return (
+              <Col key={i} md={3} xs={12}>
+                <Thumbnail
+                  src={thumb.image}
+                  className="view-more-thumbnail"
+                  onClick={() => history.push(PATH.PHOTOS + '/' + thumb.label)}
+                >
+                  {thumb.label.toUpperCase()}
+                </Thumbnail>
+              </Col>
+            );
+          })}
+        </Row>
       </React.Fragment>
     );
   }
