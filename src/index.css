@@ -268,6 +268,8 @@ a.dropdown-toggle {
   min-height: 120px;
   padding-top: 30px;
   padding-bottom: 30px;
+  margin-left: 0;
+  margin-right: 0;
   font-size: 40px;
   font-weight: bold;
   border-top: 1px solid black;
@@ -289,6 +291,8 @@ a.dropdown-toggle {
 .view-more-media-row {
   min-height: 350px;
   padding-bottom: 40px;
+  margin-left: 0;
+  margin-right: 0;
   background-color: #ccc;
 }
 
