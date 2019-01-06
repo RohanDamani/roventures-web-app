@@ -135,7 +135,7 @@ class PhotoViewer extends React.Component {
     } = this.props;
 
     return (
-      <Row>
+      <Row className="margin-top-20">
         <Col
           xs={12}
           sm={6}
@@ -145,7 +145,7 @@ class PhotoViewer extends React.Component {
           lgOffset={2}
           className="text-center"
         >
-          <h1 className="viewer-header">{photo} Photos</h1>
+          <h1 className="viewer-header">{photo} Photo Album</h1>
         </Col>
         <Col xs={12} sm={6} md={5} lg={4} className="text-center">
           <ButtonGroup>

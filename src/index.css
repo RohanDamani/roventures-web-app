@@ -93,6 +93,10 @@ a.dropdown-toggle {
   margin-top: 40px;
 }
 
+.margin-top-20 {
+  margin-top: 20px;
+}
+
 .margin-bottom-20 {
   margin-bottom: 20px;
 }
@@ -144,7 +148,7 @@ a.dropdown-toggle {
 .navbar .glyphicon {
   position: relative;
   top: 1px;
-  left: 7px;
+  left: 10px;
   display: inline-block;
   font-family: 'Glyphicons Halflings';
   font-style: normal;
@@ -158,7 +162,7 @@ a.dropdown-toggle {
   display: block;
   text-align: center;
   word-wrap: break-word;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .glyphicon-class.small {
@@ -175,6 +179,8 @@ a.dropdown-toggle {
 
 .viewer-header {
   margin-top: 0;
+  font-weight: bold;
+  color: #222;
 }
 
 .thumbnail {
@@ -225,7 +231,8 @@ a.dropdown-toggle {
 .video-info-panel {
   height: 120px;
   background-color: white;
-  font-size: 30px;
+  font-size: 38px;
+  font-weight: bold;
   margin-top: -5px;
   padding-top: 30px;
 }
@@ -236,32 +243,34 @@ a.dropdown-toggle {
   font-size: 40px;
   font-weight: bold;
   border-top: 1px solid black;
+  background-color: #ccc;
 }
 
 .view-more-title-row.photos {
-  background-color: #999;
+  background-color: #777;
   color: #eee;
 }
 
 @media screen and (max-width: 767px) {
   .view-more-title-row {
-    font-size: 22px;
+    font-size: 28px;
     min-height: 80px;
   }
 }
 
 .view-more-media-row {
   min-height: 350px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
+  background-color: #ccc;
 }
 
 .view-more-media-row.photos {
-  background-color: #999;
+  background-color: #777;
 
 }
 
 .view-more-thumbnail {
-  margin: 2px auto;
+  margin-bottom: 5px;
   cursor: pointer;
   font-size: 30px;
 }

@@ -84,7 +84,7 @@ class Navigation extends React.Component {
     return (
       <div>
         <Col xs={12} className="hidden-xs margin-bottom-10 nav-item">
-          <span className="glyphicon glyphicon-facetime-video font-size-25" />
+          <span className="glyphicon glyphicon-facetime-video" />
           <span className="glyphicon-class">{VIEWER.VIDEOS}</span>
         </Col>
         <Col xs={12} className="hidden-sm hidden-md hidden-lg nav-item">
@@ -143,7 +143,7 @@ class Navigation extends React.Component {
     return (
       <div>
         <Col xs={12} className="hidden-xs margin-bottom-10 nav-item">
-          <span className="glyphicon glyphicon-camera font-size-25" />
+          <span className="glyphicon glyphicon-camera" />
           <span className="glyphicon-class">{VIEWER.PHOTOS}</span>
         </Col>
         <Col xs={12} className="hidden-sm hidden-md hidden-lg nav-item">
@@ -175,7 +175,7 @@ class Navigation extends React.Component {
           xs={12}
           className="hidden-xs margin-bottom-10 nav-item padding-left-0"
         >
-          <span className="glyphicon glyphicon-question-sign font-size-25" />
+          <span className="glyphicon glyphicon-question-sign" />
           <span className="glyphicon-class info"> {VIEWER.INFO}</span>
         </Col>
         <Col
