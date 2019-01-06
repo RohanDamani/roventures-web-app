@@ -25,10 +25,11 @@ class ScrollTop extends React.Component {
     return (
       <React.Fragment>
         {this.props.showScrollTop && (
-          <button onClick={() => window.scrollTo(0, 0)}>
-            <div className="scroll-up-button">
-              <Glyphicon glyph="arrow-up" className="scroll-up-icon" />
-            </div>
+          <button
+            className="scroll-up-button"
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            <Glyphicon glyph="arrow-up" className="scroll-up-icon" />
           </button>
         )}
       </React.Fragment>

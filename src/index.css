@@ -79,10 +79,15 @@ a.dropdown-toggle {
   width: 55px;
   border-radius: 30px;
   background-color: rgba(150, 150, 150, 0.4);
+  border: 1px solid rgb(216, 216, 216);
   padding: 10px;
   position: fixed;
   right: 6%;
   bottom: 5%;
+}
+.scroll-up-button:active,
+.scroll-up-button:focus {
+  outline: none !important;
 }
 
 .scroll-up-icon {
@@ -237,7 +242,7 @@ a.dropdown-toggle {
   min-height: 220px;
   background-color: white;
   margin-top: -5px;
-  padding: 30px 50px 60px;
+  padding: 30px 10px 60px;
 }
 
 .video-info-panel-title {
@@ -255,6 +260,15 @@ a.dropdown-toggle {
   margin-top: 20px;
   font-size: 22px;
   color: #333;
+  padding: 0 100px 0;
+
+}
+
+@media screen and (max-width: 767px) {
+  .video-info-panel-description {
+    padding: 0;
+
+  }
 }
 
 .video-info-panel-more {
