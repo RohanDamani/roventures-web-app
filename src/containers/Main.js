@@ -19,17 +19,16 @@ class Main extends React.Component {
   }
 
   render() {
-    const { children, history } = this.props;
+    const { children, history, location, photosLoading } = this.props;
     return (
       <React.Fragment>
         <Navigation />
         <Grid className="padding-right-0 padding-left-0" fluid>
           {children}
         </Grid>
-        {this.props.location.pathname !== PATH.INFO &&
-          this.props.location.pathname !== PATH.PRIVACY_POLICY && (
-            <ViewMore history={history} />
-          )}
+        {location.pathname !== PATH.INFO &&
+          location.pathname !== PATH.PRIVACY_POLICY &&
+          photosLoading === 0 && <ViewMore history={history} />}
         <ScrollTop />
       </React.Fragment>
     );
@@ -41,7 +40,7 @@ Main.propTypes = {
 };
 
 export default withRouter(
-  connect(state => ({ state }), {
+  connect(state => ({ photosLoading: state.photoViewer.loading }), {
     fetchAlbumList,
   })(Main),
 );
