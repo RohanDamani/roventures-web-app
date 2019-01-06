@@ -3,21 +3,33 @@
     "label": "Welcome",
     "url": "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Welcome/welcome.m3u8",
     "image": "https://s3.amazonaws.com/roventures-thumbnails/Thumbnails/roventures_logo.jpg",
-    "welcome": true
+    "welcome": true,
+    "recorded": "2015-2016",
+    "published": "2018",
+    "description": "This video was made from clips recorded on my six month trip to India and the surrounding countries.  You can explore all of my videos and photos, organized by country, on this web app."
   },
   {
     "label": "Seychelles",
     "url": "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Seychelles/seychelles-hls-2M.m3u8",
-    "image": "http://photos.roventures.tv/Seychelles/G0530431.jpg"
+    "image": "http://photos.roventures.tv/Seychelles/G0530431.jpg",
+    "recorded": "2015",
+    "published": "2018",
+    "description": "My first international bareboat charter, 'Fronsac' was our home for 12 days.  We explored the two groups of islands surrounding Mahé and Praslin, where we enjoyed a mix between French and African culture."
   },
   {
     "label": "Dubai",
     "url": "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Dubai/Dubai.m3u8",
-    "image": "http://photos.roventures.tv/Dubai/IMG_2009.jpg"
+    "image": "http://photos.roventures.tv/Dubai/IMG_2009.jpg",
+    "recorded": "2015",
+    "published": "2018",
+    "description": "Stopping in Dubai for 5 days, I explored the city and took a trip to a Bedouin camp outside of the city.  It surprised me that the people of Dubai are mostly expatriates and tourists, with a blend of culture from all over the world. The highlight was a sunrise hot air balloon ride in the Arabian dessert."
   },
   {
     "label": "BVI Boat Tour",
     "url": "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/BVIBoatTour/BVIBoatTour.m3u8",
-    "image": "https://s3.amazonaws.com/roventures-thumbnails/Thumbnails/BVIThumb.jpg"
+    "image": "https://s3.amazonaws.com/roventures-thumbnails/Thumbnails/BVIThumb.jpg",
+    "recorded": "2017",
+    "published": "2018",
+    "description": "My third international bareboat charter and second time fortunate enough to sail the British Virgins, my friend Mike and I had this 2016 Beneteau Oceanis 385 all to ourselves for 2 weeks.  The British Virgin Islands are a sailors paradise, with beautiful Caribbean weather, water, and favorite spots like Willie T's and the Wreck of the Rhone."
   }
 ]

@@ -4,6 +4,8 @@ import { Row, Col } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
 import videos from '../videos';
 import window from 'window-or-global';
+import { VIEWER } from '../utils/constants';
+import { Link } from 'react-router-dom';
 
 class VideoViewer extends React.Component {
   componentWillMount() {
@@ -14,7 +16,7 @@ class VideoViewer extends React.Component {
       if (item.label === video) {
         return item;
       }
-      return null
+      return null;
     });
     if (videoObj) {
       this.videos = videoObj;
@@ -33,7 +35,7 @@ class VideoViewer extends React.Component {
         if (item.label === nextVideo) {
           return item;
         }
-        return null
+        return null;
       });
       window.scrollTo(0, 0);
       if (videoObj) {
@@ -67,7 +69,22 @@ class VideoViewer extends React.Component {
           </Col>
         </Row>
         <Row>
-              <div className="video-info-panel text-center">{this.videos.label}</div>
+          <div className="video-info-panel text-center">
+            <div className="video-info-panel-title">{this.videos.label}</div>
+            <div className="video-info-panel-dates">
+              {VIEWER.RECORDED}: {this.videos.recorded}
+              <br />
+              {VIEWER.PUBLISHED}: {this.videos.published}
+            </div>
+            <div className="video-info-panel-description">
+              {this.videos.description}
+            </div>
+            {this.videos.label === 'Welcome' && (
+              <div className="video-info-panel-more">
+                <Link to="/info">{VIEWER.MORE_INFORMATION}</Link>
+              </div>
+            )}
+          </div>
         </Row>
       </React.Fragment>
     );

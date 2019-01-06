@@ -82,7 +82,7 @@ a.dropdown-toggle {
   background-color: rgba(150, 150, 150, 0.4);
   padding: 10px;
   position: fixed;
-  right: 10%;
+  right: 8%;
   bottom: 5%;
 }
 
@@ -235,12 +235,34 @@ a.dropdown-toggle {
 }
 
 .video-info-panel {
-  height: 120px;
+  min-height: 220px;
   background-color: white;
+  margin-top: -5px;
+  padding: 30px 50px 60px;
+}
+
+.video-info-panel-title {
   font-size: 38px;
   font-weight: bold;
-  margin-top: -5px;
-  padding-top: 30px;
+}
+
+.video-info-panel-dates {
+   margin-top: 8px;
+   font-size: 22px;
+   color: #777
+ }
+
+.video-info-panel-description {
+  margin-top: 20px;
+  font-size: 22px;
+  color: #333
+}
+
+.video-info-panel-more {
+  margin-top: 60px;
+  padding-bottom: 20px;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .view-more-title-row {
@@ -277,7 +299,7 @@ a.dropdown-toggle {
 }
 
 .view-more-thumbnail {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   cursor: pointer;
   font-size: 30px;
 }

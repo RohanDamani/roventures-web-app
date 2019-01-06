@@ -11,6 +11,9 @@ export const VIEWER = {
     MULTIPLE: 'Multiple',
     ALBUMS: 'Albums',
     SCROLL: 'scroll',
+    PUBLISHED: 'Published',
+    RECORDED: 'Recorded',
+    MORE_INFORMATION: 'More Information'
 };
 
 export const PATH = {
