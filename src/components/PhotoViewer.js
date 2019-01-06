@@ -135,7 +135,7 @@ class PhotoViewer extends React.Component {
     } = this.props;
 
     return (
-      <Row className="margin-top-20">
+      <div className="margin-top-20">
         <Col
           xs={12}
           sm={6}
@@ -200,7 +200,7 @@ class PhotoViewer extends React.Component {
             </Button>
           </ButtonGroup>
         </Col>
-      </Row>
+      </div>
     );
   }
 

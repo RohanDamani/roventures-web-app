@@ -1,7 +1,3 @@
-html {
-    overflow-x: visible;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -85,7 +81,7 @@ a.dropdown-toggle {
   background-color: rgba(150, 150, 150, 0.4);
   padding: 10px;
   position: fixed;
-  right: 8%;
+  right: 6%;
   bottom: 5%;
 }
 
@@ -250,15 +246,15 @@ a.dropdown-toggle {
 }
 
 .video-info-panel-dates {
-   margin-top: 8px;
-   font-size: 22px;
-   color: #777
- }
+  margin-top: 8px;
+  font-size: 22px;
+  color: #777;
+}
 
 .video-info-panel-description {
   margin-top: 20px;
   font-size: 22px;
-  color: #333
+  color: #333;
 }
 
 .video-info-panel-more {
@@ -298,7 +294,12 @@ a.dropdown-toggle {
 
 .view-more-media-row.photos {
   background-color: #777;
+}
 
+@media screen and (max-width: 767px) {
+  .view-more-media-row {
+    padding-bottom: 10px;
+  }
 }
 
 .view-more-thumbnail {

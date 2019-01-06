@@ -49,8 +49,6 @@ class VideoViewer extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Row>
-          <Col xs={12}>
             <ReactPlayer
               url={this.videos.url}
               width="100%"
@@ -66,9 +64,6 @@ class VideoViewer extends React.Component {
               }}
               controls
             />
-          </Col>
-        </Row>
-        <Row>
           <div className="video-info-panel text-center">
             <div className="video-info-panel-title">{this.videos.label}</div>
             <div className="video-info-panel-dates">
@@ -85,7 +80,6 @@ class VideoViewer extends React.Component {
               </div>
             )}
           </div>
-        </Row>
       </React.Fragment>
     );
   }
