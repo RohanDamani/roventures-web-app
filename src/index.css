@@ -245,6 +245,7 @@ a.dropdown-toggle {
 .view-more-title-row {
   min-height: 120px;
   padding-top: 30px;
+  padding-bottom: 30px;
   font-size: 40px;
   font-weight: bold;
   border-top: 1px solid black;
