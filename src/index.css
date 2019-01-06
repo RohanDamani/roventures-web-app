@@ -1,3 +1,7 @@
+html {
+    overflow-x: visible;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -7,7 +11,6 @@ body {
   font-family: 'Noto Sans', sans-serif;
   background-color: #eee;
   overflow-x: hidden;
-
 }
 
 .main-logo {
