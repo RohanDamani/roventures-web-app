@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Button, Thumbnail, Image } from 'react-bootstrap';
+import { Row, Col, Thumbnail } from 'react-bootstrap';
 import videos from '../videos';
 import thumbnails from '../thumbnails';
 import { PATH, VIEW_MORE } from '../utils/constants';
@@ -32,6 +32,7 @@ class ViewMore extends React.Component {
                 </Col>
               );
             }
+            return null;
           })}
         </Row>
         <Row className="text-center view-more-title-row photos">
