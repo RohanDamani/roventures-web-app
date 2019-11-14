@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
 import videos from '../videos';
 import window from 'window-or-global';
 import { VIEWER } from '../utils/constants';
 import { Link } from 'react-router-dom';
+import { PATH } from '../utils/constants';
+import welcomeVideo from '../Welcome.m4v';
 
 class VideoViewer extends React.Component {
   componentWillMount() {
@@ -47,39 +48,40 @@ class VideoViewer extends React.Component {
   }
 
   render() {
+    const { video } = this.props.match.params;
     return (
       <React.Fragment>
-            <ReactPlayer
-              url={this.videos.url}
-              width="100%"
-              height="100%"
-              className="video-player"
-              playing={true}
-              loop={!this.videos.image}
-              file={{ forceHLS: true }}
-              config={{
-                file: {
-                  attributes: { poster: this.videos.image },
-                },
-              }}
-              controls
-            />
-          <div className="video-info-panel text-center">
-            <div className="video-info-panel-title">{this.videos.label}</div>
-            <div className="video-info-panel-dates">
-              {VIEWER.RECORDED}: {this.videos.recorded}
-              <br />
-              {VIEWER.PUBLISHED}: {this.videos.published}
-            </div>
-            <div className="video-info-panel-description">
-              {this.videos.description}
-            </div>
-            {this.videos.label === 'Welcome' && (
-              <div className="video-info-panel-more">
-                <Link to="/info">{VIEWER.MORE_INFORMATION}</Link>
-              </div>
-            )}
+        <ReactPlayer
+          url={`/${video}` === PATH.WELCOME_PARAM ? welcomeVideo : this.videos.url}
+          width="100%"
+          height="100%"
+          className="video-player"
+          playing={true}
+          loop={!this.videos.image}
+          file={{ forceHLS: true }}
+          config={{
+            file: {
+              attributes: { poster: this.videos.image },
+            },
+          }}
+          controls
+        />
+        <div className="video-info-panel text-center">
+          <div className="video-info-panel-title">{this.videos.label}</div>
+          <div className="video-info-panel-dates">
+            {VIEWER.RECORDED}: {this.videos.recorded}
+            <br />
+            {VIEWER.PUBLISHED}: {this.videos.published}
           </div>
+          <div className="video-info-panel-description">
+            {this.videos.description}
+          </div>
+          {this.videos.label === 'Welcome' && (
+            <div className="video-info-panel-more">
+              <Link to="/info">{VIEWER.MORE_INFORMATION}</Link>
+            </div>
+          )}
+        </div>
       </React.Fragment>
     );
   }

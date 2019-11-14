@@ -24,6 +24,7 @@ import {
 } from '../actions/actions';
 import Loader from './Loader';
 import ToggleButton from 'react-toggle-button';
+// import {Image} from 'cloudinary-react'
 
 class PhotoViewer extends React.Component {
   componentWillMount() {
@@ -35,6 +36,9 @@ class PhotoViewer extends React.Component {
     this.loadAlbum();
     this.initializeScrollListener();
     window.scrollTo(0, 0);
+
+      // cloudinary test api
+      // fetch('http://res.cloudinary.com/roventures/image/list/photo.json').then(res => res.json()).then(r => console.log(`PhotoViewer:40 (anon) - :`, r.resources ))
   }
 
   componentWillReceiveProps(nextProps) {

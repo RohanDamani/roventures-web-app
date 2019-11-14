@@ -29,7 +29,7 @@ export const PATH = {
 
 export const VIEW_MORE = {
     VIDEO_TITLE: 'Choose A Video',
-    PHOTO_TITLE: 'Or Choose Photos',
+    PHOTO_TITLE: 'Choose A Photo Album',
 };
 
 
