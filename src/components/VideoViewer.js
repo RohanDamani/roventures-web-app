@@ -5,8 +5,6 @@ import videos from '../videos';
 import window from 'window-or-global';
 import { VIEWER } from '../utils/constants';
 import { Link } from 'react-router-dom';
-import { PATH } from '../utils/constants';
-import welcomeVideo from '../Welcome.m4v';
 
 class VideoViewer extends React.Component {
   componentWillMount() {
@@ -52,7 +50,7 @@ class VideoViewer extends React.Component {
     return (
       <React.Fragment>
         <ReactPlayer
-          url={`/${video}` === PATH.WELCOME_PARAM ? welcomeVideo : this.videos.url}
+          url={this.videos.url}
           width="100%"
           height="100%"
           className="video-player"
