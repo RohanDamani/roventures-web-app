@@ -52,7 +52,6 @@ class VideoViewer extends React.Component {
         <ReactPlayer
           url={this.videos.url}
           width="100%"
-          height="100%"
           className="video-player"
           playing={true}
           loop={!this.videos.image}
