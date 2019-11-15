@@ -15,7 +15,7 @@ body {
 
 .navbar {
   margin-bottom: 0;
-  height: 8vh;
+  min-height: 8vh;
 }
 
 .nav-item {
