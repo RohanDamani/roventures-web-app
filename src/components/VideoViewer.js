@@ -55,6 +55,7 @@ class VideoViewer extends React.Component {
           className="video-player"
           playing={true}
           loop={!this.videos.image}
+          volume={.2}
           file={{ forceHLS: true }}
           config={{
             file: {
