@@ -163,7 +163,7 @@ class Navigation extends React.Component {
         noCaret
       >
         {this.renderPhotoDropdownList()}
-        <MenuItem divider />
+        {/*<MenuItem divider />*/}
       </NavDropdown>
     );
   }

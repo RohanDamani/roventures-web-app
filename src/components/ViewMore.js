@@ -42,10 +42,25 @@ class ViewMore extends React.Component {
         </Row>
         <Row className="text-center view-more-media-row photos">
           {thumbnails.map((thumb, i) => {
+              const imageRequest = JSON.stringify({
+                  "bucket": "roventures-pictures",
+                  "key": thumb.image,
+                  "edits": {
+                      "resize": {
+                          "width": 900,
+                          "height": 900,
+                          "fit": "contain",
+                      },
+                      "rotate": null
+                  }
+              })
+
+              const url = `https://d1ces9xr9kdl0s.cloudfront.net/${btoa(imageRequest)}`;
+
             return (
               <Col key={i} md={3} xs={12}>
                 <Thumbnail
-                  src={thumb.image}
+                  src={url}
                   className="view-more-thumbnail"
                   onClick={() => history.push(PATH.PHOTOS + '/' + thumb.label)}
                 >

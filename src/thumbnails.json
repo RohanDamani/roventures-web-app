@@ -1,55 +1,120 @@
 [
   {
     "label": "Agra",
-    "image": "http://photos.roventures.tv/Agra/G0012668.jpg"
+    "image": "Agra/G0012668.JPG"
   },
   {
     "label": "Amritsar",
-    "image": "http://photos.roventures.tv/Amritsar/IMG_4814.jpg"
+    "image": "Amritsar/IMG_4814.JPG"
   },
   {
     "label": "Bhutan",
-    "image": "http://photos.roventures.tv/Bhutan/IMG_5797.jpg"
+    "image": "Bhutan/IMG_5797.JPG"
   },
 
   {
     "label": "Croatia",
-    "image": "http://photos.roventures.tv/Croatia/IMG_6335.jpg"
+    "image": "Croatia/IMG_6335.JPG"
   },
   {
     "label": "Dharamsala",
-    "image": "http://photos.roventures.tv/Dharamsala/IMG_4870.jpg"
+    "image": "Dharamsala/IMG_4870.JPG"
   },
   {
     "label": "Dubai",
-    "image": "http://photos.roventures.tv/Dubai/IMG_2009.jpg"
+    "image": "Dubai/IMG_2009.JPG"
   },
   {
     "label": "Jaipur",
-    "image": "http://photos.roventures.tv/Jaipur/IMG_3151.jpg"
+    "image": "Jaipur/IMG_3151.JPG"
   },
   {
     "label": "Kashmir",
-    "image": "http://photos.roventures.tv/Kashmir/IMG_5134.jpg"
+    "image": "Kashmir/IMG_5134.JPG"
   },
   {
     "label": "Manali",
-    "image": "http://photos.roventures.tv/Manali/IMG_4998.jpg"
+    "image": "Manali/IMG_4998.JPG"
   },
   {
     "label": "Nainital",
-    "image": "http://photos.roventures.tv/Nainital/IMG_4600.jpg"
+    "image": "Nainital/IMG_4600.JPG"
   },
   {
     "label": "Nepal",
-    "image": "http://photos.roventures.tv/Nepal/IMG_5955.jpg"
+    "image": "Nepal/IMG_5955.JPG"
   },
   {
     "label": "Rishikesh",
-    "image": "http://photos.roventures.tv/Rishikesh/IMG_4628.jpg"
+    "image": "Rishikesh/IMG_4628.JPG"
   },
   {
     "label": "Seychelles",
-    "image": "http://photos.roventures.tv/Seychelles/G0530431.jpg"
+    "image": "Seychelles/G0530431.JPG"
+  },
+  {
+    "label": "Delhi",
+    "image": "Delhi/IMG_4512.JPG"
+  },
+  {
+    "label": "Daman",
+    "image": "Daman/IMG_1567.JPG"
+  },
+  {
+    "label": "Bangaluru",
+    "image": "Bangaluru/IMG_2040.JPG"
+  },
+  {
+    "label": "Goa",
+    "image": "Goa/IMG_2685.JPG"
+  },
+  {
+    "label": "Gokarna",
+    "image": "Gokarna/IMG_2766.JPG"
+  },
+  {
+    "label": "Hampi",
+    "image": "Hampi/IMG_2352.JPG"
+  },
+  {
+    "label": "Jaisalmer",
+    "image": "Jaisalmer/IMG_3570.JPG"
+  },
+  {
+    "label": "Khajuraho",
+    "image": "Khajuraho/IMG_4309.JPG"
+  },
+  {
+    "label": "Jodhpur",
+    "image": "Jodhpur/IMG_3452.JPG"
+  },
+  {
+    "label": "Kerala",
+    "image": "Kerala/IMG_2505.JPG"
+  },
+
+  {
+    "label": "Mumbai",
+    "image": "Mumbai/IMG_1238.JPG"
+  },
+  {
+    "label": "Pushkar",
+    "image": "Pushkar/IMG_3426.JPG"
+  },
+  {
+    "label": "Rajkot",
+    "image": "Rajkot/IMG_3907.JPG"
+  },
+  {
+    "label": "Ranthambore",
+    "image": "Ranthambore/IMG_3352.JPG"
+  },
+  {
+    "label": "Udaipur",
+    "image": "Udaipur/IMG_3822.JPG"
+  },
+  {
+    "label": "Varanassi",
+    "image": "Varanassi/IMG_4022.JPG"
   }
 ]

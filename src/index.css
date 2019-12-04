@@ -288,20 +288,23 @@ a.dropdown-toggle {
   padding-bottom: 30px;
   margin-left: 0;
   margin-right: 0;
-  font-size: 40px;
+  font-size: 60px;
   font-weight: bold;
-  border-top: 1px solid black;
+  color: #000;
+  border-top: 8px solid #333;
   background-color: #ccc;
 }
 
 .view-more-title-row.photos {
   background-color: #777;
   color: #eee;
+  border-top: 8px solid white;
+
 }
 
 @media screen and (max-width: 767px) {
   .view-more-title-row {
-    font-size: 28px;
+    font-size: 40px;
     min-height: 80px;
   }
 }
