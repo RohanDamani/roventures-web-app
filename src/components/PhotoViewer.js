@@ -234,6 +234,20 @@ class PhotoViewer extends React.Component {
     const { photoViewer: { photoSet, isShowingSingle } } = this.props;
 
     return photoSet.map((photo, index) => {
+        const imageRequest = JSON.stringify({
+            "bucket": "roventures-pictures",
+            "key": photo,
+            "edits": {
+                "resize": {
+                    "width": 900,
+                    "height": 900,
+                    "fit": "contain",
+                },
+                "rotate": null
+            }
+        });
+
+        const url = `https://d1ces9xr9kdl0s.cloudfront.net/${btoa(imageRequest)}`;
       return (
         <Col
           key={index}
@@ -247,7 +261,7 @@ class PhotoViewer extends React.Component {
             className={
               isShowingSingle ? 'background-color-single-thumbnail' : ''
             }
-            src={photo}
+            src={url}
             alt={photo}
           />
         </Col>

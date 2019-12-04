@@ -19,5 +19,3 @@ export const authenticatePhotoBucket = new AWS.S3({
 });
 
 export const authenticateDynamoDB = new AWS.DynamoDB({apiVersion: '2012-08-10'});
-
-export const getBucketUrl = `http://photos.roventures.tv/`;

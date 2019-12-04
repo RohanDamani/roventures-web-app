@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import { getBucketUrl } from '../utils/awsUtil';
 
 const initialStatePhotoViewer = {
   photoSet: [],
@@ -55,14 +54,13 @@ const media = (
 ) => {
   switch (action.type) {
     case 'RECEIVE_ALBUM_DATA':
-      const bucketUrl = getBucketUrl;
       const photoUrlArray = [];
 
       // split up the photos and videos
       action.payload.Contents.forEach(photo => {
         if (photo.Size > 0) {
           const photoKey = photo.Key;
-          photoUrlArray.push(bucketUrl + photoKey);
+          photoUrlArray.push(photoKey);
         }
       });
 
