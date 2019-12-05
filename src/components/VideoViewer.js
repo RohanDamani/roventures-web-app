@@ -46,6 +46,7 @@ class VideoViewer extends React.Component {
   }
 
   render() {
+    const { video } = this.props.match.params;
     return (
       <React.Fragment>
         <ReactPlayer
@@ -54,7 +55,7 @@ class VideoViewer extends React.Component {
           className="video-player"
           playing={true}
           loop={!this.videos.image}
-          volume={.2}
+          volume={video === "Welcome" ? .2 : null}
           file={{ forceHLS: true }}
           config={{
             file: {
