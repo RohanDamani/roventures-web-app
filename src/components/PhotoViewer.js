@@ -139,7 +139,7 @@ class PhotoViewer extends React.Component {
     } = this.props;
 
     return (
-      <div className="margin-top-20">
+      <div className="margin-top-30">
         <Col
           xs={12}
           sm={6}
@@ -149,9 +149,9 @@ class PhotoViewer extends React.Component {
           lgOffset={2}
           className="text-center"
         >
-          <h1 className="viewer-header">{photo} {VIEWER.PHOTOS}</h1>
+          <h1 className="viewer-header">{photo.toUpperCase()}</h1>
         </Col>
-        <Col xs={12} sm={6} md={5} lg={4} className="text-center">
+        <Col xs={12} sm={6} md={5} lg={4} className="text-center  margin-bottom-25">
           <ButtonGroup>
             <Button
               className="toggle-button-container"

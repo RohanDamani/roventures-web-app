@@ -46,7 +46,6 @@ class VideoViewer extends React.Component {
   }
 
   render() {
-    const { video } = this.props.match.params;
     return (
       <React.Fragment>
         <ReactPlayer
@@ -74,11 +73,9 @@ class VideoViewer extends React.Component {
           <div className="video-info-panel-description">
             {this.videos.description}
           </div>
-          {this.videos.label === 'Welcome' && (
-            <div className="video-info-panel-more">
-              <Link to="/info">{VIEWER.MORE_INFORMATION}</Link>
-            </div>
-          )}
+          <div className="video-info-panel-more">
+            <Link to="/info">{VIEWER.MORE_INFORMATION}</Link>
+          </div>
         </div>
       </React.Fragment>
     );

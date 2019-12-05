@@ -13,7 +13,7 @@ export const VIEWER = {
     SCROLL: 'scroll',
     PUBLISHED: 'Published',
     RECORDED: 'Recorded',
-    MORE_INFORMATION: 'More Information'
+    MORE_INFORMATION: 'More INFO'
 };
 
 export const PATH = {

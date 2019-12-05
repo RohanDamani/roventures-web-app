@@ -103,6 +103,15 @@ a.dropdown-toggle {
   margin-top: 40px;
 }
 
+.margin-top-30 {
+  margin-top: 30px;
+}
+
+
+.margin-bottom-25 {
+  margin-bottom: 25px;
+}
+
 .margin-top-20 {
   margin-top: 20px;
 }
@@ -191,6 +200,7 @@ a.dropdown-toggle {
   margin-top: 0;
   font-weight: bold;
   color: #222;
+  font-size: 46px;
 }
 
 .thumbnail {
@@ -250,7 +260,7 @@ a.dropdown-toggle {
 }
 
 .video-info-panel-title {
-  font-size: 38px;
+  font-size: 46px;
   font-weight: bold;
 }
 
@@ -278,7 +288,7 @@ a.dropdown-toggle {
 .video-info-panel-more {
   margin-top: 60px;
   padding-bottom: 20px;
-  font-size: 22px;
+  font-size: 46px;
   font-weight: bold;
 }
 
