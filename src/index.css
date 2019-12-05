@@ -27,9 +27,13 @@ body {
 }
 
 #info-tabs {
-  background-color: white;
+  background-color: #eee;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+}
+
+#info-tabs .nav.nav-tabs {
+  margin-bottom: -10px;
 }
 
 .text-container {

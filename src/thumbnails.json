@@ -1,56 +1,7 @@
 [
   {
-    "label": "Agra",
-    "image": "Agra/G0012668.JPG"
-  },
-  {
-    "label": "Amritsar",
-    "image": "Amritsar/IMG_4814.JPG"
-  },
-  {
-    "label": "Bhutan",
-    "image": "Bhutan/IMG_5797.JPG"
-  },
-
-  {
-    "label": "Croatia",
-    "image": "Croatia/IMG_6335.JPG"
-  },
-  {
-    "label": "Dharamsala",
-    "image": "Dharamsala/IMG_4870.JPG"
-  },
-  {
-    "label": "Dubai",
-    "image": "Dubai/IMG_2009.JPG"
-  },
-  {
-    "label": "Jaipur",
-    "image": "Jaipur/IMG_3151.JPG"
-  },
-  {
-    "label": "Kashmir",
-    "image": "Kashmir/IMG_5134.JPG"
-  },
-  {
-    "label": "Manali",
-    "image": "Manali/IMG_4998.JPG"
-  },
-  {
-    "label": "Nainital",
-    "image": "Nainital/IMG_4600.JPG"
-  },
-  {
-    "label": "Nepal",
-    "image": "Nepal/IMG_5955.JPG"
-  },
-  {
-    "label": "Rishikesh",
-    "image": "Rishikesh/IMG_4628.JPG"
-  },
-  {
-    "label": "Seychelles",
-    "image": "Seychelles/G0530431.JPG"
+    "label": "Komodo",
+    "image": "Komodo/DSC00758.JPG"
   },
   {
     "label": "Delhi",
@@ -116,5 +67,58 @@
   {
     "label": "Varanassi",
     "image": "Varanassi/IMG_4022.JPG"
+  },
+  {
+    "label": "Agra",
+    "image": "Agra/G0012668.JPG"
+  },
+  {
+    "label": "Amritsar",
+    "image": "Amritsar/IMG_4814.JPG"
+  },
+  {
+    "label": "Bhutan",
+    "image": "Bhutan/IMG_5797.JPG"
+  },
+
+  {
+    "label": "Croatia",
+    "image": "Croatia/IMG_6335.JPG"
+  },
+  {
+    "label": "Dharamsala",
+    "image": "Dharamsala/IMG_4870.JPG"
+  },
+  {
+    "label": "Dubai",
+    "image": "Dubai/IMG_2009.JPG"
+  },
+  {
+    "label": "Jaipur",
+    "image": "Jaipur/IMG_3151.JPG"
+  },
+  {
+    "label": "Kashmir",
+    "image": "Kashmir/IMG_5134.JPG"
+  },
+  {
+    "label": "Manali",
+    "image": "Manali/IMG_4998.JPG"
+  },
+  {
+    "label": "Nainital",
+    "image": "Nainital/IMG_4600.JPG"
+  },
+  {
+    "label": "Nepal",
+    "image": "Nepal/IMG_5955.JPG"
+  },
+  {
+    "label": "Rishikesh",
+    "image": "Rishikesh/IMG_4628.JPG"
+  },
+  {
+    "label": "Seychelles",
+    "image": "Seychelles/G0530431.JPG"
   }
 ]

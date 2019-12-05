@@ -33,6 +33,7 @@ class TabSection extends React.Component {
           <Tab eventKey={3} className={small ? "text-container small" : "text-container"} title="Technology">
             <p>{INFO.P_2}</p>
             <p>{INFO.P_3}</p>
+            <p>{INFO.P_7}</p>
           </Tab>
         </Tabs>
       </div>
