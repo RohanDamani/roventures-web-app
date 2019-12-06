@@ -7,6 +7,8 @@ import { VIEWER } from '../utils/constants';
 import { Link } from 'react-router-dom';
 
 class VideoViewer extends React.Component {
+  state = { loaded: false };
+
   componentWillMount() {
     window.scrollTo(0, 0);
     // set this.videos equal to to video matching the url parameter
@@ -22,6 +24,15 @@ class VideoViewer extends React.Component {
     } else {
       this.videos = videos[0];
     }
+  }
+
+  componentDidMount() {
+    setTimeout(
+      function() {
+        this.setState({ loaded: true });
+      }.bind(this),
+      3000,
+    );
   }
 
   componentWillUpdate(nextProps) {
@@ -46,6 +57,7 @@ class VideoViewer extends React.Component {
   }
 
   render() {
+    const { loaded } = this.state;
     const { video } = this.props.match.params;
     return (
       <React.Fragment>
@@ -55,7 +67,7 @@ class VideoViewer extends React.Component {
           className="video-player"
           playing={true}
           loop={!this.videos.image}
-          volume={video === "Welcome" ? .2 : null}
+          muted={video === 'Welcome' && !loaded}
           file={{ forceHLS: true }}
           config={{
             file: {
