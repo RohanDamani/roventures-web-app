@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Button, Glyphicon } from 'react-bootstrap';
+import { Col, Button, Glyphicon } from 'react-bootstrap';
 import { INFO } from '../utils/constants';
 import TabSection from './TabSection';
+import ReactGA from 'react-ga';
 
 class Info extends React.Component {
+  componentDidMount() {
+    ReactGA.initialize('G-69HR23N3TE');
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }
   render() {
     const { history } = this.props;
     return (

@@ -5,6 +5,7 @@ import videos from '../videos';
 import window from 'window-or-global';
 import { VIEWER } from '../utils/constants';
 import { Link } from 'react-router-dom';
+import ReactGA from 'react-ga';
 
 class VideoViewer extends React.Component {
   state = { loaded: false };
@@ -27,12 +28,16 @@ class VideoViewer extends React.Component {
   }
 
   componentDidMount() {
+    // this is so the welcome video is muted only the first time
     setTimeout(
       function() {
         this.setState({ loaded: true });
       }.bind(this),
       3000,
     );
+
+    ReactGA.initialize('G-69HR23N3TE');
+    ReactGA.pageview(window.location.pathname + window.location.search);
   }
 
   componentWillUpdate(nextProps) {

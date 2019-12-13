@@ -6,7 +6,6 @@ import {
   Button,
   Thumbnail,
   Glyphicon,
-  Row,
 } from 'react-bootstrap';
 import { VIEWER } from '../utils/constants';
 import { authenticatePhotoBucket } from '../utils/awsUtil';
@@ -24,7 +23,7 @@ import {
 } from '../actions/actions';
 import Loader from './Loader';
 import ToggleButton from 'react-toggle-button';
-// import {Image} from 'cloudinary-react'
+import ReactGA from 'react-ga';
 
 class PhotoViewer extends React.Component {
   componentWillMount() {
@@ -36,9 +35,8 @@ class PhotoViewer extends React.Component {
     this.loadAlbum();
     this.initializeScrollListener();
     window.scrollTo(0, 0);
-
-      // cloudinary test api
-      // fetch('http://res.cloudinary.com/roventures/image/list/photo.json').then(res => res.json()).then(r => console.log(`PhotoViewer:40 (anon) - :`, r.resources ))
+    ReactGA.initialize('G-69HR23N3TE');
+    ReactGA.pageview(window.location.pathname + window.location.search);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -151,7 +149,13 @@ class PhotoViewer extends React.Component {
         >
           <h1 className="viewer-header">{photo.toUpperCase()}</h1>
         </Col>
-        <Col xs={12} sm={6} md={5} lg={4} className="text-center  margin-bottom-25">
+        <Col
+          xs={12}
+          sm={6}
+          md={5}
+          lg={4}
+          className="text-center  margin-bottom-25"
+        >
           <ButtonGroup>
             <Button
               className="toggle-button-container"
@@ -234,20 +238,20 @@ class PhotoViewer extends React.Component {
     const { photoViewer: { photoSet, isShowingSingle } } = this.props;
 
     return photoSet.map((photo, index) => {
-        const imageRequest = JSON.stringify({
-            "bucket": "roventures-pictures",
-            "key": photo,
-            "edits": {
-                "resize": {
-                    "width": 900,
-                    "height": 900,
-                    "fit": "contain",
-                },
-                "rotate": null
-            }
-        });
+      const imageRequest = JSON.stringify({
+        bucket: 'roventures-pictures',
+        key: photo,
+        edits: {
+          resize: {
+            width: 900,
+            height: 900,
+            fit: 'contain',
+          },
+          rotate: null,
+        },
+      });
 
-        const url = `https://d1ces9xr9kdl0s.cloudfront.net/${btoa(imageRequest)}`;
+      const url = `https://d1ces9xr9kdl0s.cloudfront.net/${btoa(imageRequest)}`;
       return (
         <Col
           key={index}

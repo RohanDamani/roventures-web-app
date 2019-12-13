@@ -9,6 +9,7 @@ import ScrollTop from '../components/ScrollTop';
 import { authenticatePhotoBucket } from '../utils/awsUtil';
 import { fetchAlbumList } from '../actions/actions';
 import ViewMore from '../components/ViewMore';
+import ReactGA from 'react-ga';
 
 class Main extends React.Component {
   componentWillMount() {
@@ -16,6 +17,13 @@ class Main extends React.Component {
     this.bucket = authenticatePhotoBucket;
     // fetch the full list of albums from the bucket to populate the Navigation drop down
     this.props.fetchAlbumList(this.bucket);
+  }
+
+  componentDidMount() {
+    ReactGA.initialize('G-69HR23N3TE');
+    ReactGA.pageview(
+      'Initial' + window.location.pathname + window.location.search,
+    );
   }
 
   render() {
