@@ -1,35 +1,53 @@
 [
   {
     "label": "Welcome",
-    "url": "https://roventures-videos-hls.s3-us-west-1.amazonaws.com/Welcome1/welcome1.m3u8",
-    "image": "https://s3.amazonaws.com/roventures-thumbnails/Thumbnails/roventures_logo.jpg",
+    "url":
+      "https://roventures-videos-hls.s3-us-west-1.amazonaws.com/Welcome1/welcome1.m3u8",
+    "image":
+      "https://s3.amazonaws.com/roventures-thumbnails/Thumbnails/roventures_logo.jpg",
     "welcome": true,
     "recorded": "2015-2016",
     "published": "2019",
-    "description": "This video was made from clips recorded on my six month trip to India and the surrounding countries.  You can explore all of my videos and photos on this web app."
+    "description":
+      "This video was made from clips recorded on my six month trip to India and the surrounding countries.  You can explore all of my videos and photos on this web app."
   },
   {
     "label": "India",
-    "url":  "https://roventures-videos-hls.s3-us-west-1.amazonaws.com/India/india.m3u8",
+    "url":
+      "https://roventures-videos-hls.s3-us-west-1.amazonaws.com/India/india.m3u8",
     "image": "http://photos.roventures.tv/Agra/IMG_4435.jpg",
     "recorded": "2015-2016",
     "published": "2019",
-    "description": "I spent approximately 5 months in India, this is footage in no particular order from that time.  I plan to add more to this video to help explain everything that I learned about this beautiful country."
+    "description":
+      "I spent approximately 5 months in India, this is footage in no particular order from that time.  I plan to add more to this video to help explain everything that I learned about this beautiful country."
   },
   {
     "label": "Seychelles",
-    "url": "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Seychelles/seychelles-hls-2M.m3u8",
+    "url":
+      "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Seychelles/seychelles-hls-2M.m3u8",
     "image": "http://photos.roventures.tv/Seychelles/G0530431.jpg",
     "recorded": "2015",
     "published": "2018",
-    "description": "My first international bareboat charter, 'Fronsac' was our home for 12 days.  We explored the two groups of islands surrounding Mahé and Praslin, where we enjoyed a mix between French and African culture."
+    "description":
+      "My first international bareboat charter, 'Fronsac' was our home for 12 days.  We explored the two groups of islands surrounding Mahé and Praslin, where we enjoyed a mix between French and African culture."
   },
   {
     "label": "Dubai",
-    "url": "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Dubai/Dubai.m3u8",
+    "url":
+      "https://s3-us-west-1.amazonaws.com/roventures-videos-hls/Dubai/Dubai.m3u8",
     "image": "http://photos.roventures.tv/Dubai/IMG_2009.jpg",
     "recorded": "2015",
     "published": "2018",
-    "description": "Stopping in Dubai for 5 days, I explored the city and took a trip to a Bedouin camp outside of the city.  It surprised me that the people of Dubai are mostly expatriates and tourists, with a blend of culture from all over the world. The highlight was a sunrise hot air balloon ride in the Arabian dessert."
+    "description":
+      "Stopping in Dubai for 5 days, I explored the city and took a trip to a Bedouin camp outside of the city.  It surprised me that the people of Dubai are mostly expatriates and tourists, with a blend of culture from all over the world. The highlight was a sunrise hot air balloon ride in the Arabian dessert."
+  },
+  {
+    "label": "Catamaran Training",
+    "url":
+      "https://roventures-videos-hls.s3-us-west-1.amazonaws.com/CatamaranTraining/CatamaranTraining.m3u8",
+    "image": "https://roventures-pictures.s3-us-west-1.amazonaws.com/MarinaDelRey/DSC01488.jpg",
+    "recorded": "2020",
+    "published": "2020",
+    "description": "Fairwind Yacht club has been an incredible opportunity for me to take my sailing skills to the next level.  Our club recently acquired a 35' Seawind Catamaran 'Mariah', on which I have been training catamaran sailing skills with other members of the club.  These are clips taken from Mariah one day while training."
   }
 ]

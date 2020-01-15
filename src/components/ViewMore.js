@@ -15,7 +15,7 @@ class ViewMore extends React.Component {
           </Col>
         </Row>
         <Row className="text-center view-more-media-row">
-          {!history.location.pathname.includes('photo') && <Col md={1}> </Col>}
+          {/*{!history.location.pathname.includes('photo') && <Col md={1}> </Col>}*/}
           {videos.map((video, i) => {
             if (!history.location.pathname.includes(video.label)) {
               return (
