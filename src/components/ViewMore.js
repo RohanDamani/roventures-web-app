@@ -32,7 +32,10 @@ class ViewMore extends React.Component {
         <section className="view-more-section">
           <header className="view-more-header">{VIEW_MORE.PHOTO_TITLE}</header>
           <main className="view-more-main">
-            {thumbnails.map((thumb, i) => {
+            {thumbnails.map(thumb => {
+              if (history.location.pathname.includes(thumb.label)) {
+                return;
+              }
               const imageRequest = JSON.stringify({
                 bucket: 'roventures-pictures',
                 key: thumb.image,
