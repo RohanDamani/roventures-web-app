@@ -224,7 +224,7 @@ class PhotoViewer extends React.Component {
 
   renderPhotos() {
     const {
-      photoViewer: { photoSet, isShowingSingle },
+      photoViewer: { photoSet },
     } = this.props;
 
     return photoSet.map((photo, index) => {

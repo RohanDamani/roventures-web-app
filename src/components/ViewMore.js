@@ -15,7 +15,7 @@ class ViewMore extends React.Component {
             {videos.map(video => {
               if (!history.location.pathname.includes(video.label)) {
                 return (
-                  <div className="view-more-item">
+                  <div key={video.label} className="view-more-item">
                     <Image
                       src={video.image}
                       className="view-more-image"
@@ -25,6 +25,7 @@ class ViewMore extends React.Component {
                   </div>
                 );
               }
+              return null;
             })}
           </main>
         </section>
@@ -48,7 +49,7 @@ class ViewMore extends React.Component {
               const url = `https://d1ces9xr9kdl0s.cloudfront.net/${btoa(imageRequest)}`;
 
               return (
-                <div className="view-more-item">
+                <div key={thumb.label} className="view-more-item">
                   <Image
                     src={url}
                     className="view-more-image"
