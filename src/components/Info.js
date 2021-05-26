@@ -13,7 +13,7 @@ class Info extends React.Component {
   render() {
     const { history } = this.props;
     return (
-      <React.Fragment>
+      <div className="info-container">
         <Col xs={10} xsOffset={1} className="hidden-xs">
           <TabSection />
         </Col>
@@ -59,7 +59,7 @@ class Info extends React.Component {
             <Glyphicon glyph="arrow-left" /> Back
           </Button>
         </Col>
-      </React.Fragment>
+      </div>
     );
   }
 }

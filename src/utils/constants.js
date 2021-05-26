@@ -7,6 +7,7 @@ export const VIEWER = {
     PHOTOS: 'Photos',
     VIDEOS: 'Videos',
     INFO: 'Info',
+    ABOUT: 'About',
     SINGLES: 'Singles',
     MULTIPLE: 'Multiple',
     ALBUMS: 'Albums',
@@ -28,8 +29,8 @@ export const PATH = {
 };
 
 export const VIEW_MORE = {
-    VIDEO_TITLE: 'VIDEOS',
-    PHOTO_TITLE: 'PHOTOS',
+    VIDEO_TITLE: 'Videos',
+    PHOTO_TITLE: 'Photos',
 };
 
 

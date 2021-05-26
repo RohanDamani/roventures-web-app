@@ -1,12 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Col,
-  ButtonGroup,
-  Button,
-  Thumbnail,
-  Glyphicon,
-} from 'react-bootstrap';
+import { Col, ButtonGroup, Button, Thumbnail, Glyphicon } from 'react-bootstrap';
 import { VIEWER } from '../utils/constants';
 import { authenticatePhotoBucket } from '../utils/awsUtil';
 import { withRouter } from 'react-router-dom';
@@ -52,7 +46,13 @@ class PhotoViewer extends React.Component {
   }
 
   watchForUrlChanges(nextProps) {
-    const { fetchAlbum, match: { params: { photo } }, addLoading } = this.props;
+    const {
+      fetchAlbum,
+      match: {
+        params: { photo },
+      },
+      addLoading,
+    } = this.props;
     const urlParam = photo;
     const nextUrlParam = nextProps.match.params.photo;
 
@@ -85,12 +85,7 @@ class PhotoViewer extends React.Component {
   };
 
   onScroll = () => {
-    const {
-      media,
-      updatePhotoSet,
-      toggleShowRefreshButton,
-      toggleDidScroll,
-    } = this.props;
+    const { media, updatePhotoSet, toggleShowRefreshButton, toggleDidScroll } = this.props;
     updatePhotoSet(media.photos);
     toggleShowRefreshButton(false);
     toggleDidScroll(true);
@@ -131,31 +126,19 @@ class PhotoViewer extends React.Component {
 
   renderHeader() {
     const {
-      match: { params: { photo } },
+      match: {
+        params: { photo },
+      },
       photoViewer: { isShowingSingle },
       toggleIsShowingSingle,
     } = this.props;
 
     return (
       <div className="margin-top-30">
-        <Col
-          xs={12}
-          sm={6}
-          md={5}
-          mdOffset={1}
-          lg={4}
-          lgOffset={2}
-          className="text-center"
-        >
-          <h1 className="viewer-header">{photo.toUpperCase()}</h1>
+        <Col xs={12} sm={6} md={5} mdOffset={1} lg={4} lgOffset={2} className="text-center">
+          <h1 className="viewer-header">{photo}</h1>
         </Col>
-        <Col
-          xs={12}
-          sm={6}
-          md={5}
-          lg={4}
-          className="text-center  margin-bottom-25"
-        >
+        <Col xs={12} sm={6} md={5} lg={4} className="text-center  margin-bottom-25">
           <ButtonGroup>
             <Button
               className="toggle-button-container"
@@ -213,7 +196,10 @@ class PhotoViewer extends React.Component {
   }
 
   isShowingSubset() {
-    const { media, photoViewer: { photoSet } } = this.props;
+    const {
+      media,
+      photoViewer: { photoSet },
+    } = this.props;
     if (media.photos.length === media.photoSubSet.length) {
       return false;
     }
@@ -221,7 +207,9 @@ class PhotoViewer extends React.Component {
   }
 
   renderThrottledRefreshButton() {
-    const { photoViewer: { showRefreshButton } } = this.props;
+    const {
+      photoViewer: { showRefreshButton },
+    } = this.props;
 
     if (this.isShowingSubset() && showRefreshButton) {
       return (
@@ -235,7 +223,9 @@ class PhotoViewer extends React.Component {
   }
 
   renderPhotos() {
-    const { photoViewer: { photoSet, isShowingSingle } } = this.props;
+    const {
+      photoViewer: { photoSet, isShowingSingle },
+    } = this.props;
 
     return photoSet.map((photo, index) => {
       const imageRequest = JSON.stringify({
@@ -262,9 +252,7 @@ class PhotoViewer extends React.Component {
           xs={this.xsCol()}
         >
           <Thumbnail
-            className={
-              isShowingSingle ? 'background-color-single-thumbnail' : ''
-            }
+            className="photo-viewer-thumbnail"
             src={url}
             alt={photo}
           />
@@ -274,7 +262,9 @@ class PhotoViewer extends React.Component {
   }
 
   render() {
-    const { photoViewer: { photoSet, loading } } = this.props;
+    const {
+      photoViewer: { photoSet, loading },
+    } = this.props;
 
     if (loading > 0) {
       return <Loader />;

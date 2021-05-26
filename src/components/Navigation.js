@@ -32,7 +32,7 @@ class Navigation extends React.Component {
           <Col xs={12} className="hidden-xs large main-logo">
             <Image
               src={require('../roventures_logo.svg')}
-              alt="openfit"
+              alt="Roventures logo"
               width="300px"
               height="50px"
             />
@@ -40,7 +40,7 @@ class Navigation extends React.Component {
           <Col xs={12} className="hidden-sm hidden-md hidden-lg main-logo">
             <Image
               src={require('../roventures_logo.svg')}
-              alt="openfit"
+              alt="Roventures logo"
               width="200px"
               height="25px"
             />

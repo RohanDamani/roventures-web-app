@@ -4,8 +4,8 @@ import ReactPlayer from 'react-player';
 import videos from '../videos';
 import window from 'window-or-global';
 import { VIEWER } from '../utils/constants';
-import { Link } from 'react-router-dom';
 import ReactGA from 'react-ga';
+import { Image } from 'react-bootstrap';
 
 class VideoViewer extends React.Component {
   state = { loaded: false };
@@ -81,19 +81,22 @@ class VideoViewer extends React.Component {
           }}
           controls
         />
-        <div className="video-info-panel text-center">
-          <div className="video-info-panel-title">{this.videos.label}</div>
-          <div className="video-info-panel-dates">
-            {VIEWER.RECORDED}: {this.videos.recorded}
-            <br />
-            {VIEWER.PUBLISHED}: {this.videos.published}
-          </div>
-          <div className="video-info-panel-description">
-            {this.videos.description}
-          </div>
-          <div className="video-info-panel-more">
-            <Link to="/info">{VIEWER.MORE_INFORMATION}</Link>
-          </div>
+        <div className="about-container">
+          <section className="about-section">
+            <header className="about-header">{VIEWER.ABOUT}</header>
+            <main className="about-main">
+              <div className="about-main-column">
+                <Image src={this.videos.image} width={80} />
+                <span className="about-logo-label">{this.videos.label}</span>
+              </div>
+              <div className="about-main-column">{this.videos.description}</div>
+              <div className="about-main-column">
+                {VIEWER.RECORDED}: {this.videos.recorded}
+                <br />
+                {VIEWER.PUBLISHED}: {this.videos.published}
+              </div>
+            </main>
+          </section>
         </div>
       </React.Fragment>
     );
